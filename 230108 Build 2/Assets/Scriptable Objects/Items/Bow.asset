@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f483609ac176e403fa0ddd96ca9e5cc0, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 388de58a1251748a0a93b7d9303ab941, type: 3}
+  itemDescription: "\xA1Es un Arco! Ahora puedes disparar flechas, \xA1no te las
+    acabes!"
+  isKey: 0

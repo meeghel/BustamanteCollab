@@ -1,0 +1,1076 @@
+fileFormatVersion: 2
+guid: 76dd9605faf984ea798a190292e2ac8d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1064939464136537585
+    second: carros_0
+  - first:
+      213: 7052981111518475102
+    second: carros_1
+  - first:
+      213: 373172918461154763
+    second: carros_2
+  - first:
+      213: 8196032793045064892
+    second: carros_3
+  - first:
+      213: 1071010345822955985
+    second: carros_4
+  - first:
+      213: 3290768855647378697
+    second: carros_5
+  - first:
+      213: -2765017463103137318
+    second: carros_6
+  - first:
+      213: 745108426620227892
+    second: carros_7
+  - first:
+      213: -3488436470611033005
+    second: carros_8
+  - first:
+      213: -2041375538932579911
+    second: carros_9
+  - first:
+      213: -3270112742607380824
+    second: carros_10
+  - first:
+      213: -370851291949104623
+    second: carros_11
+  - first:
+      213: -3481242382628194638
+    second: carros_12
+  - first:
+      213: 4369653034053914563
+    second: carros_13
+  - first:
+      213: -5778822759809649522
+    second: carros_14
+  - first:
+      213: -6457426640300878854
+    second: carros_15
+  - first:
+      213: -7042005898630122550
+    second: carros_16
+  - first:
+      213: 3993463094039100632
+    second: carros_17
+  - first:
+      213: 6435730475714083033
+    second: carros_18
+  - first:
+      213: 3259051943647032644
+    second: carros_19
+  - first:
+      213: -8320354360440205598
+    second: carros_20
+  - first:
+      213: -2349285635812265713
+    second: carros_21
+  - first:
+      213: 8646701639163434737
+    second: carros_22
+  - first:
+      213: 3399475514230148181
+    second: carros_23
+  - first:
+      213: -6228059442282032639
+    second: carros_24
+  - first:
+      213: 3480694361012458056
+    second: carros_25
+  - first:
+      213: -7863840679869859565
+    second: carros_26
+  - first:
+      213: 4459604331755056665
+    second: carros_27
+  - first:
+      213: -3439823445329456845
+    second: carros_28
+  - first:
+      213: -5519557132650507795
+    second: carros_29
+  - first:
+      213: 3446078829796206794
+    second: carros_30
+  - first:
+      213: -148858838138662412
+    second: carros_31
+  - first:
+      213: 7967970091812720251
+    second: carros_32
+  - first:
+      213: 2069211833583024354
+    second: carros_33
+  - first:
+      213: -3652333832861260531
+    second: carros_34
+  - first:
+      213: 8448845731684324530
+    second: carros_35
+  - first:
+      213: 6520010640667301566
+    second: carros_36
+  - first:
+      213: 7327073697581128646
+    second: carros_37
+  - first:
+      213: -8731015041676375239
+    second: carros_38
+  - first:
+      213: 5469719270328345133
+    second: carros_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: carros_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f53723eccc67ce00800000000000000
+      internalID: 1064939464136537585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53399fd3f831e160800000000000000
+      internalID: 7052981111518475102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc54caccac6cd2500800000000000000
+      internalID: 373172918461154763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_3
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc57ec96682eb170800000000000000
+      internalID: 8196032793045064892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 198
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9ab8d2c3efcde00800000000000000
+      internalID: 1071010345822955985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_5
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 195
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90dd7c6c6d82bad20800000000000000
+      internalID: 3290768855647378697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_6
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 195
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad95cf9544fa0a9d0800000000000000
+      internalID: -2765017463103137318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_7
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 195
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43159df8a28275a00800000000000000
+      internalID: 745108426620227892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_8
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 195
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35446b33385969fc0800000000000000
+      internalID: -3488436470611033005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_9
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 195
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b180c453c39ba3e0800000000000000
+      internalID: -2041375538932579911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_10
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 134
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae986159c93e92d0800000000000000
+      internalID: -3270112742607380824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_11
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 134
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11201eef6b87adaf0800000000000000
+      internalID: -370851291949104623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_12
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 134
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b679665f7420bfc0800000000000000
+      internalID: -3481242382628194638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_13
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 134
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfcd76784024ac30800000000000000
+      internalID: 4369653034053914563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_14
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 134
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e847a95415f7dcfa0800000000000000
+      internalID: -5778822759809649522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_15
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 131
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3d8bdfeac9266a0800000000000000
+      internalID: -6457426640300878854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_16
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 131
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac332f102f4c54e90800000000000000
+      internalID: -7042005898630122550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_17
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 131
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc35d79681ab6730800000000000000
+      internalID: 3993463094039100632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_18
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 131
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8f71b05ce405950800000000000000
+      internalID: 6435730475714083033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_19
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 131
+        width: 34
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 445b0adb97a7a3d20800000000000000
+      internalID: 3259051943647032644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 64
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eec694dac9288c80800000000000000
+      internalID: -8320354360440205598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_21
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 64
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f017b794929a56fd0800000000000000
+      internalID: -2349285635812265713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_22
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 64
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6df1124514ff770800000000000000
+      internalID: 8646701639163434737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_23
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 64
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c835018fc5d2f20800000000000000
+      internalID: 3399475514230148181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_24
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 64
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10213c65fec7199a0800000000000000
+      internalID: -6228059442282032639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_25
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 64
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8425adf6419ed4030800000000000000
+      internalID: 3480694361012458056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_26
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 64
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319371ae0960ed290800000000000000
+      internalID: -7863840679869859565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_27
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 64
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ead010382b3ed30800000000000000
+      internalID: 4459604331755056665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_28
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 64
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331d31b2dca4340d0800000000000000
+      internalID: -3439823445329456845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_29
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 64
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de194ee18089663b0800000000000000
+      internalID: -5519557132650507795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac82ff5007ee2df20800000000000000
+      internalID: 3446078829796206794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_31
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f15117eca52fedf0800000000000000
+      internalID: -148858838138662412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_32
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e0f67159ae39e60800000000000000
+      internalID: 7967970091812720251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_33
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e830c1133157bc10800000000000000
+      internalID: 2069211833583024354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_34
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 0
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05e92bdabd405dc0800000000000000
+      internalID: -3652333832861260531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_35
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 0
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b49e17dd64504570800000000000000
+      internalID: 8448845731684324530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_36
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb6ddb8122bbb7a50800000000000000
+      internalID: 6520010640667301566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_37
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb5e6b15befea560800000000000000
+      internalID: 7327073697581128646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_38
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 0
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b8948141435d680800000000000000
+      internalID: -8731015041676375239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: carros_39
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 0
+        width: 62
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22a70152b858eb40800000000000000
+      internalID: 5469719270328345133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
