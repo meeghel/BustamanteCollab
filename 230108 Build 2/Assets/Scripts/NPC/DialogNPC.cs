@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Ink.Runtime;
+using UnityEngine.UI;
 
 public class DialogNPC : Interactable
 {
     // Reference to the intermediate dialog value
     [SerializeField] private TextAssetValue dialogValue;
     // Reference to the NPCs dialog
-    [SerializeField] private TextAsset myDialog;
+    public TextAsset myDialog;
+
     // Notification to send to the canvases to activate and check
     //dialog
     [SerializeField] private Notification branchingDialogNotification;
@@ -34,6 +37,11 @@ public class DialogNPC : Interactable
             {
                 //ChangeSprite();
                 dialogValue.value = myDialog;
+                Story myStory = new Story(myDialog.text);
+                int noneDialogs = myStory.currentText.Length;
+                Debug.Log(noneDialogs);
+                int numChoices = myStory.currentChoices.Count;
+                Debug.Log(numChoices);
                 branchingDialogNotification.Raise();
             }
         }

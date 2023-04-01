@@ -18,7 +18,7 @@ public class BranchingDialogController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -40,6 +40,10 @@ public class BranchingDialogController : MonoBehaviour
         {
             DeleteOldDialogs();
             myStory = new Story(dialogValue.value.text);
+            int noneDialogs = myStory.currentText.Length;
+            Debug.Log(noneDialogs);
+            int numChoices = myStory.currentChoices.Count;
+            Debug.Log(numChoices);
         }
         else
         {
