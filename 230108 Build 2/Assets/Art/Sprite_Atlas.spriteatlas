@@ -329,6 +329,10 @@ SpriteAtlas:
   - {fileID: 7756232869436880864, guid: 4cb30bc3f82034183bbc8f5af1d17704, type: 3}
   - {fileID: 21300000, guid: b9f3e5d3e65004dde9d139c9850d7ae0, type: 3}
   - {fileID: 21300000, guid: 7942fde3e213a44368e20f8caa17bdea, type: 3}
+  - {fileID: 3349590014815367581, guid: 84ec0b647cdb9452d8358a23dedfc5b7, type: 3}
+  - {fileID: -1294407053552524328, guid: 84ec0b647cdb9452d8358a23dedfc5b7, type: 3}
+  - {fileID: -735879818107400292, guid: 84ec0b647cdb9452d8358a23dedfc5b7, type: 3}
+  - {fileID: -8298795163349999539, guid: 84ec0b647cdb9452d8358a23dedfc5b7, type: 3}
   - {fileID: -8485285980244762321, guid: 8fb17b8456a4940028015cbfa32075ac, type: 3}
   - {fileID: 5036566024637907675, guid: 8fb17b8456a4940028015cbfa32075ac, type: 3}
   - {fileID: 8271926053526762222, guid: 8fb17b8456a4940028015cbfa32075ac, type: 3}
@@ -2726,6 +2730,22 @@ SpriteAtlas:
   - {fileID: 538826285080647454, guid: d61b1b6f1be3b4e6d9a205ca15976160, type: 3}
   - {fileID: 1107736971085435061, guid: d61b1b6f1be3b4e6d9a205ca15976160, type: 3}
   - {fileID: -377563455374678323, guid: d61b1b6f1be3b4e6d9a205ca15976160, type: 3}
+  - {fileID: 7125969044959427297, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 460048964641387130, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 8978497540601235842, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 5053354582490243744, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: -7633056113250437845, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 6976112074451576266, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 201767957516689898, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 3004479659232987906, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 7102705430510447968, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 5748818428436898595, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 4892241630681466050, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 5719075548217615797, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: 8618663976898325987, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: -702417484383542198, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: -931240730793808255, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
+  - {fileID: -7558673754538462546, guid: bd1e04afef0fa43da9f1f3b393b4ea47, type: 3}
   - {fileID: 1982209557225243269, guid: c69c64ef23da843d6bcf21d06a72cedf, type: 3}
   - {fileID: 3613090402652488292, guid: c69c64ef23da843d6bcf21d06a72cedf, type: 3}
   - {fileID: 2852941005644034664, guid: c69c64ef23da843d6bcf21d06a72cedf, type: 3}
@@ -4542,6 +4562,10 @@ SpriteAtlas:
   - CasaDungeon1_31
   - laser
   - Minimap mask
+  - Boss001_0
+  - Boss001_1
+  - Boss001_2
+  - Boss001_3
   - scorpion_verde_8
   - scorpion_verde_9
   - scorpion_verde_6
@@ -6939,6 +6963,22 @@ SpriteAtlas:
   - objects_119
   - objects_109
   - objects_108
+  - projectiles_8
+  - projectiles_15
+  - projectiles_9
+  - projectiles_14
+  - projectiles_13
+  - projectiles_12
+  - projectiles_4
+  - projectiles_11
+  - projectiles_5
+  - projectiles_10
+  - projectiles_6
+  - projectiles_7
+  - projectiles_0
+  - projectiles_1
+  - projectiles_2
+  - projectiles_3
   - casas_698
   - casas_682
   - casas_634
