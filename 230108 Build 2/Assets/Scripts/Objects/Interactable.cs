@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
 
     public Signal context;
     public bool playerInRange;
+    public bool isInteracting = false;
+    public float areaDetection = 1.5f;
 
     // Use this for initialization
     void Start()
@@ -17,7 +19,18 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Vamos a revisar si el jugador está en el rango del objeto
+        if (playerInRange)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                isInteracting = true;
+            }
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                isInteracting = false;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,4 +50,11 @@ public class Interactable : MonoBehaviour
             playerInRange = false;
         }
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, areaDetection);
+    }
+
 }
