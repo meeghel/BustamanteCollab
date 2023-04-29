@@ -923,6 +923,7 @@ MonoBehaviour:
   playerInRange: 0
   isInteracting: 0
   areaDetection: 1.5
+  Context: {fileID: 11400000, guid: 799e11109cfef4263b40b794ffc5d313, type: 2}
   dialogBox: {fileID: 1448770694}
   dialogText: {fileID: 1330485701}
   dialog: "Qu\xE9 raro,  ahi esta la camioneta pero no traigo llave para entrar."
@@ -4370,6 +4371,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3668463851958178337, guid: 7d6503ccebdf047a1a6aecdf58c0f322,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522286779111640793, guid: 7d6503ccebdf047a1a6aecdf58c0f322,
         type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
@@ -67907,10 +67913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b61590b56bc4f6ba3cd560ef1d24d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  context: {fileID: 11400000, guid: 799e11109cfef4263b40b794ffc5d313, type: 2}
+  context: {fileID: 0}
   playerInRange: 0
   isInteracting: 0
-  areaDetection: 1.5
+  areaDetection: 2
+  Context: {fileID: 11400000, guid: 799e11109cfef4263b40b794ffc5d313, type: 2}
   dialogBox: {fileID: 1448770694}
   dialogText: {fileID: 1330485701}
   dialog: "Est\xE1 cerrada... \xBFd\xF3nde qued\xF3 la llave?"

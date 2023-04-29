@@ -13,6 +13,8 @@ public enum DoorType
 
 public class Door : Interactable
 {
+    [Header("Context")]
+    public Signal Context;
 
     [Header("Sign")]
     public GameObject dialogBox;
@@ -30,7 +32,7 @@ public class Door : Interactable
 
     private void Update()
     {
-        if (Input.GetButtonDown("Check"))
+        if (isInteracting)//(Input.GetButtonDown("Check"))
         {
             if (playerInRange && thisDoorType == DoorType.key)
             {
@@ -72,12 +74,19 @@ public class Door : Interactable
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            Context.Raise();
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            context.Raise();
-            playerInRange = false;
+            Context.Raise();
             dialogBox.SetActive(false);
         }
     }

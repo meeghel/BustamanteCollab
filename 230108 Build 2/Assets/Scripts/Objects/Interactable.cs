@@ -37,7 +37,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            context.Raise();
+            //context.Raise();
             playerInRange = true;
         }
     }
@@ -46,7 +46,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            context.Raise();
+            //context.Raise();
             playerInRange = false;
         }
     }

@@ -22,11 +22,11 @@ public class Room : MonoBehaviour
             {
                 ChangeActivation(pots[i], true);
             }
-            virtualCamera.SetActive(true);
             for(int i = 0; i < objectsToReset.Length; i++)
             {
                 objectsToReset[i].ResetPosition();
             }
+            virtualCamera.SetActive(true);
         }
     }
 
@@ -44,11 +44,11 @@ public class Room : MonoBehaviour
             {
                 ChangeActivation(pots[i], false);
             }
-            virtualCamera.SetActive(false);
             for (int i = 0; i < objectsToReset.Length; i++)
             {
                 objectsToReset[i].ResetPosition();
             }
+            virtualCamera.SetActive(false);
         }
     }
 
