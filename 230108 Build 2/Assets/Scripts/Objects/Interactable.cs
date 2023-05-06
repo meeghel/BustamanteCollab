@@ -17,7 +17,7 @@ public class Interactable : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Vamos a revisar si el jugador está en el rango del objeto
         if (playerInRange)

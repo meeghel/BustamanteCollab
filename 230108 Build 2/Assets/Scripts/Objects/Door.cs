@@ -74,7 +74,7 @@ public class Door : Interactable
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
@@ -89,7 +89,7 @@ public class Door : Interactable
             Context.Raise();
             dialogBox.SetActive(false);
         }
-    }
+    }*/
 
     public void Open()
     {
