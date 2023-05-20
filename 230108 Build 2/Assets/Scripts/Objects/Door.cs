@@ -34,7 +34,7 @@ public class Door : Interactable
     {
         if (isInteracting)//(Input.GetButtonDown("Check"))
         {
-            if (playerInRange && thisDoorType == DoorType.key)
+            if (/*playerInRange && */thisDoorType == DoorType.key)
             {
                 //Does the player have a key?
                 if (playerInventory.numberOfKeys > 0)
@@ -44,7 +44,7 @@ public class Door : Interactable
                     //If so, then call the open method
                     Open();
                 }
-                else if (dialogBox.activeInHierarchy)
+                /*else if (dialogBox.activeInHierarchy)
                 {
                     dialogBox.SetActive(false);
                 }
@@ -52,9 +52,9 @@ public class Door : Interactable
                 {
                     dialogBox.SetActive(true);
                     dialogText.text = dialog;
-                }
+                }*/
             }
-            else if (playerInRange && thisDoorType == DoorType.specific)
+            else if (/*playerInRange && */thisDoorType == DoorType.specific)
             {
                 //Does the player have the specific key?
                 if (playerInventory.CheckForItem(thisDoorKey))
