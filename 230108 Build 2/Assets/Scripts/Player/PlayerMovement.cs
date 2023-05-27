@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 change;
     private Animator animator;
 
+    public bool canMove;
+
     // TODO HEALTH
     /*
     public FloatValue currentHealth;
@@ -62,14 +64,20 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
         transform.position = startingPosition.initialValue;
-
+        canMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+        {
+            myRigidbody.velocity = Vector2.zero;
+            return;
+            //Revisar agregar anim.speed = zero
+        }
         // Is the player in an interaction
-        if(currentState == PlayerState.interact)
+        if (currentState == PlayerState.interact)
         {
             return;
         }

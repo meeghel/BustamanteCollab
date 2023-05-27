@@ -9,6 +9,8 @@ public class Interactable : MonoBehaviour
     public bool playerInRange;
     public bool isInteracting = false;
     public float areaDetection = 1.5f;
+    GameObject PlayerRef;
+    RigidbodyConstraints2D originalConstraints;
 
     // Use this for initialization
     void Start()
@@ -22,13 +24,25 @@ public class Interactable : MonoBehaviour
         //Vamos a revisar si el jugador está en el rango del objeto
         if (playerInRange)
         {
+            //Revisar guardar constraints originales para regresar a ellas.
+            //originalConstraints = PlayerRef.GetComponent<Rigidbody2D>().constraints;
             if (Input.GetKey(KeyCode.E))
             {
                 isInteracting = true;
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().canMove = false;
+                GameObject.FindWithTag("Player").GetComponent<Animator>().speed = 0;
+                GameObject.FindWithTag("NPC").GetComponent<NPCBounded>().canMove = false;
+                GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 0;
+                //PlayerRef.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Q))
             {
                 isInteracting = false;
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().canMove = true;
+                GameObject.FindWithTag("Player").GetComponent<Animator>().speed = 1;
+                GameObject.FindWithTag("NPC").GetComponent<NPCBounded>().canMove = true;
+                GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 1;
+                //PlayerRef.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             }
         }
     }
@@ -37,7 +51,8 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            //context.Raise();
+            //PlayerRef = other.gameObject;
+            context.Raise();
             playerInRange = true;
         }
     }
@@ -46,7 +61,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            //context.Raise();
+            context.Raise();
             playerInRange = false;
         }
     }

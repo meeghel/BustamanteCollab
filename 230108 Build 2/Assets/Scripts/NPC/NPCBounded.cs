@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BoundedNPC : Sign
+public class NPCBounded : MonoBehaviour
 {
-    //Revisar por qué hereda de Sign y no de Interactable
 
+    /*public GameObject dialogBox;
+    public Text dialogText;
+    public string dialog;
+    private DialogManager theDM;
+    */
     private Vector3 directionVector;
     private Transform myTransform;
     public float speed;
@@ -14,9 +19,10 @@ public class BoundedNPC : Sign
     private Transform playerPosition;
     public Collider2D bounds;
     private bool isMoving;
+    public bool playerInRange;
+
     //230522 agregué canMove para revisar implementar Dialog Manager
     public bool canMove;
-    private DialogManager theDM;
 
     public float minMoveTime;
     public float maxMoveTime;
@@ -28,8 +34,10 @@ public class BoundedNPC : Sign
     // Start is called before the first frame update
     void Start()
     {
+        /*dialogBox.SetActive(false);
+        dialogText.text = dialog;
+        theDM = FindObjectOfType<DialogManager>();*/
         canMove = true;
-        theDM = FindObjectOfType<DialogManager>();
         moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
         anim = GetComponent<Animator>();
@@ -40,14 +48,8 @@ public class BoundedNPC : Sign
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        //base.Update();
-        /*if (!theDM.dialogActive)
-        {
-            canMove = true;
-        }*/
-        //Revisar por qué hereda de Sign y no Interactable, o hacer propia clase
         if (!canMove)
         {
             myRigidbody.velocity = Vector2.zero;
@@ -93,22 +95,12 @@ public class BoundedNPC : Sign
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !other.isTrigger)
-        {
-            context.Raise();
-            anim.speed = 0;
-            playerInRange = true;
-        }
-    }
-
     private void Move()
     {
         Vector3 temp = myTransform.position + directionVector * speed * Time.deltaTime;
         if (bounds.bounds.Contains(temp))
-        { 
-        myRigidbody.MovePosition(temp);
+        {
+            myRigidbody.MovePosition(temp);
         }
         else
         {
@@ -152,5 +144,21 @@ public class BoundedNPC : Sign
     private void OnCollisionEnter2D(Collision2D other)
     {
         ChooseDifferentDirection();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            playerInRange = false;
+        }
     }
 }

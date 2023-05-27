@@ -14,6 +14,9 @@ public class DialogNPC : Interactable
     // Notification to send to the canvases to activate and check
     //dialog
     [SerializeField] private Notification branchingDialogNotification;
+
+    //public bool canMove;
+
     // Specify Player GameObject
     //[SerializeField] public GameObject player;
     // Sprites for different angles
@@ -24,7 +27,8 @@ public class DialogNPC : Interactable
     // Start is called before the first frame update
     void Start()
     {
-
+        //myRigidbody = GetComponent<Rigidbody2D>();
+        //canMove = true;
     }
 
     // Update is called once per frame

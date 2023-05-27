@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   context: {fileID: 11400000, guid: 799e11109cfef4263b40b794ffc5d313, type: 2}
   playerInRange: 0
+  isInteracting: 0
+  areaDetection: 1.5
   dialogBox: {fileID: 0}
   dialogText: {fileID: 0}
   dialog: Familia Herrera Casso
