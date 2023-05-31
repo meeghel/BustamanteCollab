@@ -16,6 +16,21 @@ public class DialogManager : MonoBehaviour
     //TODO Revisar refactorizar y hacer un controlador del Player, y no en "Player Movement"
     private PlayerMovement thePlayer;
 
+    public static DialogManager instance;
+    public bool isTalking = false;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,24 +41,7 @@ public class DialogManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(dialogActive && Input.GetKeyDown(KeyCode.Space))
-        {
-            //dialogBox.SetActive(false);
-            //dialogActive = false;
 
-            currentLine++;
-        }
-
-        if(currentLine >= dialogLines.Length)
-        {
-            dBox.SetActive(false);
-            dialogActive = false;
-
-            currentLine = 0;
-            thePlayer.canMove = true;
-        }
-
-        dText.text = dialogLines[currentLine];
     }
 
     //Revisar si esta función tiene uso todavía
@@ -54,10 +52,48 @@ public class DialogManager : MonoBehaviour
         dialogText.text = dialog;
     }*/
 
-    public void ShowDialog()
+    private void ShowDialog()
     {
         dialogActive = true;
         dBox.SetActive(true);
-        thePlayer.canMove = false;
+    }
+
+    public void StartDialog(string[] NPCdialog, int CurrentLine)
+    {
+        ResetDialog();
+        ShowDialog();
+        dialogLines = NPCdialog;
+        currentLine = CurrentLine;
+        dText.text = dialogLines[currentLine];
+    }
+
+    public void ContinueDialog()
+    {
+        if (dialogActive && Input.GetKeyDown(KeyCode.Space))
+        {
+            //dialogBox.SetActive(false);
+            //dialogActive = false;
+
+            currentLine++;
+            isTalking = true;
+        }
+
+        if (isTalking)
+        {
+            if (currentLine >= dialogLines.Length)
+            {
+                ResetDialog();
+            }
+
+            dText.text = dialogLines[currentLine];
+        }
+    }
+
+    public void ResetDialog()
+    {
+        currentLine = 0;
+        dialogLines = null;
+        dBox.SetActive(false);
+        dialogActive = false;
     }
 }

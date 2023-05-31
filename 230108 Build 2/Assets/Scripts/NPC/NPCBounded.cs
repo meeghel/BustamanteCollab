@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum NPCState
+{
+    walk,
+    idle
+}
+
 public class NPCBounded : MonoBehaviour
 {
 
@@ -11,6 +17,7 @@ public class NPCBounded : MonoBehaviour
     public string dialog;
     private DialogManager theDM;
     */
+    public NPCState currentState;
     private Vector3 directionVector;
     private Transform myTransform;
     public float speed;
@@ -37,6 +44,8 @@ public class NPCBounded : MonoBehaviour
         /*dialogBox.SetActive(false);
         dialogText.text = dialog;
         theDM = FindObjectOfType<DialogManager>();*/
+        currentState = NPCState.walk;
+
         canMove = true;
         moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
@@ -52,7 +61,10 @@ public class NPCBounded : MonoBehaviour
     {
         if (!canMove)
         {
+            currentState = NPCState.idle;
+            anim.SetBool("isMoving", false);
             myRigidbody.velocity = Vector2.zero;
+            //anim.speed = 0;
             return;
         }
 
@@ -63,6 +75,7 @@ public class NPCBounded : MonoBehaviour
             {
                 moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
                 isMoving = false;
+                anim.SetBool("isMoving", false);
                 anim.speed = 0;
             }
             if (!playerInRange)
@@ -75,10 +88,12 @@ public class NPCBounded : MonoBehaviour
             waitTimeSeconds -= Time.deltaTime;
             if (waitTimeSeconds <= 0)
             {
+                currentState = NPCState.walk;
                 ChooseDifferentDirection();
                 isMoving = true;
                 anim.speed = 1;
                 waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
+                anim.SetBool("isMoving", true);
             }
         }
     }
@@ -151,6 +166,10 @@ public class NPCBounded : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             playerInRange = true;
+            FacePlayer();
+            canMove = false;
+            moveTimeSeconds = 0;
+            waitTimeSeconds = 0;
         }
     }
 
@@ -159,6 +178,14 @@ public class NPCBounded : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             playerInRange = false;
+            canMove = true;
         }
+    }
+
+    private void FacePlayer()
+    {
+        Vector3 delta = new Vector3(playerPosition.position.x - myTransform.position.x, playerPosition.position.y - myTransform.position.y);
+        directionVector = delta - directionVector;
+        UpdateAnimation();
     }
 }

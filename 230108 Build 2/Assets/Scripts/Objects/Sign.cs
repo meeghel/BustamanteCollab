@@ -25,7 +25,7 @@ public class Sign : Interactable
         }
         else
         {
-            dialogBox.SetActive(false);
+            //dialogBox.SetActive(false);
         }
 
         //Revisar si esto es necesario, solo sería necesario si Player 

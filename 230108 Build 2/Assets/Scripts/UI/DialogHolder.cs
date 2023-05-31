@@ -5,14 +5,14 @@ using UnityEngine;
 public class DialogHolder : Interactable
 {
     public string dialog;
-    public DialogManager dManager;
 
     public string[] dialogueLines;
+    public bool beginDialog = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        dManager = FindObjectOfType<DialogManager>();
+
     }
 
     // Update is called once per frame
@@ -20,11 +20,23 @@ public class DialogHolder : Interactable
     {
         if (isInteracting)
         {
-            dialogInstance();
+            if (beginDialog)
+            {
+                DialogManager.instance.StartDialog(dialogueLines, 0);
+                beginDialog = false;
+            }
+            else
+            {
+                DialogManager.instance.ContinueDialog();
+            }
+        }
+        else
+        {
+            beginDialog = true;
         }
     }
 
-    void dialogInstance()
+    /*void dialogInstance()
     {
         //dManager.ShowBox(dialog);
         if (!dManager.dialogActive)
@@ -40,7 +52,7 @@ public class DialogHolder : Interactable
         else
         {
             dialogBox.SetActive(false);
-        }*/
+        }
 
         //Revisar si esto es necesario, solo sería necesario si Player 
         //se puede mover durante diálogo
@@ -48,5 +60,5 @@ public class DialogHolder : Interactable
         {
             isInteracting = false;
         }
-    }
+    }*/
 }

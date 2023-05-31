@@ -30,7 +30,7 @@ public class Interactable : MonoBehaviour
             {
                 isInteracting = true;
                 GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().canMove = false;
-                GameObject.FindWithTag("Player").GetComponent<Animator>().speed = 0;
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().currentState = PlayerState.idle;
                 GameObject.FindWithTag("NPC").GetComponent<NPCBounded>().canMove = false;
                 GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 0;
                 //PlayerRef.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour
             {
                 isInteracting = false;
                 GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().canMove = true;
-                GameObject.FindWithTag("Player").GetComponent<Animator>().speed = 1;
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().currentState = PlayerState.walk;
                 GameObject.FindWithTag("NPC").GetComponent<NPCBounded>().canMove = true;
                 GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 1;
                 //PlayerRef.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
