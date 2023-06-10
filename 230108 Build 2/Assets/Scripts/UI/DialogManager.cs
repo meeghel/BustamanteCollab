@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class DialogManager : MonoBehaviour
     //TODO Revisar refactorizar y hacer un controlador del Player, y no en "Player Movement"
     private PlayerMovement thePlayer;
 
-    public static DialogManager instance;
+    public static DialogManager instance { get; private set; }
     public bool isTalking = false;
 
     void Awake()
@@ -52,17 +53,31 @@ public class DialogManager : MonoBehaviour
         dialogText.text = dialog;
     }*/
 
+    public IEnumerator ShowDialogText(string text, bool waitForInput=true, bool autoClose=true)
+    {
+        //StartDialog(); Que funcion llamo?
+        if (waitForInput)
+        {
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+        }
+
+        if (autoClose)
+        {
+            ResetDialog();
+        }
+    }
+
     private void ShowDialog()
     {
         dialogActive = true;
         dBox.SetActive(true);
     }
 
-    public void StartDialog(string[] NPCdialog, int CurrentLine)
+    public void StartDialog(string[] DialogLines, int CurrentLine)
     {
         ResetDialog();
         ShowDialog();
-        dialogLines = NPCdialog;
+        dialogLines = DialogLines;
         currentLine = CurrentLine;
         dText.text = dialogLines[currentLine];
     }
