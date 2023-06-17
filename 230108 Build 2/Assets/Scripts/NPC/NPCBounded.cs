@@ -63,7 +63,7 @@ public class NPCBounded : MonoBehaviour
         {
             currentState = NPCState.idle;
             anim.SetBool("isMoving", false);
-            myRigidbody.velocity = Vector2.zero;
+            //myRigidbody.velocity = Vector2.zero;
             //anim.speed = 0;
             return;
         }

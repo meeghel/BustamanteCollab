@@ -16,7 +16,7 @@ public class DialogHolder : Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (isInteracting)
         {
@@ -33,6 +33,7 @@ public class DialogHolder : Interactable
         else
         {
             beginDialog = true;
+            DialogManager.instance.ResetDialog();
         }
     }
 

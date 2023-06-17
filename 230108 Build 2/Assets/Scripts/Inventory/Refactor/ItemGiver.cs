@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class ItemGiver : MonoBehaviour
 {
-    /*[SerializeField] Item item;
-    [SerializeField] DialogHolder dialog;
+    [SerializeField] ItemBase item;
+    [SerializeField] Dialog dialog;
 
-    public IEnumerator GiveItem(PlayerMovement player)
+    bool used = false;
+
+    /*public IEnumerator GiveItem(PlayerMovement player)
     {
-        player.GetComponent<PlayerInventory>().AddItem(item);
+        yield return DialogManagerRef.instance.ShowDialog(dialog);
+
+        player.GetComponent<Inventario>().AddItem(item);
+
+        used = true;
+        //yield return DialogManagerRef.instance.ShowDialogText($"Recibiste {item.Name}");
     }*/
 
 }

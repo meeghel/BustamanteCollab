@@ -32,7 +32,7 @@ public class Interactable : MonoBehaviour
                 GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().canMove = false;
                 GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().currentState = PlayerState.idle;
                 GameObject.FindWithTag("NPC").GetComponent<NPCBounded>().canMove = false;
-                GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 0;
+                //GameObject.FindWithTag("NPC").GetComponent<Animator>().speed = 0;
                 //PlayerRef.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
             if (Input.GetKey(KeyCode.Q))

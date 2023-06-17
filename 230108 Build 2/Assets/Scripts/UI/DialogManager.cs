@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
-    public GameObject dBox;
-    public Text dText;
+    //eran publicos
+    [SerializeField] GameObject dBox;
+    [SerializeField] Text dText;
+    public Text cancelText;
 
     public bool dialogActive;
 
@@ -17,6 +19,7 @@ public class DialogManager : MonoBehaviour
     //TODO Revisar refactorizar y hacer un controlador del Player, y no en "Player Movement"
     private PlayerMovement thePlayer;
 
+    //quitar singleton
     public static DialogManager instance { get; private set; }
     public bool isTalking = false;
 
@@ -53,7 +56,8 @@ public class DialogManager : MonoBehaviour
         dialogText.text = dialog;
     }*/
 
-    public IEnumerator ShowDialogText(string text, bool waitForInput=true, bool autoClose=true)
+    //No estaba funcionando, revisar si se vuelve a implementar
+    /*public IEnumerator ShowDialogText(string text, bool waitForInput=true, bool autoClose=true)
     {
         //StartDialog(); Que funcion llamo?
         if (waitForInput)
@@ -65,9 +69,9 @@ public class DialogManager : MonoBehaviour
         {
             ResetDialog();
         }
-    }
+    }*/
 
-    private void ShowDialog()
+    /*private void ShowDialog()
     {
         dialogActive = true;
         dBox.SetActive(true);
@@ -84,6 +88,11 @@ public class DialogManager : MonoBehaviour
 
     public void ContinueDialog()
     {
+        if (dialogLines == null)
+        {
+            return;
+        }
+
         if (dialogActive && Input.GetKeyDown(KeyCode.Space))
         {
             //dialogBox.SetActive(false);
@@ -97,18 +106,21 @@ public class DialogManager : MonoBehaviour
         {
             if (currentLine >= dialogLines.Length)
             {
-                ResetDialog();
+                cancelText.color = Color.red;
             }
-
-            dText.text = dialogLines[currentLine];
+            else
+            {
+                dText.text = dialogLines[currentLine];
+            }
         }
     }
 
     public void ResetDialog()
     {
+        isTalking = false;
         currentLine = 0;
         dialogLines = null;
         dBox.SetActive(false);
         dialogActive = false;
-    }
+    }*/
 }

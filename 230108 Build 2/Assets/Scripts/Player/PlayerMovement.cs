@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 change;
     private Animator animator;
 
+    //Agregue esto para refactor Interactuable (#26 6:30)
+    public LayerMask interactableLayer;
+
     public bool canMove;
 
     // TODO HEALTH
@@ -95,9 +98,30 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(SecondAttackCo());
             }
         }
+        //Agregue esto para refactor Interactuable (#26 6:30)
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Interact();
+        }
+        //Hasta aqui
         else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
             UpdateAnimationAndMove();
+        }
+    }
+
+    //Agregue esto para refactor Interactuable (#26 6:30)
+    void Interact()
+    {
+        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        var interactPos = transform.position + facingDir;
+
+        Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
+
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+        if (collider != null)
+        {
+            collider.GetComponent<Interactuable>()?.Interact();
         }
     }
 
