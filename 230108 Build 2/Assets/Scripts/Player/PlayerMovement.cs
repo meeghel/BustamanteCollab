@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
         if (collider != null)
         {
-            collider.GetComponent<Interactuable>()?.Interact();
+            collider.GetComponent<Interactuable>()?.Interact(transform);
         }
     }
 

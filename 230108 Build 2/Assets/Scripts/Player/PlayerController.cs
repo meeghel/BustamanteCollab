@@ -6,9 +6,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
-    public LayerMask solidObjectsLayer;
-    public LayerMask interactableLayer;
-    public LayerMask grassLayer;
 
     //esto no se esta usando porque no hay pokemon
     public event Action OnEncountered;
@@ -17,10 +14,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 input;
 
     private Animator animator;
+    //private Character character;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        //character = GetComponent<Character>();
     }
 
     //cambiar a Handle Update, pero en donde?
@@ -64,10 +63,10 @@ public class PlayerController : MonoBehaviour
         var interactPos = transform.position + facingDir;
 
         //Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
         if (collider != null)
         {
-            collider.GetComponent<Interactuable>()?.Interact();
+            collider.GetComponent<Interactuable>()?.Interact(transform);
         }
     }
 
@@ -89,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactableLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer) != null)
         {
             return false;
         }
@@ -99,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckForEncounters()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null)
         {
             if (UnityEngine.Random.Range(1,101) <= 10)
             {
