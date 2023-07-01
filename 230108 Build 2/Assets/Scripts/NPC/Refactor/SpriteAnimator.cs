@@ -5,17 +5,17 @@ using UnityEngine;
 public class SpriteAnimator
 {
     SpriteRenderer spriteRenderer;
-    List<Sprite> frames;
+    public List<Sprite> frames;
     float frameRate;
 
     int currentFrame;
     float timer;
 
-    public SpriteAnimator(List<Sprite> frames, SpriteRenderer spriteRenderer, float frameRate = 0.16f)
+    public SpriteAnimator(List<Sprite> _frames, SpriteRenderer _spriteRenderer, float _frameRate=0.16f)
     {
-        this.frames = frames;
-        this.spriteRenderer = spriteRenderer;
-        this.frameRate = frameRate;
+        frames = _frames;
+        spriteRenderer = _spriteRenderer;
+        frameRate = _frameRate;
     }
 
     public void Start()
@@ -31,7 +31,7 @@ public class SpriteAnimator
         if (timer > frameRate)
         {
             //confirmar simbolo
-            currentFrame = currentFrame + 1 % frames.Count;
+            currentFrame = (currentFrame + 1) % frames.Count;
             spriteRenderer.sprite = frames[currentFrame];
             timer -= frameRate;
         }

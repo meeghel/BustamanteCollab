@@ -27,8 +27,8 @@ TagManager:
   - Interactable
   - SolidObjects
   - LongGrass
-  - 
-  - 
+  - FovLayer
+  - Portal
   - 
   - 
   - 

@@ -5,27 +5,36 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    //TODO revisar video de batallas para ver como usan nombre y sprite
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
+    
+    //TODO quitar moveSpeed de aqui
+    //public float moveSpeed;
 
-    //esto no se esta usando porque no hay pokemon
-    public event Action OnEncountered;
+    //TODO estos eventos los quita v#40 23:00, sistema triggerables
+    //public event Action OnEncountered;
+    //public event Action<Collider2D> OnEnterTrainersView;
 
     private bool isMoving;
     private Vector2 input;
 
-    private Animator animator;
-    //private Character character;
+    //TODO se quito animator
+    //private Animator animator;
+    private Character character;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        //character = GetComponent<Character>();
+        //TODO se quito animator
+        //animator = GetComponent<Animator>();
+        character = GetComponent<Character>();
     }
 
     //cambiar a Handle Update, pero en donde?
     public void HandleUpdate()
     {
-        if (!isMoving)
+        //revisar si se agrega animator.isMoving
+        if (!character.IsMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -35,7 +44,8 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                animator.SetFloat("moveX", input.x);
+                StartCoroutine(character.Move(input, OnMoveOver));
+                /*animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
 
                 var targetPos = transform.position;
@@ -45,11 +55,12 @@ public class PlayerController : MonoBehaviour
                 if (IsWalkable(targetPos))
                 {
                     StartCoroutine(Move(targetPos));
-                }
+                }*/
             }
         }
 
-        animator.SetBool("isMoving", isMoving);
+        //animator.SetBool("isMoving", isMoving);
+        character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -59,10 +70,12 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        //TODO revisar en character.Animator en vez de GetFloat("moveX" y "moveY") en vez de MoveX/Y
+        var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         var interactPos = transform.position + facingDir;
 
         //Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
+
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
         if (collider != null)
         {
@@ -70,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Move(Vector3 targetPos)
+    /*IEnumerator Move(Vector3 targetPos)
     {
         isMoving = true;
 
@@ -94,18 +107,33 @@ public class PlayerController : MonoBehaviour
         }
 
         return true;
-    }
-
-    private void CheckForEncounters()
+    }*/
+    private void OnMoveOver()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null)
+        var colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, character.OffsetY), 0.2f, GameLayers.i.TriggerableLayers);
+
+        foreach (var collider in colliders)
         {
-            if (UnityEngine.Random.Range(1,101) <= 10)
+            var triggerable = collider.GetComponent<IPlayerTriggerable>();
+            if (triggerable != null)
             {
-                //animator.SetBool("isMoving", false);
-                //OnEncountered();
-                Debug.Log("Encontraste un pokemon");
+                // TODO video #45 25:00 implementar animator en player
+                character.Animator.IsMoving = false;
+                triggerable.OnPlayerTriggered(this);
+                break;
             }
         }
     }
+
+    public string Name
+    {
+        get => name;
+    }
+
+    public Sprite Sprite
+    {
+        get => sprite;
+    }
+
+    public Character Character => character;
 }

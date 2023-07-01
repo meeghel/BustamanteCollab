@@ -37,6 +37,8 @@ public class NPCController : MonoBehaviour, Interactuable
 
     private void Update()
     {
+        character.HandleUpdate();
+
         if (state == NPCRefState.Idle)
         {
             idleTimer += Time.deltaTime;
@@ -47,9 +49,10 @@ public class NPCController : MonoBehaviour, Interactuable
                 {
                     StartCoroutine(Walk());
                 }
+                //TODO Revisar hacer else - Coroutine Idle y llamar character.Idle
             }
         }
-        character.HandleUpdate();
+        return;
     }
 
     IEnumerator Walk()
