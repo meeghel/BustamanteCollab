@@ -46,6 +46,9 @@ SpriteAtlas:
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 6266566958418955755, guid: 0cb15810f98b047269ffa7f6adf69257, type: 3}
+  - {fileID: 7844678153481922334, guid: 0cb15810f98b047269ffa7f6adf69257, type: 3}
+  - {fileID: 7027316152575803653, guid: 0cb15810f98b047269ffa7f6adf69257, type: 3}
   - {fileID: 4687356173499906822, guid: 97cfb330937884ed4a1567c4ee876f99, type: 3}
   - {fileID: -6321454232745129634, guid: 97cfb330937884ed4a1567c4ee876f99, type: 3}
   - {fileID: 3005058296495318807, guid: 97cfb330937884ed4a1567c4ee876f99, type: 3}
@@ -4370,6 +4373,9 @@ SpriteAtlas:
   - {fileID: 7510184363807391365, guid: c69c64ef23da843d6bcf21d06a72cedf, type: 3}
   - {fileID: 8368664539464785178, guid: c69c64ef23da843d6bcf21d06a72cedf, type: 3}
   m_PackedSpriteNamesToIndex:
+  - items1_2
+  - items1_1
+  - items1_0
   - snake_naranja_7
   - snake_naranja_8
   - snake_naranja_9

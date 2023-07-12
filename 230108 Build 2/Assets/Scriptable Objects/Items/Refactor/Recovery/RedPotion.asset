@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b80382fc45748efafd19ed1d460f6f, type: 3}
+  m_Name: RedPotion
+  m_EditorClassIdentifier: 
+  name: Pocion Roja
+  description: Recupera un corazon de vida.
+  icon: {fileID: -731750855512447339, guid: 7cebfbc6579604bfcb307b95e6c78d88, type: 3}
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: {fileID: 0}
+  healthAmount: 2
+  restoreMaxHealth: 0
+  magicAmount: 0
+  restoreMaxMagic: 0
+  arrowAmount: 0
+  restoreMaxArrow: 0

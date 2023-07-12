@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Dialog, Menu, Cutscene, Paused }
+public enum GameState { FreeRoam, Dialog, Menu, Inventory, Cutscene, Paused }
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] Camera worldCamera;
+    [SerializeField] InventoryUI inventoryUI;
+
 
     GameState state;
-
-    GameState stateBeforePause;
+    GameState prevState;
 
     public SceneDetails CurrentScene { get; private set; }
 
@@ -27,6 +29,10 @@ public class GameController : MonoBehaviour
 
         menuController = GetComponent<MenuController>();
 
+        //Para quitar el mouse del juego (tutorial dejo mouse)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         //ConditionsDB.Init();
     }
 
@@ -35,13 +41,14 @@ public class GameController : MonoBehaviour
     {
         DialogManagerRef.instance.OnShowDialog += () =>
         {
+            prevState = state;
             state = GameState.Dialog;
         };
 
         DialogManagerRef.instance.OnCloseDialog += () =>
         {
             if (state == GameState.Dialog)
-                state = GameState.FreeRoam;
+                state = prevState;
         };
 
         menuController.onBack += () =>
@@ -56,12 +63,12 @@ public class GameController : MonoBehaviour
     {
         if (pause)
         {
-            stateBeforePause = state;
+            prevState = state;
             state = GameState.Paused;
         }
         else
         {
-            state = stateBeforePause;
+            state = prevState;
         }
     }
 
@@ -92,6 +99,16 @@ public class GameController : MonoBehaviour
         {
             menuController.HandleUpdate();
         }
+        else if (state == GameState.Inventory)
+        {
+            Action onBack = () =>
+            {
+                inventoryUI.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            };
+
+            inventoryUI.HandleUpdate(onBack);
+        }
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -109,11 +126,16 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 1)
         {
             // Inventario
+            inventoryUI.gameObject.SetActive(true);
+            state = GameState.Inventory;
         }
         else if (selectedItem == 2)
         {
             // TODO Guardar
+            state = GameState.FreeRoam;
+
             // TODO Agregar boton para Load
+            //meter freeroam en Load tambien
         }
         else if (selectedItem == 3)
         {
@@ -124,6 +146,5 @@ public class GameController : MonoBehaviour
             // TODO Reset
         }
 
-        state = GameState.FreeRoam;
     }
 }

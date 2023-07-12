@@ -19,18 +19,17 @@ public class NPCController : MonoBehaviour, Interactuable
         character = GetComponent<Character>();
     }
 
-    public void Interact(Transform initiator)
+    public IEnumerator Interact(Transform initiator)
     {
         if (state == NPCRefState.Idle)
         {
             state = NPCRefState.Dialog;
             character.LookTowards(initiator.position);
 
-            StartCoroutine(DialogManagerRef.instance.ShowDialog(dialog, () =>
-            {
-                idleTimer = 0f;
-                state = NPCRefState.Idle;
-            }));
+            yield return DialogManagerRef.instance.ShowDialog(dialog);
+
+            idleTimer = 0f;
+            state = NPCRefState.Idle;
         }
         Debug.Log("Interacting with NPC");
     }

@@ -64,11 +64,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Interact();
+            StartCoroutine(Interact());
         }
     }
 
-    void Interact()
+    IEnumerator Interact()
     {
         //TODO revisar en character.Animator en vez de GetFloat("moveX" y "moveY") en vez de MoveX/Y
         var facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
         if (collider != null)
         {
-            collider.GetComponent<Interactuable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactuable>()?.Interact(transform);
         }
     }
 

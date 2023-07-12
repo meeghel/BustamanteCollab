@@ -34,13 +34,11 @@ public class TrainerController : MonoBehaviour
         moveVec = new Vector2(Mathf.Round(moveVec.x), Mathf.Round(moveVec.y));
 
         yield return character.Move(moveVec);
-        //TODO falta animar...
+        //TODO falta animar
 
         // Show dialog
-        StartCoroutine(DialogManagerRef.instance.ShowDialog(dialog, () =>
-        {
-            Debug.Log("Starting Trainer Battle");
-        }));
+        yield return DialogManagerRef.instance.ShowDialog(dialog);
+        Debug.Log("Starting Trainer Battle");
     }
 
     public void SetFovRotation(FacingDirection dir)

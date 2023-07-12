@@ -10,14 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3b80382fc45748efafd19ed1d460f6f, type: 3}
-  m_Name: BluePotion
+  m_Name: Semita
   m_EditorClassIdentifier: 
-  name: Pocion Azul
-  description: Recupera magia.
-  icon: {fileID: 2964691282632894839, guid: 7cebfbc6579604bfcb307b95e6c78d88, type: 3}
-  healthAmount: 0
+  name: Semita
+  description: Recupera 3 corazones
+  icon: {fileID: 7027316152575803653, guid: 0cb15810f98b047269ffa7f6adf69257, type: 3}
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: {fileID: 0}
+  healthAmount: 6
   restoreMaxHealth: 0
-  magicAmount: 3
+  magicAmount: 0
   restoreMaxMagic: 0
   arrowAmount: 0
   restoreMaxArrow: 0

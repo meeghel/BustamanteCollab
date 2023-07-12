@@ -4830,8 +4830,9 @@ GameObject:
   - component: {fileID: 1652824145}
   - component: {fileID: 1652824144}
   - component: {fileID: 1652824143}
-  m_Layer: 0
-  m_Name: RefactorPotion
+  - component: {fileID: 1652824146}
+  m_Layer: 14
+  m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4861,7 +4862,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &1652824144
 SpriteRenderer:
@@ -4899,8 +4900,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 133974799
-  m_SortingLayer: 2
+  m_SortingLayerID: -681659807
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -731750855512447339, guid: 7cebfbc6579604bfcb307b95e6c78d88,
     type: 3}
@@ -4922,12 +4923,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652824142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalPosition: {x: 0.5, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1652824146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652824142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020a14e2a14114a6697f2e29f16c9604, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 824973df39a21488ebbe1086b4716e8f, type: 2}
 --- !u!1001 &1738240918
 PrefabInstance:
   m_ObjectHideFlags: 0
