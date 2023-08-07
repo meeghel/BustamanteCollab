@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: RedPotion
   m_EditorClassIdentifier: 
   name: Pocion Roja
-  description: Recupera un corazon de vida.
+  description: Recupera 1 corazon.
   icon: {fileID: -731750855512447339, guid: 7cebfbc6579604bfcb307b95e6c78d88, type: 3}
+  price: 50
+  canSell: 1
   thisEvent:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: {fileID: 0}
-  healthAmount: 2
+  maxHealth: {fileID: 11400000, guid: 86dccde284ffe43f086210166a0fca11, type: 2}
+  healthSignal: {fileID: 11400000, guid: 65d9df2a6599245ef8c15c8fa648659b, type: 2}
+  healthAmount: 1
   restoreMaxHealth: 0
   magicAmount: 0
   restoreMaxMagic: 0

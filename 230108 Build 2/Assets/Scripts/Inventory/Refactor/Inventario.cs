@@ -21,14 +21,14 @@ public class Inventario : MonoBehaviour
         allSlots = new List<List<ItemSlot>>() { slots, weaponSlots, specialSlots };
     }
 
-    // TODO Unity no me dejo hacerlo static
-    public List<string> ItemCategories { get; set; } = new List<string>()
+    public static List<string> ItemCategories { get; set; } = new List<string>()
     {
         "ITEMS", "ARMAS", "ESPECIAL"
     };
 
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
     {
+        //Debug.Log($"Category Index = {categoryIndex}");
         return allSlots[categoryIndex];
     }
 
@@ -40,20 +40,21 @@ public class Inventario : MonoBehaviour
 
     //Revisar este codigo porque esta basado en inventory UI por renglon (slots)
     // TODO revisar crear clase player para meter health, magic etc (como "Pokemon")
-    public ItemBase UseItem(int itemIndex, PlayerHealth player, int selectedCategory)
+    public ItemBase UseItem(int itemIndex, GenericHealth player, int selectedCategory)
     {
         var item = GetItem(itemIndex, selectedCategory);
         bool itemUsed = item.Use(player);
 
+        // TODO implementar otro tipo de items
         /*if (item is WeaponItem)
         {
-            // TODO implementar otro tipo de items
+            
         }*/
 
         if (itemUsed)
         {
             if (!item.IsReusable)
-                RemoveItem(item, selectedCategory);
+                RemoveItem(item);
 
             return item;
         }
@@ -61,7 +62,7 @@ public class Inventario : MonoBehaviour
         return null;
     }
 
-    public void AddItem(ItemBase item, int count = 1)
+    public void AddItem(ItemBase item, int count=1)
     {
         int category = (int)GetCategoryFromItem(item);
         var currentSlots = GetSlotsByCategory(category);
@@ -83,16 +84,38 @@ public class Inventario : MonoBehaviour
         OnUpdated?.Invoke();
     }
 
-    public void RemoveItem(ItemBase item, int category)
+    public int GetItemCount(ItemBase item)
     {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
+
+        var itemSlot = currentSlots.FirstOrDefault(slot => slot.Item == item);
+
+        if (itemSlot != null)
+            return itemSlot.Count;
+        else
+            return 0;
+    }
+
+    public void RemoveItem(ItemBase item, int countToRemove=1)
+    {
+        int category = (int)GetCategoryFromItem(item);
         var currentSlots = GetSlotsByCategory(category);
 
         var itemSlot = currentSlots.First(slot => slot.Item == item);
-        itemSlot.Count--;
+        itemSlot.Count -= countToRemove;
         if (itemSlot.Count == 0)
             currentSlots.Remove(itemSlot);
 
         OnUpdated?.Invoke();
+    }
+
+    public bool HasItem(ItemBase item)
+    {
+        int category = (int)GetCategoryFromItem(item);
+        var currentSlots = GetSlotsByCategory(category);
+
+        return currentSlots.Exists(slot => slot.Item == item);
     }
 
     ItemCategory GetCategoryFromItem(ItemBase item)
@@ -114,7 +137,6 @@ public class Inventario : MonoBehaviour
 }
 
 [Serializable]
-
 public class ItemSlot
 {
     [SerializeField] ItemBase item;
@@ -122,7 +144,7 @@ public class ItemSlot
 
     public ItemBase Item
     {
-        get => Item;
+        get => item;
         set => item = value;
     }
 

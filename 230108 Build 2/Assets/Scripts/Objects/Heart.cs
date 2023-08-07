@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Heart : PowerUp
 {
-
     public FloatValue playerHealth;
     public FloatValue heartContainers;
     public float amountToIncrease;
@@ -31,6 +30,7 @@ public class Heart : PowerUp
                 playerHealth.initialValue = heartContainers.RuntimeValue * 2f;
             }
             powerupSignal.Raise();
+            AudioManager.i.PlaySfx(AudioId.ItemObtained);
             Destroy(this.gameObject);
         }
     }

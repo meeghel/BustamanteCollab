@@ -19,8 +19,11 @@ public class Pickup : MonoBehaviour, Interactuable
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
 
+            string playerName = initiator.GetComponent<PlayerController>().Name;
+
+            AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
             // Confirmar si es necesario dialogo
-            yield return DialogManagerRef.instance.ShowDialogText($"¡Encontraste {item.Name}!");
+            yield return DialogManagerRef.instance.ShowDialogText($"¡{playerName} encontro {item.Name}!");
         }
     }
 }

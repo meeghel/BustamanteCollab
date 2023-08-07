@@ -10,7 +10,7 @@ public class HeartManager : MonoBehaviour {
     public Sprite halfFullHeart;
     public Sprite emptyHeart;
     public FloatValue heartContainers;
-    public FloatValue playerCurrentHealth;
+    public GenericHealth playerCurrentHealth;
 
     // Use this for initialization
     void Start () {
@@ -30,7 +30,8 @@ public class HeartManager : MonoBehaviour {
     public void UpdateHearts()
     {
         InitHearts();
-        float tempHealth = playerCurrentHealth.RuntimeValue / 2;
+        float tempHealth = playerCurrentHealth.currentHealth / 2;
+        //float tempHealth = playerCurrentHealth.RuntimeValue / 2;
         for (int i = 0; i < heartContainers.RuntimeValue; i ++)
         {
             if(i <= tempHealth-1)

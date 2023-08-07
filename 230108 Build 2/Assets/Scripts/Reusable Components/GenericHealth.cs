@@ -25,20 +25,26 @@ public class GenericHealth : MonoBehaviour
 
     public virtual void Heal(float amountToHeal)
     {
+        Debug.Log($"Si detecta Heal. AmountToHeal = {amountToHeal}");
+
         currentHealth += amountToHeal;
-        if(currentHealth > maxHealth.RuntimeValue)
+        // TODO esto resetea el efecto, cambiar a que no pueda sobre pasar el RuntimeValue
+        /*if(currentHealth > maxHealth.RuntimeValue)
         {
             currentHealth = maxHealth.RuntimeValue;
-        }
+        }*/
     }
 
     public virtual void FullHeal()
     {
+        Debug.Log("Si detecta Full Heal");
+
         currentHealth = maxHealth.RuntimeValue;
     }
 
     public virtual void Damage(float amountToDamage)
     {
+        Debug.Log("Si detecta Damage");
         currentHealth -= amountToDamage;
         if(currentHealth <= 0)
         {

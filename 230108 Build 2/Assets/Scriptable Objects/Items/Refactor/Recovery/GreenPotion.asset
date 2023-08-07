@@ -15,10 +15,13 @@ MonoBehaviour:
   name: Pocion Verde
   description: Recupera toda la vida.
   icon: {fileID: -3843326911914620785, guid: 7cebfbc6579604bfcb307b95e6c78d88, type: 3}
+  price: 300
+  canSell: 1
   thisEvent:
     m_PersistentCalls:
       m_Calls: []
-  maxHealth: {fileID: 0}
+  maxHealth: {fileID: 11400000, guid: 86dccde284ffe43f086210166a0fca11, type: 2}
+  healthSignal: {fileID: 11400000, guid: 65d9df2a6599245ef8c15c8fa648659b, type: 2}
   healthAmount: 0
   restoreMaxHealth: 1
   magicAmount: 0

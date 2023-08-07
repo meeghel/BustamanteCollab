@@ -30,12 +30,11 @@ public class InventoryUI : MonoBehaviour
 
     List<ItemSlotUI> slotUIList;
     Inventario inventario;
-    PlayerHealth player;
+    public GenericHealth player;
     RectTransform itemListRect;
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>().GetComponent<PlayerHealth>();
         inventario = Inventario.GetInventory();
         itemListRect = itemList.GetComponent<RectTransform>();
     }
@@ -54,7 +53,7 @@ public class InventoryUI : MonoBehaviour
             Destroy(child.gameObject);
 
         slotUIList = new List<ItemSlotUI>();
-        foreach(var itemSlot in inventario.GetSlotsByCategory(selectedCategory))
+        foreach (var itemSlot in inventario.GetSlotsByCategory(selectedCategory))
         {
             var slotUIObj = Instantiate(itemSlotUI, itemList.transform);
             slotUIObj.SetData(itemSlot);
@@ -67,6 +66,8 @@ public class InventoryUI : MonoBehaviour
 
     public void HandleUpdate(Action onBack, Action<ItemBase> onItemUsed=null)
     {
+        this.onItemUsed = onItemUsed;
+
         if (state == InventoryUIState.ItemSelection)
         {
             int prevSelection = selectedItem;
@@ -81,17 +82,17 @@ public class InventoryUI : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 --selectedCategory;
 
-            if (selectedCategory > inventario.ItemCategories.Count - 1)
+            if (selectedCategory > Inventario.ItemCategories.Count - 1)
                 selectedCategory = 0;
             else if (selectedCategory < 0)
-                selectedCategory = inventario.ItemCategories.Count - 1;
-            
+                selectedCategory = Inventario.ItemCategories.Count - 1;
+
             selectedItem = Mathf.Clamp(selectedItem, 0, inventario.GetSlotsByCategory(selectedCategory).Count - 1);
 
             if (prevCategory != selectedCategory)
             {
                 ResetSelection();
-                categoryText.text = inventario.ItemCategories[selectedCategory];
+                categoryText.text = Inventario.ItemCategories[selectedCategory];
                 UpdateItemList();
             }
             else if (prevSelection != selectedItem)
@@ -100,24 +101,30 @@ public class InventoryUI : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.Z))
-            {
-                ItemSelected();
-            }
+                // TODO revisar, agregue coroutine en video 62, 9:00
+                StartCoroutine(ItemSelected());
             else if (Input.GetKeyDown(KeyCode.X))
                 onBack?.Invoke();
         }
     }
 
     // TODO revisar en video #62, 7:00 lo hace IEnumerator; implementar cambio de armas, uso de especiales
-    void ItemSelected()
+    IEnumerator ItemSelected()
     {
         state = InventoryUIState.Busy;
 
         var item = inventario.GetItem(selectedItem, selectedCategory);
 
+        if (GameController.Instance.State == GameState.Shop)
+        {
+            onItemUsed?.Invoke(item);
+            state = InventoryUIState.ItemSelection;
+            yield break;
+        }
+
         if (selectedCategory == (int)ItemCategory.Armas)
         {
-
+            // TODO no hay problema en dejar vacio (Robert)
         }
         else
         {
@@ -148,6 +155,8 @@ public class InventoryUI : MonoBehaviour
             if(selectedCategory == (int)ItemCategory.Items)
                 yield return DialogManagerRef.instance.ShowDialogText($"¡No tendria efecto!", true, false);
         }
+
+        DialogManagerRef.instance.CloseDialog();
 
         state = InventoryUIState.ItemSelection;
     }

@@ -7,9 +7,9 @@ using UnityEngine.Events;
 
 public class RecoveryItem : ItemBase
 {
-    public FloatValue maxHealth;
-
     [Header("Health")]
+    public FloatValue maxHealth;
+    [SerializeField] private Signal healthSignal;
     [SerializeField] int healthAmount;
     [SerializeField] bool restoreMaxHealth;
 
@@ -22,7 +22,7 @@ public class RecoveryItem : ItemBase
     [SerializeField] bool restoreMaxArrow;
 
     // TODO para esto necesito arreglar runtime value y max health
-    public override bool Use(PlayerHealth player)
+    public override bool Use(GenericHealth player)
     {
         /*if (restoreMaxHealth || healthAmount > 0)
         {
@@ -34,11 +34,12 @@ public class RecoveryItem : ItemBase
             else
                 player.Heal(healthAmount);
         }*/
-        thisEvent.Invoke();
+        //thisEvent.Invoke();
+        player.Heal((float)healthAmount);
         return true;
     }
 
-    //Tal vez usar esto para en caso de veneno, o correr mas despacio
+    // TODO Tal vez usar esto para en caso de veneno, o correr mas despacio
     /*[Header("Status Conditions")]
     [SerializeField] ConditionID status;
     [SerializeField] bool recoverAllStatus;*/

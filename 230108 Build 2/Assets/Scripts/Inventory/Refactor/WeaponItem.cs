@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class WeaponItem : ItemBase
 {
-    public override bool Use(PlayerHealth player)
+    public override bool Use(GenericHealth player)
     {
         return true;
     }

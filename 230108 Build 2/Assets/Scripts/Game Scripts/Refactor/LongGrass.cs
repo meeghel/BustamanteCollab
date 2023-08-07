@@ -16,4 +16,6 @@ public class LongGrass : MonoBehaviour, IPlayerTriggerable
             Debug.Log("Encontraste un pokemon");
         }
     }
+
+    public bool TriggerRepeatedly => true;
 }

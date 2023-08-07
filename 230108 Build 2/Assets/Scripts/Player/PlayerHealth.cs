@@ -10,7 +10,9 @@ public class PlayerHealth : GenericHealth
     public override void Damage(float amountToDamage)
     {
         base.Damage(amountToDamage);
-        maxHealth.RuntimeValue = currentHealth;
+        // TODO resuelto, ya no es necesario
+        //maxHealth.RuntimeValue = currentHealth;
+        // TODO revisar si es necesario este evento, creo que no
         //OnHealthChanged?.Invoke();
         healthSignal.Raise();
     }
@@ -18,6 +20,9 @@ public class PlayerHealth : GenericHealth
     public override void Heal(float amountToHeal)
     {
         base.Heal(amountToHeal);
+        // TODO resuelto, ya no es necesario
+        //maxHealth.RuntimeValue = currentHealth;
+        // TODO revisar si es necesario este evento, creo que no
         //OnHealthChanged?.Invoke();
         healthSignal.Raise();
     }

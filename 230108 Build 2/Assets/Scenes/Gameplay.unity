@@ -199,6 +199,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
         type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: b45c181a1cc9044298f141c6cf4db753, type: 3}
+    - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
+        type: 3}
       propertyPath: connectedScenes.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -406,6 +411,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
         type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 164d7103416e749cc8d5bfb6e4312d51, type: 3}
+    - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
+        type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -507,6 +517,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
+        type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 999869172462843b6a48c3ba13efe8dc, type: 3}
     - target: {fileID: 5346577389662124236, guid: 85821eb49efb3489d80c140a5f328b81,
         type: 3}
       propertyPath: connectedScenes.Array.size

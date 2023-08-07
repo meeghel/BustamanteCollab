@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { FreeRoam, Dialog, Menu, Inventory, Cutscene, Paused }
+public enum GameState { FreeRoam, Dialog, Menu, Inventory, Cutscene, Paused, Shop }
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] Camera worldCamera;
     [SerializeField] InventoryUI inventoryUI;
-
 
     GameState state;
     GameState prevState;
@@ -33,7 +32,8 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //ConditionsDB.Init();
+        ItemDB.Init();
+        QuestDB.Init();
     }
 
     // Start is called before the first frame update
@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
             state = GameState.Dialog;
         };
 
-        DialogManagerRef.instance.OnCloseDialog += () =>
+        DialogManagerRef.instance.OnDialogFinished += () =>
         {
             if (state == GameState.Dialog)
                 state = prevState;
@@ -57,6 +57,9 @@ public class GameController : MonoBehaviour
         };
 
         menuController.onMenuSelected += OnMenuSelected;
+
+        ShopController.i.OnStart += () => state = GameState.Shop;
+        ShopController.i.OnFinish += () => state = GameState.FreeRoam;
     }
 
     public void PauseGame(bool pause)
@@ -109,6 +112,10 @@ public class GameController : MonoBehaviour
 
             inventoryUI.HandleUpdate(onBack);
         }
+        else if (state == GameState.Shop)
+        {
+            ShopController.i.HandleUpdate();
+        }
     }
 
     public void SetCurrentScene(SceneDetails currScene)
@@ -145,6 +152,19 @@ public class GameController : MonoBehaviour
         {
             // TODO Reset
         }
-
     }
+
+    public IEnumerator MoveCamera(Vector2 moveOffset, bool waitForFadeOut=false)
+    {
+        yield return Fader.i.FadeIn(0.5f);
+
+        worldCamera.transform.position += new Vector3(moveOffset.x, moveOffset.y);
+
+        if (waitForFadeOut)
+            yield return Fader.i.FadeOut(0.5f);
+        else
+            StartCoroutine(Fader.i.FadeOut(0.5f));
+    }
+
+    public GameState State => state;
 }

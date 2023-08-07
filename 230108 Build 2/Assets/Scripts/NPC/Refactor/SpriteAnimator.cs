@@ -30,7 +30,6 @@ public class SpriteAnimator
         timer += Time.deltaTime;
         if (timer > frameRate)
         {
-            //confirmar simbolo
             currentFrame = (currentFrame + 1) % frames.Count;
             spriteRenderer.sprite = frames[currentFrame];
             timer -= frameRate;
