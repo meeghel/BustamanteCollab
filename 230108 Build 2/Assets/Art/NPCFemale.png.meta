@@ -150,7 +150,7 @@ TextureImporter:
       213: -6287505396656822320
     second: NPCFemale_48
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -167,9 +167,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -179,8 +182,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -201,10 +204,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -216,6 +224,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -228,6 +237,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -240,6 +250,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1284,9 +1308,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      NPCFemale_0: 7448156037055390268
+      NPCFemale_1: -2457433295030298091
+      NPCFemale_10: -4900067846114377513
+      NPCFemale_11: -860145665400814092
+      NPCFemale_12: -5212142052824020544
+      NPCFemale_13: 1618056458283120619
+      NPCFemale_14: -6297390380558319415
+      NPCFemale_15: 5399788808266581765
+      NPCFemale_16: -4649717345768717513
+      NPCFemale_17: 821261639272748028
+      NPCFemale_18: 7873098736703913725
+      NPCFemale_19: 2144045384889080261
+      NPCFemale_2: 827721864681197731
+      NPCFemale_20: -2324030445564048086
+      NPCFemale_21: -5077703150902263968
+      NPCFemale_22: 2409204638241977440
+      NPCFemale_23: 4071455366249182191
+      NPCFemale_24: -1918971620601186000
+      NPCFemale_25: 2057670450391693655
+      NPCFemale_26: 3355335464475930228
+      NPCFemale_27: -1352613922125799519
+      NPCFemale_28: 5343451817386472610
+      NPCFemale_29: 5085335000536822901
+      NPCFemale_3: 1510388858411924528
+      NPCFemale_30: 3202262300838486345
+      NPCFemale_31: 825745671603457906
+      NPCFemale_32: -4013182698874055584
+      NPCFemale_33: 5376957429531616969
+      NPCFemale_34: 8264523994737998672
+      NPCFemale_35: 2293739584925743169
+      NPCFemale_36: 4199131164066002239
+      NPCFemale_37: 6481018356936085634
+      NPCFemale_38: 3046886600748333563
+      NPCFemale_39: 1624314610667769354
+      NPCFemale_4: -3767587409361894086
+      NPCFemale_40: -5098635280569261568
+      NPCFemale_41: 2400336366433852815
+      NPCFemale_42: 2678482814009054319
+      NPCFemale_43: -5366142311944922615
+      NPCFemale_44: 4073554442642496241
+      NPCFemale_45: 4261462001519275788
+      NPCFemale_46: 6897731065987836585
+      NPCFemale_47: 2581443087553502398
+      NPCFemale_48: -6287505396656822320
+      NPCFemale_5: 4182109889938201526
+      NPCFemale_6: 3202700661563682685
+      NPCFemale_7: 145709893132129168
+      NPCFemale_8: -744353889219642427
+      NPCFemale_9: -7886303404823973279
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -255,7 +255,7 @@ TextureImporter:
       213: 1151657076608689437
     second: RobSC_83
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -272,9 +272,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -284,8 +287,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -306,10 +309,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -321,6 +329,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -333,6 +342,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -345,6 +355,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2124,9 +2148,93 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      RobSC_0: -8924634946620156013
+      RobSC_1: -3907332622033884552
+      RobSC_10: 3217257158083785823
+      RobSC_11: 9223198637739568234
+      RobSC_12: 7136766973057008144
+      RobSC_13: 2769219256843908954
+      RobSC_14: -1979348463238656568
+      RobSC_15: -1276477322115041682
+      RobSC_16: -7201415336021953643
+      RobSC_17: -5610974151069608186
+      RobSC_18: -2551985216695873281
+      RobSC_19: 3855003754891043388
+      RobSC_2: -2879893786301536696
+      RobSC_20: 7166625580540517485
+      RobSC_21: 4161691873782468009
+      RobSC_22: 680282765584611304
+      RobSC_23: 1846563310516863068
+      RobSC_24: 4774806262776504116
+      RobSC_25: -6338750464345821405
+      RobSC_26: -7731393025914320738
+      RobSC_27: 8721214156971653859
+      RobSC_28: 8676016703481822267
+      RobSC_29: -4269605417082216769
+      RobSC_3: -4938728099130810616
+      RobSC_30: -1007924924343662910
+      RobSC_31: 7556788113971171041
+      RobSC_32: -1791118406065568822
+      RobSC_33: -6255435773424299812
+      RobSC_34: -1113450773124312501
+      RobSC_35: -6429220176140353413
+      RobSC_36: -5226533395788333945
+      RobSC_37: 7015740476211273038
+      RobSC_38: 2316008703160513023
+      RobSC_39: -1538943405364817131
+      RobSC_4: 1082105371241244360
+      RobSC_40: -5313069474125930731
+      RobSC_41: -3904666084705635229
+      RobSC_42: -5273025676708454739
+      RobSC_43: 4417963273547486054
+      RobSC_44: 3813172360303445548
+      RobSC_45: -4235117773243012062
+      RobSC_46: -729344607479904802
+      RobSC_47: 3948165962025641008
+      RobSC_48: 1995265644554175773
+      RobSC_49: -8156747461594527728
+      RobSC_5: 1655223737716447891
+      RobSC_50: -993611572387364136
+      RobSC_51: -8573387703462517767
+      RobSC_52: -7883280779422923429
+      RobSC_53: 4234177122607915319
+      RobSC_54: 6028415160893086005
+      RobSC_55: 6663751173610360769
+      RobSC_56: -8124452784563349480
+      RobSC_57: -646425725672073352
+      RobSC_58: -8778855215567708600
+      RobSC_59: 6973394641074411161
+      RobSC_6: -1648071842432113166
+      RobSC_60: 3554200037276885278
+      RobSC_61: 5856609878483856294
+      RobSC_62: -6346059905678017065
+      RobSC_63: -984825162467325203
+      RobSC_64: 6630490050706529289
+      RobSC_65: 7454936574887035456
+      RobSC_66: -4241928842471009756
+      RobSC_67: -6845993647511656019
+      RobSC_68: 8824006959740743609
+      RobSC_69: -2824575575615367375
+      RobSC_7: -8123211748339290225
+      RobSC_70: -3981425330901466826
+      RobSC_71: -5619623932592099716
+      RobSC_72: -4466980970930504795
+      RobSC_73: -1027740640111715592
+      RobSC_74: -8418876445966630118
+      RobSC_75: 7216566621407510848
+      RobSC_76: -449763698538180533
+      RobSC_77: -2422168668436472647
+      RobSC_78: 664014966053527082
+      RobSC_79: -5572265953039721297
+      RobSC_8: 2134870514483405216
+      RobSC_80: -5861854593114000138
+      RobSC_81: -104727533286379540
+      RobSC_82: -6140147927437192600
+      RobSC_83: 1151657076608689437
+      RobSC_9: 780916966632477504
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

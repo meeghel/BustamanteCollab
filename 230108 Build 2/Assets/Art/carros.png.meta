@@ -123,7 +123,7 @@ TextureImporter:
       213: 5469719270328345133
     second: carros_39
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -140,9 +140,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -152,8 +155,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -174,10 +177,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -189,6 +197,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -201,6 +210,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -213,6 +223,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1068,9 +1092,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      carros_0: 1064939464136537585
+      carros_1: 7052981111518475102
+      carros_10: -3270112742607380824
+      carros_11: -370851291949104623
+      carros_12: -3481242382628194638
+      carros_13: 4369653034053914563
+      carros_14: -5778822759809649522
+      carros_15: -6457426640300878854
+      carros_16: -7042005898630122550
+      carros_17: 3993463094039100632
+      carros_18: 6435730475714083033
+      carros_19: 3259051943647032644
+      carros_2: 373172918461154763
+      carros_20: -8320354360440205598
+      carros_21: -2349285635812265713
+      carros_22: 8646701639163434737
+      carros_23: 3399475514230148181
+      carros_24: -6228059442282032639
+      carros_25: 3480694361012458056
+      carros_26: -7863840679869859565
+      carros_27: 4459604331755056665
+      carros_28: -3439823445329456845
+      carros_29: -5519557132650507795
+      carros_3: 8196032793045064892
+      carros_30: 3446078829796206794
+      carros_31: -148858838138662412
+      carros_32: 7967970091812720251
+      carros_33: 2069211833583024354
+      carros_34: -3652333832861260531
+      carros_35: 8448845731684324530
+      carros_36: 6520010640667301566
+      carros_37: 7327073697581128646
+      carros_38: -8731015041676375239
+      carros_39: 5469719270328345133
+      carros_4: 1071010345822955985
+      carros_5: 3290768855647378697
+      carros_6: -2765017463103137318
+      carros_7: 745108426620227892
+      carros_8: -3488436470611033005
+      carros_9: -2041375538932579911
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

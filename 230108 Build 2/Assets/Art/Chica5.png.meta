@@ -147,7 +147,7 @@ TextureImporter:
       213: -6979261792999577776
     second: Chica5_47
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -164,9 +164,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -176,8 +179,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -198,10 +201,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -213,6 +221,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -225,6 +234,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -237,6 +247,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1260,9 +1284,57 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Chica5_0: 8173520643007182177
+      Chica5_1: -6438933114351580658
+      Chica5_10: 8751467208402500523
+      Chica5_11: -588967779266353860
+      Chica5_12: 3614132181873727569
+      Chica5_13: 7656670543849337311
+      Chica5_14: -618371638646597382
+      Chica5_15: -7264278459227908813
+      Chica5_16: 8156839610298766319
+      Chica5_17: 2419111784744263163
+      Chica5_18: 4573765028446868085
+      Chica5_19: 8072879136082993177
+      Chica5_2: -2484092743753259458
+      Chica5_20: 1882976967682025728
+      Chica5_21: -7281523096550637410
+      Chica5_22: 3757717236957003594
+      Chica5_23: -6830155738012544985
+      Chica5_24: -5915113815176281498
+      Chica5_25: 5506021450882624809
+      Chica5_26: 4767290339233367116
+      Chica5_27: -5099175935972467824
+      Chica5_28: -8975938178198600705
+      Chica5_29: 3301232894265597084
+      Chica5_3: -7386418885107120332
+      Chica5_30: -468234043969340561
+      Chica5_31: -4071336872602948673
+      Chica5_32: 8091910831730023630
+      Chica5_33: -2762301755554990491
+      Chica5_34: -2618764519541512099
+      Chica5_35: 1497694175532825158
+      Chica5_36: 1957036891608565996
+      Chica5_37: -3041221034276466525
+      Chica5_38: -2360422869516260888
+      Chica5_39: 7436127101199943625
+      Chica5_4: -6453271900319445332
+      Chica5_40: 4112787287745254845
+      Chica5_41: 256951866227995696
+      Chica5_42: 2236992279283532878
+      Chica5_43: 9029110208566467292
+      Chica5_44: 5665287272689421214
+      Chica5_45: -1570264102068517884
+      Chica5_46: -8624599749552104275
+      Chica5_47: -6979261792999577776
+      Chica5_5: -4475625272346518973
+      Chica5_6: 4572771938650484090
+      Chica5_7: 5395752899699288358
+      Chica5_8: -2774187854094467463
+      Chica5_9: -8074546972822393259
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
