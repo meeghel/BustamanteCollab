@@ -19,9 +19,7 @@ public class NPCController : MonoBehaviour, Interactuable
     int currentPattern = 0;
     Quest activeQuest;
 
-    //Vector3 currentDir;
-    //Vector3 directionVector;
-    //FacingDirection defaultDir;
+    FacingDirection defaultDir;
 
     Character character;
     ItemGiver itemGiver;
@@ -34,26 +32,15 @@ public class NPCController : MonoBehaviour, Interactuable
         itemGiver = GetComponent<ItemGiver>();
         healer = GetComponent<Healer>();
         merchant = GetComponent<Merchant>();
-        //NPCDirection = character.Animator.DefaultDirection;
-    }
-
-    /*private void Start()
-    {
         defaultDir = character.Animator.DefaultDirection;
-    }*/
+    }
 
     public IEnumerator Interact(Transform initiator)
     {
         if (state == NPCRefState.Idle)
         {
-
-            //var prevDir = currentDir;
-            //var prevDir = this.transform.position;
-
             state = NPCRefState.Dialog;
             character.LookTowards(initiator.position);
-            //character.Animator.SetFacingDirection(currentDir);
-            //Debug.Log($"Direction = {currentDir}");
 
             if (questToComplete != null)
             {
@@ -105,29 +92,11 @@ public class NPCController : MonoBehaviour, Interactuable
                 yield return DialogManagerRef.instance.ShowDialog(dialog);
             }
 
-            //character.ReturnLookTowards(defaultDir);
-            //character.Animator.SetFacingDirection(prevDir);
-            //character.LookTowards(prevDir);
-            //character.LookTowards(-initiator.position);
-
-            //TODO no funciona regresar a direccion original
-            /*if (currentDir != defaultDir)
-                character.LookTowards(defaultDir);*/
+            character.Animator.SetFacingDirection(defaultDir);
 
             idleTimer = 0f;
             state = NPCRefState.Idle;
         }
-
-        /*Vector3 defaultDirection = new Vector3((float)(character.Animator.DefaultDirection.x),(float)(character.Animator.DefaultDirection.y),0);
-        character.LookTowards(defaultDirection);*/
-
-        /*character.Animator.SetFacingDirection(character.Animator.DefaultDirection);
-        character.Animator.currentAnim.HandleUpdate();*/
-
-        /*character.Animator.SetFacingDirection(character.Animator.DefaultDirection);
-        character.LookTowards(this.position);*/
-        //character.Animator.SetFacingDirection(defaultDirection);
-        //Debug.Log($"Direction = {currentDir}");
 
         Debug.Log("Interacting with NPC");
     }
@@ -146,7 +115,6 @@ public class NPCController : MonoBehaviour, Interactuable
                 {
                     StartCoroutine(Walk());
                 }
-                //TODO Revisar hacer else - Coroutine Idle y llamar character.Idle
             }
         }
         return;

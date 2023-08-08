@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
-    //Agregue movimiento idle, revisar se pueda acceder en dialogo tmb
     [Header("Idle")]
     [SerializeField] List<Sprite> idleDownSprites;
     [SerializeField] List<Sprite> idleUpSprites;
@@ -30,7 +29,6 @@ public class CharacterAnimator : MonoBehaviour
     public bool canMove { get; set; }
 
     // States
-    //Agregue movimiento idle, revisar se pueda acceder en dialogo tmb
     SpriteAnimator idleDownAnim;
     SpriteAnimator idleUpAnim;
     SpriteAnimator idleRightAnim;
@@ -41,7 +39,6 @@ public class CharacterAnimator : MonoBehaviour
     SpriteAnimator walkRightAnim;
     SpriteAnimator walkLeftAnim;
 
-    //Revisar hacer publica y ver que pasa
     public SpriteAnimator currentAnim;
     public FacingDirection currentDir;
     bool wasPreviouslyMoving;
@@ -52,7 +49,7 @@ public class CharacterAnimator : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        //Agregue movimiento idle, revisar se pueda acceder en dialogo tmb
+
         idleDownAnim = new SpriteAnimator(idleDownSprites, spriteRenderer);
         idleUpAnim = new SpriteAnimator(idleUpSprites, spriteRenderer);
         idleRightAnim = new SpriteAnimator(idleRightSprites, spriteRenderer);
@@ -64,7 +61,6 @@ public class CharacterAnimator : MonoBehaviour
         walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
         SetFacingDirection(defaultDirection);
-        //currentAnim = idleDownAnim;
     }
 
     private void Update()
@@ -90,25 +86,21 @@ public class CharacterAnimator : MonoBehaviour
                 currentAnim = idleRightAnim;
                 currentDir = FacingDirection.Right;
             }
-            //currentAnim = idleRightAnim;
             else if (MoveX == -1)
             {
                 currentAnim = idleLeftAnim;
                 currentDir = FacingDirection.Left;
             }
-            //currentAnim = idleLeftAnim;
             else if (MoveY == 1)
             {
                 currentAnim = idleUpAnim;
                 currentDir = FacingDirection.Up;
             }
-            //currentAnim = idleUpAnim;
             else if (MoveY == -1)
             {
                 currentAnim = idleDownAnim;
                 currentDir = FacingDirection.Down;
             }
-            //currentAnim = idleDownAnim;
         }
 
         if (currentAnim != prevAnim || currentDir != prevDir || IsMoving != wasPreviouslyMoving)
@@ -127,13 +119,25 @@ public class CharacterAnimator : MonoBehaviour
     public void SetFacingDirection(FacingDirection dir)
     {
         if (dir == FacingDirection.Right)
+        {
             MoveX = 1;
+            MoveY = 0;
+        }
         else if (dir == FacingDirection.Left)
+        {
             MoveX = -1;
+            MoveY = 0;
+        }
         else if (dir == FacingDirection.Down)
+        {
+            MoveX = 0;
             MoveY = -1;
+        }
         else if (dir == FacingDirection.Up)
+        {
+            MoveX = 0;
             MoveY = 1;
+        }
     }
 
     public FacingDirection DefaultDirection
