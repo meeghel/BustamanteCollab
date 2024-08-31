@@ -7,45 +7,46 @@ public enum EnemyState
     idle,
     walk,
     attack,
-    stagger
+    stagger,
+    charge,
+    die
 }
 
 public class Enemy : MonoBehaviour
 {
-
     [Header("State Machine")]
     public EnemyState currentState;
 
     [Header("Enemy Stats")]
-    public FloatValue maxHealth;
-    public float health;
+    //public FloatValue maxHealth;
+    //public float health;
     public string enemyName;
     public int baseAttack;
     public float moveSpeed;
     public Vector2 homePosition;
 
-    [Header("Death Effects")]
+    /*[Header("Death Effects")]
     public GameObject deathEffect;
     private float deathEffectDelay = 1f;
     public LootTable thisLoot;
 
-
     [Header("Death Signals")]
-    public Signal roomSignal;
+    // Este no funciona, esta en Generic Health
+    public Signal roomSignal;*/
 
     private void Awake()
     {
-        health = maxHealth.initialValue;
+        //health = maxHealth.initialValue;
     }
 
     private void OnEnable()
     {
         transform.position = homePosition;
-        health = maxHealth.initialValue;
+        //health = maxHealth.initialValue;
         currentState = EnemyState.idle;
     }
 
-    private void TakeDamage(float damage)
+    /*private void TakeDamage(float damage)
     {
         health -= damage;
         if(health <= 0)
@@ -58,14 +59,15 @@ public class Enemy : MonoBehaviour
             }
             this.gameObject.SetActive(false);
         }
-    }
+    }*/
 
-    private void MakeLoot()
+    /*private void MakeLoot()
     {
         if(thisLoot != null)
         {
-            PowerUp current = thisLoot.LootPowerup();
-            if(current != null)
+            //PowerUp current = thisLoot.LootPowerup();
+            ItemDrop current = thisLoot.LootItemdrop();
+            if (current != null)
             {
                 Instantiate(current.gameObject, transform.position, Quaternion.identity);
             }
@@ -79,7 +81,7 @@ public class Enemy : MonoBehaviour
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
             Destroy(effect, deathEffectDelay);
         }
-    }
+    }*/
 
     public void Knock(Rigidbody2D myRigidbody, float knockTime)
     {
@@ -94,6 +96,14 @@ public class Enemy : MonoBehaviour
             myRigidbody.velocity = Vector2.zero;
             currentState = EnemyState.idle;
             myRigidbody.velocity = Vector2.zero;
+        }
+    }
+
+    public void ChangeState(EnemyState newState)
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
         }
     }
 }

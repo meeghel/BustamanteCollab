@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-
     public Signal powerupSignal;
 
     // Start is called before the first frame update

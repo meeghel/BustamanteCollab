@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf240e04291f42a591764647be3fa81, type: 3}
+  m_Name: Bate
+  m_EditorClassIdentifier: 
+  name: Bate
+  description: Little League bat
+  icon: {fileID: -1791729445, guid: dcca247747efe564b9991bbcfcaae3c9, type: 3}
+  animatorController: {fileID: 9100000, guid: 832dd96315df77641b09c78d128a1e3c, type: 2}
+  price: 0
+  canSell: 0
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  weaponType: 0
+  damage: 1
+  range: 0
+  gasCost: 0
+  arrow: {fileID: 0}
+  modelPrefab: {fileID: 5428098945035171020, guid: dec2de34004a57841b7591b3b20f9cce,
+    type: 3}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  fireRate: 0

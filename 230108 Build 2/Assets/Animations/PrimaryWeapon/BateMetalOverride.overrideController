@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BateMetalOverride
+  m_Controller: {fileID: 9100000, guid: 832dd96315df77641b09c78d128a1e3c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 502d42fbc9fd5d147b4c2273e9321390, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9c64ccf607a51234fa8def5a64b3f542, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f9b34df305c0c7044a933cfd98409fe7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: de6bc5dfbbf5da84992653bb1405d9a5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 93f3e3dd17fa51744ae2c72e6d4ab47c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4445a4c43883e1d438a195d8f7f00d80, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 998e3975996763949a6321298982db60, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fbe5d54396d99564da058c2e62cb50d3, type: 2}

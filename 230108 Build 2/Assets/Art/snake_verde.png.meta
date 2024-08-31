@@ -123,7 +123,7 @@ TextureImporter:
       213: 8637854293140476275
     second: snake_verde_39
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -140,9 +140,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -152,8 +155,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -174,10 +177,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -189,6 +197,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -201,6 +210,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -213,6 +223,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1068,9 +1092,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      snake_verde_0: -6677433158802064806
+      snake_verde_1: -2259454048579265993
+      snake_verde_10: 6048757040395841590
+      snake_verde_11: 6323175559137518880
+      snake_verde_12: -8984709266942432640
+      snake_verde_13: 2330692637278040330
+      snake_verde_14: 3977722277763867031
+      snake_verde_15: -33637510731599995
+      snake_verde_16: 4998874298872165240
+      snake_verde_17: 8003634242293197281
+      snake_verde_18: 7642643916341778129
+      snake_verde_19: -677231754080031685
+      snake_verde_2: 1756704803102546131
+      snake_verde_20: -719873224587056201
+      snake_verde_21: -6138342348936784203
+      snake_verde_22: -6089271824643415287
+      snake_verde_23: -4445048177989300916
+      snake_verde_24: 8245463427596167126
+      snake_verde_25: -5689567184023162383
+      snake_verde_26: -2746578353766025750
+      snake_verde_27: 1171256465528574147
+      snake_verde_28: 112023256883743327
+      snake_verde_29: -8298713050158382132
+      snake_verde_3: -1934079562727999286
+      snake_verde_30: -8157430809761337912
+      snake_verde_31: -8517180096669187256
+      snake_verde_32: -9127928541639079309
+      snake_verde_33: 6400707008148880663
+      snake_verde_34: -1675863240997488361
+      snake_verde_35: 950478214883317846
+      snake_verde_36: -4486616709582107530
+      snake_verde_37: -1323358048966745661
+      snake_verde_38: -1800155526758378185
+      snake_verde_39: 8637854293140476275
+      snake_verde_4: -8521339246555967925
+      snake_verde_5: -2373338911663314938
+      snake_verde_6: 8370127119331747815
+      snake_verde_7: 8324939627074761129
+      snake_verde_8: -39961656331904113
+      snake_verde_9: -1195214806216818474
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

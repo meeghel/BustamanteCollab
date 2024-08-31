@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum clue
+{
+    DEFAULT = 0,
+    INTEREST = 1,
+    ALARM = 2
+}
+
 public class ContextClue : MonoBehaviour
 {
 

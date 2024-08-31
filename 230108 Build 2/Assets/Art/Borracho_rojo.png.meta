@@ -171,7 +171,7 @@ TextureImporter:
       213: 2929306830123509879
     second: Borracho_rojo_55
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -188,9 +188,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -200,8 +203,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -222,10 +225,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -237,6 +245,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -249,6 +258,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -261,6 +271,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1452,9 +1476,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Borracho_rojo_0: 2773176211977303702
+      Borracho_rojo_1: -6978850061062182549
+      Borracho_rojo_10: 8607079626524223655
+      Borracho_rojo_11: 8666709397008449438
+      Borracho_rojo_12: 2236780603651335233
+      Borracho_rojo_13: -6140232863684663615
+      Borracho_rojo_14: 5621950546520155365
+      Borracho_rojo_15: 8298978900436375130
+      Borracho_rojo_16: -6989545230775527651
+      Borracho_rojo_17: -7041794299345132026
+      Borracho_rojo_18: -8543516845178609041
+      Borracho_rojo_19: 4728327206977162602
+      Borracho_rojo_2: -451220847981749687
+      Borracho_rojo_20: 6691438956323432360
+      Borracho_rojo_21: 3578415915161941446
+      Borracho_rojo_22: 5477265809583710249
+      Borracho_rojo_23: -352399522614794995
+      Borracho_rojo_24: 7279185345445121168
+      Borracho_rojo_25: 8831648421393083907
+      Borracho_rojo_26: 8207767211172132353
+      Borracho_rojo_27: -1314000059786237299
+      Borracho_rojo_28: 146468976909227180
+      Borracho_rojo_29: 5241537319618548542
+      Borracho_rojo_3: 6548246543343342998
+      Borracho_rojo_30: 3317308961270873313
+      Borracho_rojo_31: -5210091841857785598
+      Borracho_rojo_32: -49166534399171464
+      Borracho_rojo_33: -8631574376216283809
+      Borracho_rojo_34: 2535603943455177688
+      Borracho_rojo_35: 667029087782976354
+      Borracho_rojo_36: -1616284280999530341
+      Borracho_rojo_37: -7471056807015695680
+      Borracho_rojo_38: -7359316596815443714
+      Borracho_rojo_39: 711009800724093633
+      Borracho_rojo_4: 234840375018934423
+      Borracho_rojo_40: -5956896193982250432
+      Borracho_rojo_41: -4212120479354906767
+      Borracho_rojo_42: -4889466253211250627
+      Borracho_rojo_43: -1855215204300799170
+      Borracho_rojo_44: 204381789078131147
+      Borracho_rojo_45: -6473029968972606053
+      Borracho_rojo_46: -8851899014045920019
+      Borracho_rojo_47: -5167360068366121251
+      Borracho_rojo_48: -6482874009611176472
+      Borracho_rojo_49: 70374933414363724
+      Borracho_rojo_5: -3982557287174469120
+      Borracho_rojo_50: -8820349286516864058
+      Borracho_rojo_51: -8119210384488785736
+      Borracho_rojo_52: 8422700793396253607
+      Borracho_rojo_53: 5894780895291743063
+      Borracho_rojo_54: 8789417479858936225
+      Borracho_rojo_55: 2929306830123509879
+      Borracho_rojo_6: 2829796761466938608
+      Borracho_rojo_7: 1554226911798958099
+      Borracho_rojo_8: 3562282576151577411
+      Borracho_rojo_9: 2120413569583983156
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

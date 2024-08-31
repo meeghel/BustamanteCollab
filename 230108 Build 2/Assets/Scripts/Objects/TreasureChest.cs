@@ -1,40 +1,46 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using static UnityEditor.Progress;
 
-public class TreasureChest : Interactable
+public class TreasureChest : MonoBehaviour, Interactuable
 {
+    //[Header("Contents")]
+    //public Item contents;
+    [SerializeField] ItemBase contents;
+    [SerializeField] GameObject trigger;
+    //public Inventory playerInventory;
+    public bool Used { get; set; } = false;
+    //public bool isOpen;
+    //public BoolValue storedOpen;
 
-    [Header("Contents")]
-    public Item contents;
-    public Inventory playerInventory;
-    public bool isOpen;
-    public BoolValue storedOpen;
-
-    [Header("Signals and Dialog")]
+    /*[Header("Signals and Dialog")]
     public Signal raiseItem;
     public GameObject dialogBox;
-    public Text dialogText;
+    public Text dialogText;*/
 
     [Header("Animation")]
-    private Animator anim;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
-        isOpen = storedOpen.RuntimeValue;
-        if (isOpen)
+        animator = GetComponent<Animator>();
+        //isOpen = storedOpen.RuntimeValue;
+        /*if (isOpen)
         {
-            anim.SetBool("opened", true);
+            animator.SetBool("opened", true);
+        }*/
+        if (Used)
+        {
+            animator.SetBool("opened", true);
+            trigger.SetActive(false);
         }
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
-        if (Input.GetButtonDown("Check") && playerInRange)
+        if (isInteracting)//(Input.GetButtonDown("Check") && playerInRange)
         {
             if (!isOpen)
             {
@@ -64,7 +70,7 @@ public class TreasureChest : Interactable
         context.Raise();
         // set the chest to opened
         isOpen = true;
-        anim.SetBool("opened", true);
+        animator.SetBool("opened", true);
         storedOpen.RuntimeValue = isOpen;
     }
 
@@ -78,7 +84,7 @@ public class TreasureChest : Interactable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger && !isOpen)
+        if (other.CompareTag("Player") && !other.isTrigger && !Used)
         {
             context.Raise();
             playerInRange = true;
@@ -87,10 +93,50 @@ public class TreasureChest : Interactable
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.isTrigger && !isOpen)
+        if (other.CompareTag("Player") && !other.isTrigger && !Used)
         {
             context.Raise();
             playerInRange = false;
+        }
+    }*/
+
+    public IEnumerator Interact(Transform initiator)
+    {
+        if (!Used)
+        {
+            if (contents.isHeartContainer)
+            {
+                PlayerController player = initiator.GetComponent<PlayerController>();
+                player.Player.IncreaseHearts();
+                player.Player.FullHeal();
+                player.UpdateHP();
+                initiator.GetComponentInParent<ContextClue>().ChangeContext();
+            }
+            else
+            {
+                initiator.GetComponent<Inventario>().AddItem(contents);
+                initiator.GetComponentInParent<ContextClue>().ChangeContext();
+            }
+
+            Used = true;
+
+            //GetComponent<SpriteRenderer>().enabled = false;
+            //GetComponent<BoxCollider2D>().enabled = false;
+            animator.SetBool("opened", true);
+
+            string playerName = initiator.GetComponent<PlayerCharacter>().Name;
+
+            //raiseItem.Raise();
+            AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
+
+            yield return initiator.GetComponent<PlayerCharacter>().RaiseItem(contents);
+
+            yield return DialogManagerRef.instance.ShowDialogText($"¡{playerName} encontro {contents.Name}!");
+
+            yield return initiator.GetComponent<PlayerCharacter>().LowerItem();
+
+            initiator.GetComponentInParent<ContextClue>().ChangeContext();
+            trigger.SetActive(false);
         }
     }
 }

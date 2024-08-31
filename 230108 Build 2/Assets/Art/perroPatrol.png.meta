@@ -171,7 +171,7 @@ TextureImporter:
       213: -5051609141617826304
     second: perroPatrol_55
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -188,9 +188,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -200,8 +203,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -222,10 +225,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -237,6 +245,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -249,6 +258,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -261,6 +271,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1452,9 +1476,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      perroPatrol_0: -3974674308505197927
+      perroPatrol_1: -3261232810218692507
+      perroPatrol_10: -5065304139645338341
+      perroPatrol_11: -7902609821621123902
+      perroPatrol_12: -7362695425010809245
+      perroPatrol_13: 4919141746061154005
+      perroPatrol_14: 6072387312039856097
+      perroPatrol_15: 5391828069591886915
+      perroPatrol_16: 1875440944867840870
+      perroPatrol_17: -569026294047762392
+      perroPatrol_18: -5721933124583772849
+      perroPatrol_19: 5316053345123956889
+      perroPatrol_2: -2096820361940569051
+      perroPatrol_20: 6055078798304996170
+      perroPatrol_21: -1945258772510839190
+      perroPatrol_22: -3345826287881158349
+      perroPatrol_23: -8539119478493887743
+      perroPatrol_24: -2963386536524817935
+      perroPatrol_25: 396710443474062154
+      perroPatrol_26: 1925074190564685050
+      perroPatrol_27: 1244703480522156109
+      perroPatrol_28: -4557373751192062617
+      perroPatrol_29: -6945898545087822200
+      perroPatrol_3: -482199591277099935
+      perroPatrol_30: 5645651508629972487
+      perroPatrol_31: -594238674874884780
+      perroPatrol_32: -3392291759271519118
+      perroPatrol_33: 4448151541834747833
+      perroPatrol_34: -3404952331922830389
+      perroPatrol_35: -177257126578839763
+      perroPatrol_36: -8348303581868757409
+      perroPatrol_37: -1450016977741051260
+      perroPatrol_38: 2180815047563361255
+      perroPatrol_39: 6126466283375883708
+      perroPatrol_4: 3188174947114908419
+      perroPatrol_40: 2008780041907963909
+      perroPatrol_41: -3852377777082742062
+      perroPatrol_42: -6726435078586359928
+      perroPatrol_43: 2415248280530625719
+      perroPatrol_44: 2902161057523177489
+      perroPatrol_45: -4218743635786221698
+      perroPatrol_46: -7473945441912855860
+      perroPatrol_47: -8970521522899860508
+      perroPatrol_48: -8861419263326714318
+      perroPatrol_49: -7180251620861770510
+      perroPatrol_5: 9196774441312543351
+      perroPatrol_50: 2199090741518384508
+      perroPatrol_51: -3562138121497924356
+      perroPatrol_52: -6941088385201838702
+      perroPatrol_53: 3881293990505078641
+      perroPatrol_54: 5366365561060278418
+      perroPatrol_55: -5051609141617826304
+      perroPatrol_6: 4265298062055168549
+      perroPatrol_7: -7713391019326530787
+      perroPatrol_8: 5589029068541871272
+      perroPatrol_9: 7284769631002693330
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

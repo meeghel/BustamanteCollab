@@ -9,7 +9,7 @@ namespace Ink
         public class Options
         {
             public string sourceFilename;
-            public List<string> pluginNames;
+            public List<string> pluginDirectories;
             public bool countAllVisits;
             public Ink.ErrorHandler errorHandler;
             public Ink.IFileHandler fileHandler;
@@ -25,8 +25,8 @@ namespace Ink
         {
             _inputString = inkSource;
             _options = options ?? new Options();
-            if( _options.pluginNames != null )
-                _pluginManager = new PluginManager (_options.pluginNames);
+            if( _options.pluginDirectories != null )
+                _pluginManager = new PluginManager (_options.pluginDirectories);
         }
 
         public Parsed.Story Parse()
@@ -38,10 +38,13 @@ namespace Ink
 
         public Runtime.Story Compile ()
         {
+            if( _pluginManager != null )
+                _inputString = _pluginManager.PreParse(_inputString);
+
             Parse();
 
             if( _pluginManager != null )
-                _pluginManager.PostParse(_parsedStory);
+                _parsedStory = _pluginManager.PostParse(_parsedStory);
 
             if (_parsedStory != null && !_hadParseError) {
 
@@ -50,7 +53,7 @@ namespace Ink
                 _runtimeStory = _parsedStory.ExportRuntime (_options.errorHandler);
 
                 if( _pluginManager != null )
-                    _pluginManager.PostExport (_parsedStory, _runtimeStory);
+                    _runtimeStory = _pluginManager.PostExport (_parsedStory, _runtimeStory);
             } else {
                 _runtimeStory = null;
             }
@@ -64,37 +67,19 @@ namespace Ink
             public string divertedPath;
             public string output;
         }
-        public CommandLineInputResult ReadCommandLineInput (string userInput)
+        public CommandLineInputResult HandleInput (CommandLineInput inputResult)
         {
-            var inputParser = new InkParser (userInput);
-            var inputResult = inputParser.CommandLineUserInput ();
-
             var result = new CommandLineInputResult ();
 
-            // Choice
-            if (inputResult.choiceInput != null) {
-                result.choiceIdx = ((int)inputResult.choiceInput) - 1;
-            }
-
-            // Help
-            else if (inputResult.isHelp) {
-                result.output = "Type a choice number, a divert (e.g. '-> myKnot'), an expression, or a variable assignment (e.g. 'x = 5')";
-            }
-
-            // Quit
-            else if (inputResult.isExit) {
-                result.requestsExit = true;
-            }
-
             // Request for debug source line number
-            else if (inputResult.debugSource != null) {
+            if (inputResult.debugSource != null) {
                 var offset = (int)inputResult.debugSource;
                 var dm = DebugMetadataForContentAtOffset (offset);
                 if (dm != null)
                     result.output = "DebugSource: " + dm.ToString ();
                 else
                     result.output = "DebugSource: Unknown source";
-            } 
+            }
 
             // Request for runtime path lookup (to line number)
             else if (inputResult.debugPathLookup != null) {
@@ -109,47 +94,53 @@ namespace Ink
 
             // User entered some ink
             else if (inputResult.userImmediateModeStatement != null) {
-
                 var parsedObj = inputResult.userImmediateModeStatement as Parsed.Object;
-
-                // Variable assignment: create in Parsed.Story as well as the Runtime.Story
-                // so that we don't get an error message during reference resolution
-                if (parsedObj is Parsed.VariableAssignment) {
-                    var varAssign = (Parsed.VariableAssignment)parsedObj;
-                    if (varAssign.isNewTemporaryDeclaration) {
-                        _parsedStory.TryAddNewVariableDeclaration (varAssign);
-                    }
-                }
-
-                parsedObj.parent = _parsedStory;
-                var runtimeObj = parsedObj.runtimeObject;
-
-                parsedObj.ResolveReferences (_parsedStory);
-
-                if (!_parsedStory.hadError) {
-
-                    // Divert
-                    if (parsedObj is Parsed.Divert) {
-                        var parsedDivert = parsedObj as Parsed.Divert;
-                        result.divertedPath = parsedDivert.runtimeDivert.targetPath.ToString();
-                    }
-
-                    // Expression or variable assignment
-                    else if (parsedObj is Parsed.Expression || parsedObj is Parsed.VariableAssignment) {
-                        var evalResult = _runtimeStory.EvaluateExpression ((Runtime.Container)runtimeObj);
-                        if (evalResult != null) {
-                            result.output = evalResult.ToString ();
-                        }
-                    }
-                } else {
-                    _parsedStory.ResetError ();
-                }
+                return ExecuteImmediateStatement(parsedObj);
 
             } else {
-                result.output = "Unexpected input. Type 'help' or a choice number.";
+              return null;
             }
 
             return result;
+        }
+
+        CommandLineInputResult ExecuteImmediateStatement(Parsed.Object parsedObj) {
+            var result = new CommandLineInputResult ();
+
+           // Variable assignment: create in Parsed.Story as well as the Runtime.Story
+           // so that we don't get an error message during reference resolution
+           if (parsedObj is Parsed.VariableAssignment) {
+               var varAssign = (Parsed.VariableAssignment)parsedObj;
+               if (varAssign.isNewTemporaryDeclaration) {
+                   _parsedStory.TryAddNewVariableDeclaration (varAssign);
+               }
+           }
+
+           parsedObj.parent = _parsedStory;
+           var runtimeObj = parsedObj.runtimeObject;
+
+           parsedObj.ResolveReferences (_parsedStory);
+
+           if (!_parsedStory.hadError) {
+
+               // Divert
+               if (parsedObj is Parsed.Divert) {
+                   var parsedDivert = parsedObj as Parsed.Divert;
+                   result.divertedPath = parsedDivert.runtimeDivert.targetPath.ToString();
+               }
+
+               // Expression or variable assignment
+               else if (parsedObj is Parsed.Expression || parsedObj is Parsed.VariableAssignment) {
+                   var evalResult = _runtimeStory.EvaluateExpression ((Runtime.Container)runtimeObj);
+                   if (evalResult != null) {
+                       result.output = evalResult.ToString ();
+                   }
+               }
+           } else {
+               _parsedStory.ResetError ();
+           }
+
+          return result;
         }
 
         public void RetrieveDebugSourceForLatestContent ()

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efe91acc7ce94e6db87d5398ace1ba9, type: 3}
+  m_Name: SedDeLaMala
+  m_EditorClassIdentifier: 
+  name: SedDeLaMala
+  description: 
+  startDialogue:
+    lines:
+    - Tengo demasiada sed...
+    - "\xA1Pero de la mala!"
+  inProgressDialogue:
+    lines:
+    - "\xBFNo tendras una chevesuki por ahi?"
+  completedDialogue:
+    lines:
+    - "\xBFMe das una Cheve?"
+    - "\xA1Uf, me has salvado!"
+    - Toma esto, te lo regalo.
+  requiredItem: {fileID: 11400000, guid: 6faeaf23262354598a7e6247c30fd600, type: 2}
+  rewardItem: {fileID: 11400000, guid: 0fee3c6862a744a82a96111a19f3c928, type: 2}

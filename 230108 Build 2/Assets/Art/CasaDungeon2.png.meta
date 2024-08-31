@@ -309,7 +309,7 @@ TextureImporter:
       213: -75914818344957115
     second: CasaDungeon2_101
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -326,9 +326,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -338,8 +341,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -360,10 +363,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -375,6 +383,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -387,6 +396,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -399,6 +409,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2556,9 +2580,111 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      CasaDungeon2_0: 608907837116181
+      CasaDungeon2_1: -7649160046388760158
+      CasaDungeon2_10: -4920559890064500097
+      CasaDungeon2_100: -5623112542732160742
+      CasaDungeon2_101: -75914818344957115
+      CasaDungeon2_11: 7717287267243935910
+      CasaDungeon2_12: -8817345092833613154
+      CasaDungeon2_13: -8428216753125688174
+      CasaDungeon2_14: 8282521995750819580
+      CasaDungeon2_15: 279523315803009089
+      CasaDungeon2_16: -380717495095494678
+      CasaDungeon2_17: -8659466584252962355
+      CasaDungeon2_18: 3079898537542350037
+      CasaDungeon2_19: 904417120505327088
+      CasaDungeon2_2: -1847955963525310180
+      CasaDungeon2_20: 3077337124815397159
+      CasaDungeon2_21: 4806744218812138812
+      CasaDungeon2_22: 6036526545728854108
+      CasaDungeon2_23: 2992602041862737426
+      CasaDungeon2_24: -6593572582636871286
+      CasaDungeon2_25: 6775423986011437148
+      CasaDungeon2_26: -4863388146539018784
+      CasaDungeon2_27: -3526145859154588780
+      CasaDungeon2_28: 5600859275414012854
+      CasaDungeon2_29: 5067541593468378179
+      CasaDungeon2_3: -5656906690456435722
+      CasaDungeon2_30: -1482299344637159242
+      CasaDungeon2_31: -1520187886894976402
+      CasaDungeon2_32: 8455782431707298126
+      CasaDungeon2_33: 9040005674446252015
+      CasaDungeon2_34: -863812346829279048
+      CasaDungeon2_35: 698050566843161689
+      CasaDungeon2_36: -907505020455474810
+      CasaDungeon2_37: 5573414311114608979
+      CasaDungeon2_38: -5725448117585578926
+      CasaDungeon2_39: -2358296555652390928
+      CasaDungeon2_4: 1211512177472371063
+      CasaDungeon2_40: 3336682346342822378
+      CasaDungeon2_41: 3759782638848887633
+      CasaDungeon2_42: 2253000700728053171
+      CasaDungeon2_43: 4791393258511704582
+      CasaDungeon2_44: -5287208136562348553
+      CasaDungeon2_45: 8584454110993102124
+      CasaDungeon2_46: -4999879412362315304
+      CasaDungeon2_47: -6877423085848152119
+      CasaDungeon2_48: 795130402033033122
+      CasaDungeon2_49: 8004059116545687739
+      CasaDungeon2_5: 5456181514269578872
+      CasaDungeon2_50: -5712306102786961737
+      CasaDungeon2_51: -5540074964250109405
+      CasaDungeon2_52: -8672725884884631003
+      CasaDungeon2_53: 6467616519818182155
+      CasaDungeon2_54: 1788202617275942322
+      CasaDungeon2_55: -9087353800177684441
+      CasaDungeon2_56: 4314724856978961970
+      CasaDungeon2_57: 3114509870422398961
+      CasaDungeon2_58: 8153305286879316338
+      CasaDungeon2_59: -5982072400766260233
+      CasaDungeon2_6: 700176786926958437
+      CasaDungeon2_60: 874989374404960119
+      CasaDungeon2_61: 2739172106952320169
+      CasaDungeon2_62: -3658041839259078325
+      CasaDungeon2_63: -4461506703914624276
+      CasaDungeon2_64: 6572461220366798474
+      CasaDungeon2_65: 8492291892217158402
+      CasaDungeon2_66: 6571250533683066274
+      CasaDungeon2_67: 5568507663369956847
+      CasaDungeon2_68: -7153452691375269196
+      CasaDungeon2_69: 610986331520756997
+      CasaDungeon2_7: 880866955875033086
+      CasaDungeon2_70: 7911607158387839047
+      CasaDungeon2_71: 5216011482264716717
+      CasaDungeon2_72: -5160041915171497960
+      CasaDungeon2_73: -7826791048230172649
+      CasaDungeon2_74: 852789682556187303
+      CasaDungeon2_75: 6317779424591929871
+      CasaDungeon2_76: 7404224296115479616
+      CasaDungeon2_77: 5221065412139652670
+      CasaDungeon2_78: 3220048662301182994
+      CasaDungeon2_79: -8673247853972529963
+      CasaDungeon2_8: 6454536118023969526
+      CasaDungeon2_80: 386092178949481268
+      CasaDungeon2_81: -1817909145911035267
+      CasaDungeon2_82: 283903921177800076
+      CasaDungeon2_83: 3417280775584844579
+      CasaDungeon2_84: 2403026309096479052
+      CasaDungeon2_85: 9015932001655754379
+      CasaDungeon2_86: 2997498400425569443
+      CasaDungeon2_87: 66947747091389264
+      CasaDungeon2_88: -2587530995879713301
+      CasaDungeon2_89: -5642700483070891187
+      CasaDungeon2_9: 5246497381556762455
+      CasaDungeon2_90: 4189179219914425098
+      CasaDungeon2_91: -8501369432611688910
+      CasaDungeon2_92: -8642417705902323608
+      CasaDungeon2_93: 8105651611244337172
+      CasaDungeon2_94: 1721929499583903420
+      CasaDungeon2_95: -298270171718838051
+      CasaDungeon2_96: -6972723216494959565
+      CasaDungeon2_97: -4862431849411871440
+      CasaDungeon2_98: 6660459443628390921
+      CasaDungeon2_99: 2321371385970090314
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

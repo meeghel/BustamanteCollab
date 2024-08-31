@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b80382fc45748efafd19ed1d460f6f, type: 3}
+  m_Name: CarnitaAsada
+  m_EditorClassIdentifier: 
+  name: Carnita Asada
+  description: Recupera todos los corazones.
+  icon: {fileID: -1616379763, guid: 3ecca9b3c51f0a447a4bb2a18c53e54f, type: 3}
+  animatorController: {fileID: 0}
+  price: 200
+  canSell: 1
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  maxHealth: {fileID: 11400000, guid: 86dccde284ffe43f086210166a0fca11, type: 2}
+  healthSignal: {fileID: 11400000, guid: 65d9df2a6599245ef8c15c8fa648659b, type: 2}
+  hpAmount: 0
+  restoreMaxHP: 1
+  arrowAmount: 0
+  restoreMaxArrows: 0
+  magicAmount: 0
+  restoreMaxMagic: 0
+  revive: 0
+  maxRevive: 0
