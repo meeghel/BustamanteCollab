@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f483609ac176e403fa0ddd96ca9e5cc0, type: 3}
   m_Name: Small Key
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: -7233663035505761146, guid: 218486ca9a2e04297b587af7f2267927,
-    type: 3}
+  itemSprite: {fileID: 225846680, guid: 3ecca9b3c51f0a447a4bb2a18c53e54f, type: 3}
   itemDescription: "\xA1Es una Llave! Para abrir puertas..."
   isKey: 1

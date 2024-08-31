@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretEnemy : Perro
+public class TurretEnemy : TargetEnemy
 {
     public GameObject projectile;
     public float fireDelay;
@@ -46,13 +46,13 @@ public class TurretEnemy : Perro
                     current.GetComponent<Projectile>().Launch(tempVector);
                     canFire = false;
                     ChangeState(EnemyState.walk);
-                    anim.SetBool("wakeUp", true);
+                    animator.SetBool("wakeUp", true);
                 }
             }
         }
         else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
         {
-            anim.SetBool("wakeUp", false);
+            animator.SetBool("wakeUp", false);
         }
     }
 }

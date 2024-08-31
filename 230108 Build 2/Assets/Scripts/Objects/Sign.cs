@@ -1,32 +1,26 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
-public class Sign : Interactable
+public class Sign : MonoBehaviour, Interactuable
 {
-    public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
+    [SerializeField] Dialog dialog;
+    public Signal context;
+    public bool playerInRange;
+    public float areaDetection = 1.5f;
 
-    // Start is called before the first frame update
-    void Start()
+    public IEnumerator Interact(Transform initiator)
     {
-        
+        yield return DialogManagerRef.instance.ShowDialog(dialog);
     }
 
-    // Update is called once per frame
-    public virtual void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Input.GetButtonDown("Check") && playerInRange)
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
-            if (dialogBox.activeInHierarchy)
-            {
-                dialogBox.SetActive(false);
-            }else{
-                dialogBox.SetActive(true);
-                dialogText.text = dialog;
-            }
+            context.Raise();
+            playerInRange = true;
         }
     }
 
@@ -36,7 +30,12 @@ public class Sign : Interactable
         {
             context.Raise();
             playerInRange = false;
-            dialogBox.SetActive(false);
         }
     }
+
+    /*void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, areaDetection);
+    }*/
 }

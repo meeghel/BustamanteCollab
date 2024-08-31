@@ -171,7 +171,7 @@ TextureImporter:
       213: 1637807017348347882
     second: perroV2_55
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -188,9 +188,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -200,8 +203,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -222,10 +225,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -237,6 +245,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -249,6 +258,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -261,6 +271,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1452,9 +1476,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      perroV2_0: -3213897051459752282
+      perroV2_1: 6181632516460066811
+      perroV2_10: 8966035154331227447
+      perroV2_11: 7120331007298219629
+      perroV2_12: 6263083893414942726
+      perroV2_13: -1032429495040221505
+      perroV2_14: -7836675789493687189
+      perroV2_15: -5216233614558385126
+      perroV2_16: 734995350979785518
+      perroV2_17: -2596515196355162891
+      perroV2_18: -2842505422374154989
+      perroV2_19: 3062250394259979720
+      perroV2_2: -1854712022424487125
+      perroV2_20: -4493780373477395876
+      perroV2_21: -267718770948674003
+      perroV2_22: -959496572967550388
+      perroV2_23: 6598518418314569222
+      perroV2_24: -2338376260381638741
+      perroV2_25: -3391623186052832438
+      perroV2_26: 4731676957392816949
+      perroV2_27: -1097402357291146102
+      perroV2_28: -4849209873732672103
+      perroV2_29: -2939025902349961332
+      perroV2_3: -214960379787242855
+      perroV2_30: 5980104880819151484
+      perroV2_31: -7339249111503855877
+      perroV2_32: 1823783657564746
+      perroV2_33: 4029710673491428011
+      perroV2_34: 3736236332152484844
+      perroV2_35: -6182987943907182868
+      perroV2_36: -1256577300707594123
+      perroV2_37: -2260123745588572856
+      perroV2_38: -7744356652320253625
+      perroV2_39: -3195077647613520144
+      perroV2_4: -8528263501235599825
+      perroV2_40: 4468936662412684058
+      perroV2_41: -7612988342897238383
+      perroV2_42: -7167934042526089849
+      perroV2_43: -5801871584108358304
+      perroV2_44: 6239620094418755034
+      perroV2_45: -2615313302828319624
+      perroV2_46: -6485371512511683667
+      perroV2_47: -1840652439755609333
+      perroV2_48: -8775636163395522835
+      perroV2_49: -5782376856665675329
+      perroV2_5: -235599341915021295
+      perroV2_50: -4094183117654875317
+      perroV2_51: -5454033548990560299
+      perroV2_52: -5946817214339682112
+      perroV2_53: -4148552763761529257
+      perroV2_54: -4160839788837279067
+      perroV2_55: 1637807017348347882
+      perroV2_6: -4055866133377394511
+      perroV2_7: -2436056488359728179
+      perroV2_8: -6571557349476204827
+      perroV2_9: 4659154132714273844
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoundedNPC : Sign
+public class BoundedNPC : Interactuable
 {
+    //Revisar por qué hereda de Sign y no de Interactable
     private Vector3 directionVector;
     private Transform myTransform;
     public float speed;
@@ -12,6 +13,13 @@ public class BoundedNPC : Sign
     private Transform playerPosition;
     public Collider2D bounds;
     private bool isMoving;
+    //230522 agregué canMove para revisar implementar Dialog Manager
+    public bool canMove;
+    public bool playerInRange = false;
+    private Signal context; 
+
+    private DialogManager theDM;
+
     public float minMoveTime;
     public float maxMoveTime;
     private float moveTimeSeconds;
@@ -22,19 +30,32 @@ public class BoundedNPC : Sign
     // Start is called before the first frame update
     void Start()
     {
+        canMove = true;
+        //theDM = FindObjectOfType<DialogManager>();
         moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         playerPosition = GameObject.FindWithTag("Player").transform;
-        myTransform = GetComponent<Transform>();
-        myRigidbody = GetComponent<Rigidbody2D>();
+        //myTransform = GetComponent<Transform>();
+        //myRigidbody = GetComponent<Rigidbody2D>();
         ChangeDirection();
     }
 
     // Update is called once per frame
-    public override void Update()
+    void FixedUpdate()
     {
-        base.Update();
+        //base.Update();
+        /*if (!theDM.dialogActive)
+        {
+            canMove = true;
+        }*/
+        //Revisar por qué hereda de Sign y no Interactable, o hacer propia clase
+        if (!canMove)
+        {
+            myRigidbody.velocity = Vector2.zero;
+            return;
+        }
+
         if (isMoving)
         {
             moveTimeSeconds -= Time.deltaTime;
@@ -42,6 +63,7 @@ public class BoundedNPC : Sign
             {
                 moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
                 isMoving = false;
+                anim.speed = 0;
             }
             if (!playerInRange)
             {
@@ -55,6 +77,7 @@ public class BoundedNPC : Sign
             {
                 ChooseDifferentDirection();
                 isMoving = true;
+                anim.speed = 1;
                 waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
             }
         }
@@ -131,5 +154,10 @@ public class BoundedNPC : Sign
     private void OnCollisionEnter2D(Collision2D other)
     {
         ChooseDifferentDirection();
+    }
+
+    public IEnumerator Interact(Transform initiator)
+    {
+        throw new System.NotImplementedException();
     }
 }

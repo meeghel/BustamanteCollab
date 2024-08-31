@@ -123,7 +123,7 @@ TextureImporter:
       213: -1341049750988342990
     second: snake_naranja_39
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -140,9 +140,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -152,8 +155,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -174,10 +177,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -189,6 +197,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -201,6 +210,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -213,6 +223,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1068,9 +1092,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      snake_naranja_0: 5751692648912267943
+      snake_naranja_1: 8652800042619858290
+      snake_naranja_10: 3673334407180288952
+      snake_naranja_11: 6659068386890273257
+      snake_naranja_12: -2871189955627699893
+      snake_naranja_13: 478484983773954398
+      snake_naranja_14: 4959205126770119822
+      snake_naranja_15: -1015319210535188098
+      snake_naranja_16: 7846821933040875533
+      snake_naranja_17: 2751391106459451107
+      snake_naranja_18: -2223111277543996920
+      snake_naranja_19: 3337490782332536981
+      snake_naranja_2: 575120471431289213
+      snake_naranja_20: -709433313777266164
+      snake_naranja_21: 5956890023403230874
+      snake_naranja_22: 861040939473762970
+      snake_naranja_23: 7650420795202094665
+      snake_naranja_24: -6638299063745760913
+      snake_naranja_25: 3510083112733700575
+      snake_naranja_26: -7408916204780399523
+      snake_naranja_27: 3777458465656418219
+      snake_naranja_28: -3014141653190952731
+      snake_naranja_29: -4176906615739809891
+      snake_naranja_3: 1445237389842425737
+      snake_naranja_30: 8979935232989625572
+      snake_naranja_31: -733415472788073651
+      snake_naranja_32: -7244723705847330335
+      snake_naranja_33: -1318252768900586162
+      snake_naranja_34: -4488380562279201374
+      snake_naranja_35: -7177703593055709723
+      snake_naranja_36: 3716140716212373389
+      snake_naranja_37: 1985205282738897089
+      snake_naranja_38: -1362023877472760955
+      snake_naranja_39: -1341049750988342990
+      snake_naranja_4: -4541935951271363593
+      snake_naranja_5: -835096788110602372
+      snake_naranja_6: 8633622907879884417
+      snake_naranja_7: 4687356173499906822
+      snake_naranja_8: -6321454232745129634
+      snake_naranja_9: 3005058296495318807
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

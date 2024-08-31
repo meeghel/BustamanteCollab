@@ -24,11 +24,13 @@ namespace Ink
             var arrowsAndDiverts = Interleave<object> (
                 ParseDivertArrowOrTunnelOnwards,
                 DivertIdentifierWithArguments);
-            
+
             if (arrowsAndDiverts == null)
                 return null;
 
             diverts = new List<Parsed.Object> ();
+
+            EndTagIfNecessary(diverts);
 
             // Possible patterns:
             //  ->                   -- explicit gather
@@ -39,7 +41,7 @@ namespace Ink
             //  -> div ->->          -- tunnel then tunnel continue
             //  -> div -> div        -- tunnel then divert
             //  -> div -> div ->     -- tunnel then tunnel
-            //  -> div -> div ->->   
+            //  -> div -> div ->->
             //  -> div -> div ->-> div    (etc)
 
             // Look at the arrows and diverts
@@ -48,7 +50,7 @@ namespace Ink
 
                 // Arrow string
                 if (isArrow) {
-                    
+
                     // Tunnel onwards
                     if ((string)arrowsAndDiverts [i] == "->->") {
 
@@ -117,7 +119,7 @@ namespace Ink
         {
             Whitespace ();
 
-            List<string> targetComponents = Parse (DotSeparatedDivertPathComponents);
+            List<Identifier> targetComponents = Parse (DotSeparatedDivertPathComponents);
             if (targetComponents == null)
                 return null;
 
@@ -132,7 +134,7 @@ namespace Ink
         }
 
         protected Divert SingleDivert()
-        {            
+        {
             var diverts = Parse (MultiDivert);
             if (diverts == null)
                 return null;
@@ -166,9 +168,9 @@ namespace Ink
             return divert;
         }
 
-        List<string> DotSeparatedDivertPathComponents()
+        List<Identifier> DotSeparatedDivertPathComponents()
         {
-            return Interleave<string> (Spaced (Identifier), Exclude (String (".")));
+            return Interleave<Identifier> (Spaced (IdentifierWithMetadata), Exclude (String (".")));
         }
 
         protected string ParseDivertArrowOrTunnelOnwards()
@@ -185,7 +187,7 @@ namespace Ink
 
             else if (numArrows == 2)
                 return "->->";
-            
+
             else {
                 Error ("Unexpected number of arrows in divert. Should only have '->' or '->->'");
                 return "->->";

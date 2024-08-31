@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaEnemy : Perro
+public class AreaEnemy : TargetEnemy
 {
+    [Header("Boundary Variables")]
     public Collider2D boundary;
 
     public override void CheckDistance()
@@ -13,15 +14,15 @@ public class AreaEnemy : Perro
             if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
             {
                 Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-                changeAnim(temp - transform.position);
+                ChangeAnim(temp - transform.position);
                 myRigidbody.MovePosition(temp);
                 ChangeState(EnemyState.walk);
-                anim.SetBool("wakeUp", true);
+                animator.SetBool("wakeUp", true);
             }
         }
         else if (Vector3.Distance(target.position, transform.position) > chaseRadius || !boundary.bounds.Contains(target.transform.position))
         {
-            anim.SetBool("wakeUp", false);
+            animator.SetBool("wakeUp", false);
         }
     }
 }

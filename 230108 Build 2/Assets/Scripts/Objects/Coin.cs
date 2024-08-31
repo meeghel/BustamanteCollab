@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Coin : PowerUp
 {
-
     public Inventory playerInventory;
-
+    [SerializeField] int amount = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        powerupSignal.Raise();
+        //powerupSignal.Raise();
     }
 
     // Update is called once per frame
@@ -24,8 +23,10 @@ public class Coin : PowerUp
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            playerInventory.coins += 1;
-            powerupSignal.Raise();
+            Wallet.i.AddMoney((float)amount);
+            //playerInventory.coins += amount;
+            //powerupSignal.Raise();
+            AudioManager.i.PlaySfx(AudioId.Coin);
             Destroy(this.gameObject);
         }
     }

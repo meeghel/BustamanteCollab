@@ -155,6 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: {fileID: 11400000, guid: 86dccde284ffe43f086210166a0fca11, type: 2}
   currentHealth: 0
+  deathEffect: {fileID: 0}
+  thisLoot: {fileID: 0}
   healthSignal: {fileID: 11400000, guid: 65d9df2a6599245ef8c15c8fa648659b, type: 2}
 --- !u!1 &4463499214902906789
 GameObject:
@@ -296,10 +298,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.18360686, y: -0.44262624}
-      - {x: 0.29918087, y: -0.87839913}
-      - {x: 0.595113, y: -0.8383632}
-      - {x: 0.9432272, y: -0.13727689}
-      - {x: 0.62755847, y: 0.47513837}
+      - {x: 0.29918087, y: -0.9745445}
+      - {x: 0.7874014, y: -0.98258114}
+      - {x: 1.3278083, y: -0.13727689}
+      - {x: 0.62755847, y: 0.6193554}
 --- !u!114 &5457036174301423999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,11 +471,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.12155247, y: -0.24959469}
-      - {x: -0.2735561, y: -0.8238956}
-      - {x: -0.73986906, y: -0.609848}
-      - {x: -0.9378047, y: -0.07471132}
-      - {x: -0.5507275, y: 0.6116218}
+    - - {x: 0.025407791, y: -0.29766798}
+      - {x: -0.2735561, y: -0.99214923}
+      - {x: -0.9321596, y: -0.9944285}
+      - {x: -1.41853, y: -0.05067563}
+      - {x: -0.71898353, y: 0.65969485}
 --- !u!114 &4522286779729791689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,9 +564,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.97049403, y: 0.064478874}
-      - {x: -1.0297838, y: -0.5298648}
-      - {x: -0.05994445, y: -1.050074}
-      - {x: 0.90257895, y: -0.50432026}
+      - {x: -1.2297813, y: -0.7048621}
+      - {x: -0.05994445, y: -1.2250723}
+      - {x: 1.0525776, y: -0.67931855}
       - {x: 0.81116533, y: 0.03797835}
 --- !u!114 &4522286779766807821
 MonoBehaviour:
@@ -837,7 +839,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6293783}
+  m_Offset: {x: 0, y: -0.65}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -848,7 +850,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6707535, y: 0.37872124}
+  m_Size: {x: 0.9, y: 0.4}
   m_EdgeRadius: 0
 --- !u!114 &4522286780031722457
 MonoBehaviour:
@@ -863,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  speed: 6
+  speed: 4.5
   startingPosition: {fileID: 11400000, guid: 4481fcb7fc75442f690158ec9338962e, type: 2}
   playerInventory: {fileID: 11400000, guid: 47119ccfb64924d9a8bec4163d47b6d2, type: 2}
   receivedItemSprite: {fileID: 4522286779990097544}
@@ -1071,11 +1073,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.0137265, y: 0.61186934}
+    - - {x: 1.1339071, y: 0.70801497}
       - {x: 0.6663948, y: -0.3724873}
       - {x: -0.7419136, y: -0.3593619}
-      - {x: -1.0646392, y: 0.6385727}
-      - {x: -0.036923766, y: 1.1361907}
+      - {x: -1.2809657, y: 0.68664503}
+      - {x: -0.08499801, y: 1.2804091}
 --- !u!114 &4522286780070848143
 MonoBehaviour:
   m_ObjectHideFlags: 0

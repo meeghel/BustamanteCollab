@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PerroPatrol : Perro
+public class PerroPatrol : TargetEnemy
 {
 
     public Transform[] path;
@@ -17,7 +17,7 @@ public class PerroPatrol : Perro
             if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
             {
                 Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-                changeAnim(temp - transform.position);
+                ChangeAnim(temp - transform.position);
                 myRigidbody.MovePosition(temp);
                 //ChangeState(EnemyState.walk);
                 //anim.SetBool("wakeUp", true);
@@ -28,7 +28,7 @@ public class PerroPatrol : Perro
             if(Vector3.Distance(transform.position, path[currentPoint].position) > roundingDistance)
             { 
                 Vector3 temp = Vector3.MoveTowards(transform.position, path[currentPoint].position, moveSpeed * Time.deltaTime);
-                changeAnim(temp - transform.position);
+                ChangeAnim(temp - transform.position);
                 myRigidbody.MovePosition(temp);
             }
             else

@@ -30,7 +30,7 @@ namespace Ink.UnityIntegration {
 			GUILayout.Space(19f);
 			GUILayout.BeginHorizontal();
 
-			GUILayoutUtility.GetRect(10f, 10f, 16f, 16f, EditorStyles.layerMaskField);
+			GUILayoutUtility.GetRect(10f, 10f, 16f, 35f, EditorStyles.layerMaskField);
 			GUILayout.FlexibleSpace();
 
 			EditorGUI.BeginDisabledGroup(inkFile == null);
@@ -51,7 +51,7 @@ namespace Ink.UnityIntegration {
 			Rect childIconRect = new Rect(iconRect.x, iconRect.y, 16f, 16f);
 			if(inkFile == null) {
 				GUI.DrawTexture(childIconRect, InkBrowserIcons.unknownFileIcon, ScaleMode.ScaleToFit);
-			} else if(!inkFile.metaInfo.isMaster) {
+			} else if(inkFile.isIncludeFile) {
 				GUI.DrawTexture(childIconRect, InkBrowserIcons.childIconLarge, ScaleMode.ScaleToFit);
 			}
 
@@ -70,7 +70,8 @@ namespace Ink.UnityIntegration {
 			InkCompiler.OnCompileInk -= OnCompileInk;
 		}
 
-		void OnCompileInk (InkFile inkFile) {
+		void OnCompileInk (InkFile[] inkFiles) {
+			// We could probably be smarter about when we rebuild - only rebuilding if the file that's shown in the inspector is in the list - but it's not frequent or expensive so it's not important!
 			Rebuild();
 		}
 
@@ -81,24 +82,25 @@ namespace Ink.UnityIntegration {
 			if(inkFile == null) 
 				return;
 
-			if (inkFile.metaInfo.includes.Count > 0) CreateIncludeList ();
+			if (inkFile.includes.Count > 0) CreateIncludeList ();
 			else includesFileList = null;
 
-			if (inkFile.metaInfo.masterInkAssets.Count > 0) CreateMastersList ();
+			if (inkFile.masterInkAssets.Count > 0) CreateMastersList ();
 			else mastersFileList = null;
 
-			CreateErrorList();
-			CreateWarningList();
-			CreateTodoList();
-			cachedTrimmedFileContents = inkFile.metaInfo.GetFileContents();
+			errorList = CreateErrorList();
+			warningList = CreateWarningList();
+			todosList = CreateTodoList();
+			
+			cachedTrimmedFileContents = inkFile.GetFileContents();
 			cachedTrimmedFileContents = cachedTrimmedFileContents.Substring(0, Mathf.Min(cachedTrimmedFileContents.Length, maxCharacters));
 			if(cachedTrimmedFileContents.Length >= maxCharacters)
 				cachedTrimmedFileContents += "...\n\n<...etc...>";
 		}
 
 		void CreateIncludeList () {
-			List<DefaultAsset> includeTextAssets = inkFile.metaInfo.includes;
-			includesFileList = new ReorderableList(includeTextAssets, typeof(DefaultAsset), false, false, false, false);
+			List<DefaultAsset> includeTextAssets = inkFile.includes;
+			includesFileList = new ReorderableList(includeTextAssets, typeof(DefaultAsset), false, true, false, false);
 			includesFileList.drawHeaderCallback = (Rect rect) => {  
 				EditorGUI.LabelField(rect, "Included Files");
 			};
@@ -116,14 +118,14 @@ namespace Ink.UnityIntegration {
 					return;
 				}
 				Rect iconRect = new Rect(rect.x, rect.y, 0, 16);
-				if(childInkFile.metaInfo.hasErrors || childInkFile.metaInfo.hasWarnings) {
+				if(childInkFile.hasErrors || childInkFile.hasWarnings) {
 					iconRect.width = 20;
 				}
 				Rect objectFieldRect = new Rect(iconRect.xMax, rect.y, rect.width - iconRect.width - 80, 16);
 				Rect selectRect = new Rect(objectFieldRect.xMax, rect.y, 80, 16);
-				if(childInkFile.metaInfo.hasErrors) {
+				if(childInkFile.hasErrors) {
 					EditorGUI.LabelField(iconRect, new GUIContent(InkBrowserIcons.errorIcon));
-				} else if(childInkFile.metaInfo.hasWarnings) {
+				} else if(childInkFile.hasWarnings) {
 					EditorGUI.LabelField(iconRect, new GUIContent(InkBrowserIcons.warningIcon));
 				}
 				EditorGUI.BeginDisabledGroup(true);
@@ -134,10 +136,10 @@ namespace Ink.UnityIntegration {
 				}
 			};
 		}
-
+		
 		void CreateMastersList () {
-			List<DefaultAsset> mastersTextAssets = inkFile.metaInfo.masterInkAssets;
-			mastersFileList = new ReorderableList(mastersTextAssets, typeof(DefaultAsset), false, false, false, false);
+			List<DefaultAsset> mastersTextAssets = inkFile.masterInkAssets;
+			mastersFileList = new ReorderableList(mastersTextAssets, typeof(DefaultAsset), false, true, false, false);
 			mastersFileList.drawHeaderCallback = (Rect rect) => {  
 				EditorGUI.LabelField(rect, "Master Files");
 			};
@@ -155,14 +157,14 @@ namespace Ink.UnityIntegration {
 					return;
 				}
 				Rect iconRect = new Rect(rect.x, rect.y, 0, 16);
-				if(masterInkFile.metaInfo.hasErrors || masterInkFile.metaInfo.hasWarnings) {
+				if(masterInkFile.hasErrors || masterInkFile.hasWarnings) {
 					iconRect.width = 20;
 				}
 				Rect objectFieldRect = new Rect(iconRect.xMax, rect.y, rect.width - iconRect.width - 80, 16);
 				Rect selectRect = new Rect(objectFieldRect.xMax, rect.y, 80, 16);
-				if(masterInkFile.metaInfo.hasErrors) {
+				if(masterInkFile.hasErrors) {
 					EditorGUI.LabelField(iconRect, new GUIContent(InkBrowserIcons.errorIcon));
-				} else if(masterInkFile.metaInfo.hasWarnings) {
+				} else if(masterInkFile.hasWarnings) {
 					EditorGUI.LabelField(iconRect, new GUIContent(InkBrowserIcons.warningIcon));
 				}
 				EditorGUI.BeginDisabledGroup(true);
@@ -173,11 +175,11 @@ namespace Ink.UnityIntegration {
 				}
 
 				
-			// foreach(var masterInkFile in inkFile.metaInfo.masterInkFiles) {
+			// foreach(var masterInkFile in inkFile.masterInkFiles) {
 			// 	EditorGUILayout.BeginHorizontal();
-			// 	if(masterInkFile.metaInfo.hasErrors) {
+			// 	if(masterInkFile.hasErrors) {
 			// 		GUILayout.Label(new GUIContent(InkBrowserIcons.errorIcon), GUILayout.Width(20));
-			// 	} else if(masterInkFile.metaInfo.hasWarnings) {
+			// 	} else if(masterInkFile.hasWarnings) {
 			// 		GUILayout.Label(new GUIContent(InkBrowserIcons.warningIcon), GUILayout.Width(20));
 			// 	}
 			// 	EditorGUI.BeginDisabledGroup(true);
@@ -191,73 +193,67 @@ namespace Ink.UnityIntegration {
 			};
 		}
 
-		void CreateErrorList () {
-			errorList = new ReorderableList(inkFile.metaInfo.errors, typeof(string), false, false, false, false);
-			errorList.elementHeight = 18;
-			errorList.drawHeaderCallback = (Rect rect) => {  
+		ReorderableList CreateErrorList () {
+			var reorderableList = new ReorderableList(inkFile.errors, typeof(string), false, true, false, false);
+			reorderableList.drawHeaderCallback = (Rect rect) => {  
 				EditorGUI.LabelField(rect, new GUIContent(InkBrowserIcons.errorIcon), new GUIContent("Errors"));
 			};
-			errorList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
-				Rect labelRect = new Rect(rect.x, rect.y, rect.width - 80, rect.height);
-				Rect buttonRect = new Rect(labelRect.xMax, rect.y, 80, rect.height-2);
-				InkCompilerLog log = ((List<InkCompilerLog>)errorList.list)[index];
-				string label = log.content;
-				GUI.Label(labelRect, label);
-				string openLabel = "Open"+ (log.lineNumber == -1 ? "" : " ("+log.lineNumber+")");
-				if(GUI.Button(buttonRect, openLabel)) {
-					OpenInEditor(inkFile.filePath, log.lineNumber);
-				}
-			};
+			reorderableList.elementHeight = 26;
+			reorderableList.drawElementCallback = (rect, index, isActive, isFocused) => DrawLogItem(rect, index, isActive, isFocused, (List<InkCompilerLog>)reorderableList.list);
+			return reorderableList;
 		}
 
-		void CreateWarningList () {
-			warningList = new ReorderableList(inkFile.metaInfo.warnings, typeof(string), false, false, false, false);
-			warningList.elementHeight = 18;
-			warningList.drawHeaderCallback = (Rect rect) => {  
+		ReorderableList CreateWarningList () {
+			var reorderableList = new ReorderableList(inkFile.warnings, typeof(string), false, true, false, false);
+			reorderableList.drawHeaderCallback = (Rect rect) => {  
 				EditorGUI.LabelField(rect, new GUIContent(InkBrowserIcons.warningIcon), new GUIContent("Warnings"));
 			};
-			warningList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
-				Rect labelRect = new Rect(rect.x, rect.y, rect.width - 80, rect.height);
-				Rect buttonRect = new Rect(labelRect.xMax, rect.y, 80, rect.height-2);
-				InkCompilerLog log = ((List<InkCompilerLog>)warningList.list)[index];
-				string label = log.content;
-				GUI.Label(labelRect, label);
-				string openLabel = "Open"+ (log.lineNumber == -1 ? "" : " ("+log.lineNumber+")");
-				if(GUI.Button(buttonRect, openLabel)) {
-					OpenInEditor(inkFile.filePath, log.lineNumber);
-				}
-			};
+			reorderableList.elementHeight = 26;
+			reorderableList.drawElementCallback = (rect, index, isActive, isFocused) => DrawLogItem(rect, index, isActive, isFocused, (List<InkCompilerLog>)reorderableList.list);
+			return reorderableList;
 		}
 
-		void CreateTodoList () {
-			todosList = new ReorderableList(inkFile.metaInfo.todos, typeof(string), false, false, false, false);
-			todosList.elementHeight = 18;
-			todosList.drawHeaderCallback = (Rect rect) => {  
+		ReorderableList CreateTodoList () {
+			var reorderableList = new ReorderableList(inkFile.todos, typeof(string), false, true, false, false);
+			reorderableList.drawHeaderCallback = (Rect rect) => {  
 				EditorGUI.LabelField(rect, "To do");
 			};
-			todosList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
-				Rect labelRect = new Rect(rect.x, rect.y, rect.width - 80, rect.height);
-				Rect buttonRect = new Rect(labelRect.xMax, rect.y, 80, rect.height-2);
-				InkCompilerLog log = ((List<InkCompilerLog>)todosList.list)[index];
-				string label = log.content;
-				GUI.Label(labelRect, label);
-				string openLabel = "Open"+ (log.lineNumber == -1 ? "" : " ("+log.lineNumber+")");
-				if(GUI.Button(buttonRect, openLabel)) {
-					OpenInEditor(inkFile.filePath, log.lineNumber);
+			reorderableList.elementHeight = 26;
+			reorderableList.drawElementCallback = (rect, index, isActive, isFocused) => DrawLogItem(rect, index, isActive, isFocused, (List<InkCompilerLog>)reorderableList.list);
+			return reorderableList;
+		}
+		
+		void DrawLogItem (Rect rect, int index, bool isActive, bool isFocused, List<InkCompilerLog> logsList) {
+			Rect logRect = new Rect(rect.x, rect.y, rect.width - 80, 16);
+			Rect locationRect = new Rect(rect.x, rect.y+16, rect.width - 80, 10);
+			Rect buttonRect = new Rect(logRect.xMax, rect.y, 80, rect.height-2);
+			InkCompilerLog log = logsList[index];
+			GUI.Label(logRect, log.content);
+			GUI.Label(locationRect, "("+log.relativeFilePath+":"+log.lineNumber+")", filePathAndLineNumberStyle);
+			string openLabel = "Open";
+			if(GUI.Button(buttonRect, openLabel)) {
+				InkEditorUtils.OpenInEditor(inkFile, log);
+			}
+		}
+		static GUIStyle _filePathAndLineNumberStyle;
+		static GUIStyle filePathAndLineNumberStyle {
+			get {
+				if(_filePathAndLineNumberStyle == null) {
+					_filePathAndLineNumberStyle = new GUIStyle(EditorStyles.centeredGreyMiniLabel);
+					_filePathAndLineNumberStyle.alignment = TextAnchor.MiddleLeft;
 				}
-			};
+				return _filePathAndLineNumberStyle;
+			}
 		}
 
-		static void OpenInEditor (string filePath, int lineNumber) {
-			#if UNITY_2019_1_OR_NEWER
-			// This function replaces OpenFileAtLineExternal, but I guess it's totally internal and can't be accessed.
-			// CodeEditorUtility.Editor.Current.OpenProject(filePath, lineNumber);
-			#pragma warning disable
-			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(filePath, lineNumber);
-			#pragma warning restore
-			#else
-			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(filePath, lineNumber);
-			#endif
+		public static void DrawLayoutInkLine (InkFile inkFile, int lineNumber, string label) {
+			GUILayout.BeginHorizontal();
+			GUILayout.Label(label);
+			string openLabel = "Open"+ (lineNumber == -1 ? "" : " ("+lineNumber+")");
+			if(GUILayout.Button(openLabel, GUILayout.Width(80))) {
+				InkEditorUtils.OpenInEditor(inkFile.filePath, null, lineNumber);
+			}
+			GUILayout.EndHorizontal();
 		}
 
 		public override void OnInspectorGUI () {
@@ -271,37 +267,72 @@ namespace Ink.UnityIntegration {
 				}
 				return;
 			}
-
-			if(InkLibrary.GetCompilationStackItem(inkFile) != null) {
+			
+			
+			if(InkCompiler.IsInkFileOnCompilationStack(inkFile)) {
 				EditorGUILayout.HelpBox("File is compiling...", MessageType.Info);
 				return;
 			}
 			
-			if(inkFile.metaInfo.isMaster) {
-				DrawMasterFileHeader();
-				DrawEditAndCompileDates(inkFile);
-				if(inkFile.metaInfo.hasUnhandledCompileErrors) {
-					EditorGUILayout.HelpBox("Last compiled failed", MessageType.Error);
-				} if(inkFile.metaInfo.hasErrors) {
-					EditorGUILayout.HelpBox("Last compiled had errors", MessageType.Error);
-				} else if(inkFile.metaInfo.hasWarnings) {
-					EditorGUILayout.HelpBox("Last compile had warnings", MessageType.Warning);
-				} else if(inkFile.jsonAsset == null) {
-					EditorGUILayout.HelpBox("Ink file has not been compiled", MessageType.Warning);
+			if(inkFile.isIncludeFile) {
+				EditorGUI.BeginChangeCheck();
+				var newCompileAsIfMaster = EditorGUILayout.Toggle(new GUIContent("Should also be Master File", "This file is included by another ink file. Typically, these files don't want to be compiled, but this option enables them to be for special purposes."), InkSettings.instance.includeFilesToCompileAsMasterFiles.Contains(inkFile.inkAsset));
+				if(EditorGUI.EndChangeCheck()) {
+					if(newCompileAsIfMaster) {
+						InkSettings.instance.includeFilesToCompileAsMasterFiles.Add(inkFile.inkAsset);
+						EditorUtility.SetDirty(InkSettings.instance);
+					} else {
+						InkSettings.instance.includeFilesToCompileAsMasterFiles.Remove(inkFile.inkAsset);
+						EditorUtility.SetDirty(InkSettings.instance);
+					}
 				}
-				if(inkFile.metaInfo.requiresCompile && GUILayout.Button("Compile")) {
-					InkCompiler.CompileInk(inkFile);
-				}
-				DrawIncludedFiles();
-
-				DrawCompileErrors();
-				DrawErrors();
-				DrawWarnings();
-				DrawTODOList();
-			} else {
-				DrawSubFileHeader();
+				EditorApplication.RepaintProjectWindow();
 			}
 
+			if(inkFile.isMaster) {
+				EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+				DrawMasterFileHeader();
+				
+				EditorGUILayout.Space();
+				
+				// There's no point letting users compile when recursive INCLUDE files exist, so hide anything else while they exist!
+				if(inkFile.hasRecursiveIncludeErrorPaths) {
+					EditorGUILayout.HelpBox("A recursive INCLUDE connection exists in this ink file's INCLUDE hierarchy.\nThe offending INCLUDE(s) can be found at the following file(s):\n"+string.Join("\n", inkFile.recursiveIncludeErrorPaths.Select(x => "• "+x)), MessageType.Error);
+				} else {
+					if(inkFile.hasUnhandledCompileErrors) {
+						EditorGUILayout.HelpBox("Last compiled failed", MessageType.Error);
+					} if(inkFile.hasErrors) {
+						EditorGUILayout.HelpBox("Last compiled had errors", MessageType.Error);
+					} else if(inkFile.hasWarnings) {
+						EditorGUILayout.HelpBox("Last compile had warnings", MessageType.Warning);
+					} else if(inkFile.jsonAsset == null) {
+						EditorGUILayout.HelpBox("Ink file has not been compiled", MessageType.Warning);
+					}
+					if(inkFile.requiresCompile && GUILayout.Button("Compile")) {
+						InkCompiler.CompileInk(inkFile);
+					}
+					
+					DrawCompileErrors();
+					DrawErrors();
+					DrawWarnings();
+					DrawTODOList();
+				}
+
+				DrawIncludedFiles();
+				EditorGUILayout.EndVertical();
+				
+				EditorGUILayout.Space();
+			}
+
+			if (inkFile.isIncludeFile) {
+				EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+				EditorGUILayout.LabelField(new GUIContent("Include File", InkBrowserIcons.childIconLarge, "This file is included by at least one other file"), EditorStyles.boldLabel);
+				DrawListOfMasterFiles();
+				EditorGUILayout.EndVertical();
+				
+				EditorGUILayout.Space();
+			}
+			
 			DrawFileContents ();
 			
 
@@ -309,17 +340,31 @@ namespace Ink.UnityIntegration {
 		}
 
 		void DrawMasterFileHeader () {
-			EditorGUILayout.LabelField("Master File", EditorStyles.boldLabel);
-			if(!InkSettings.Instance.compileAutomatically) {
-				inkFile.compileAutomatically = EditorGUILayout.Toggle("Compile Automatially", inkFile.compileAutomatically);
-				EditorApplication.RepaintProjectWindow();
+			EditorGUILayout.LabelField(new GUIContent("Master File", "This file is a master file and can be compiled"), EditorStyles.boldLabel);
+			
+			if(inkFile.jsonAsset != null && inkFile.errors.Count == 0 && GUILayout.Button("Play")) {
+				InkPlayerWindow.LoadAndPlay(inkFile.jsonAsset);
 			}
+			
+			EditorGUILayout.Space();
+			
 			EditorGUI.BeginDisabledGroup(true);
 			EditorGUILayout.ObjectField("JSON Asset", inkFile.jsonAsset, typeof(TextAsset), false);
 			EditorGUI.EndDisabledGroup();
-
-			if(inkFile.jsonAsset != null && inkFile.metaInfo.errors.Count == 0 && GUILayout.Button("Play")) {
-				InkPlayerWindow.LoadAndPlay(inkFile.jsonAsset);
+			DrawEditAndCompileDates(inkFile);
+			if(!InkSettings.instance.compileAllFilesAutomatically) {
+				EditorGUI.BeginChangeCheck();
+				var newCompileAutomatically = EditorGUILayout.Toggle(new GUIContent("Compile Automatially", "If true, this file recompiles automatically when any changes are detected."), InkSettings.instance.ShouldCompileInkFileAutomatically(inkFile));
+				if(EditorGUI.EndChangeCheck()) {
+					if(newCompileAutomatically) {
+						InkSettings.instance.filesToCompileAutomatically.Add(inkFile.inkAsset);
+						EditorUtility.SetDirty(InkSettings.instance);
+					} else {
+						InkSettings.instance.filesToCompileAutomatically.Remove(inkFile.inkAsset);
+						EditorUtility.SetDirty(InkSettings.instance);
+					}
+				}
+				EditorApplication.RepaintProjectWindow();
 			}
 
 //				if(!checkedStoryForErrors) {
@@ -334,9 +379,8 @@ namespace Ink.UnityIntegration {
 //					}
 //				}
 		}
-
-		void DrawSubFileHeader() {
-			EditorGUILayout.LabelField("Include File", EditorStyles.boldLabel);
+		
+		void DrawListOfMasterFiles() {
 			if(mastersFileList != null && mastersFileList.count > 0) {
 				mastersFileList.DoLayoutList();
 			}
@@ -344,13 +388,13 @@ namespace Ink.UnityIntegration {
 
 		void DrawEditAndCompileDates (InkFile masterInkFile) {
 			string editAndCompileDateString = "";
-			DateTime lastEditDate = inkFile.metaInfo.lastEditDate;
+			DateTime lastEditDate = inkFile.lastEditDate;
 			editAndCompileDateString += "Last edit date "+lastEditDate.ToString();
 			if(masterInkFile.jsonAsset != null) {
-				DateTime lastCompileDate = masterInkFile.metaInfo.lastCompileDate;
+				DateTime lastCompileDate = masterInkFile.lastCompileDate;
 				editAndCompileDateString += "\nLast compile date "+lastCompileDate.ToString();
 				if(lastEditDate > lastCompileDate) {
-                    if(EditorApplication.isPlaying && InkSettings.Instance.delayInPlayMode) {
+                    if(EditorApplication.isPlaying && InkSettings.instance.delayInPlayMode) {
 					    editAndCompileDateString += "\nWill compile on exiting play mode";
                         EditorGUILayout.HelpBox(editAndCompileDateString, MessageType.Info);
                     } else {
@@ -371,7 +415,7 @@ namespace Ink.UnityIntegration {
 		}
 
 		void DrawCompileErrors () {
-			if(inkFile.metaInfo.unhandledCompileErrors.Count == 0) 
+			if(inkFile.unhandledCompileErrors.Count == 0) 
 				return;
 			EditorGUILayout.BeginVertical(GUI.skin.box);
 			EditorGUILayout.HelpBox("Compiler bug prevented compilation of JSON file. Please help us fix it by reporting this as a bug.", MessageType.Error);
@@ -383,7 +427,7 @@ namespace Ink.UnityIntegration {
 				Application.OpenURL("mailto:info@inklestudios.com");
 			}
 			EditorGUILayout.EndHorizontal();
-			foreach(string compileError in inkFile.metaInfo.unhandledCompileErrors) {
+			foreach(string compileError in inkFile.unhandledCompileErrors) {
 				GUILayout.TextArea(compileError);
 			}
 			EditorGUILayout.EndVertical();

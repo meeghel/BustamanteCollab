@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b73f0a3fcc846c8a4e62058369e130, type: 3}
+  m_Name: LlaveCasa
+  m_EditorClassIdentifier: 
+  name: Llave de la Casa
+  description: "Es la llave de la casa. \xA1De las viejitas!"
+  icon: {fileID: 225846680, guid: 3ecca9b3c51f0a447a4bb2a18c53e54f, type: 3}
+  animatorController: {fileID: 0}
+  price: 0
+  canSell: 0
+  isKey: 0
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  isSpecialKey: 0

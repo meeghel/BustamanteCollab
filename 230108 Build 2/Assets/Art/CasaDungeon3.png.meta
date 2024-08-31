@@ -1071,7 +1071,7 @@ TextureImporter:
       213: 216318136067162902
     second: CasaPuertaRightOpen
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -1088,9 +1088,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1100,8 +1103,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1122,21 +1125,27 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -1149,6 +1158,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -1161,6 +1171,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1297,9 +1321,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 272
-        width: 16
-        height: 16
+        y: 240
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1309,27 +1333,6 @@ TextureImporter:
       bones: []
       spriteID: 7c0a323018a1562d0800000000000000
       internalID: -3286191211691138873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 272
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90085e68eab9c5260800000000000000
-      internalID: 7087711087464120329
       vertices: []
       indices: 
       edges: []
@@ -1666,48 +1669,6 @@ TextureImporter:
       bones: []
       spriteID: 89bdb6883e6107f80800000000000000
       internalID: -8110957762392106088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_24
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51f97d077c0a0da60800000000000000
-      internalID: 7696828541628292885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_25
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 256
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a35d8097b43cf5160800000000000000
-      internalID: 7016541473387107642
       vertices: []
       indices: 
       edges: []
@@ -2086,48 +2047,6 @@ TextureImporter:
       bones: []
       spriteID: bd34b5f9c044ad4d0800000000000000
       internalID: -3109097771742051365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_44
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42a2db195068e13a0800000000000000
-      internalID: -6692764637747926492
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_45
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 240
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ea8302c3bb02d800800000000000000
-      internalID: 635583364094724832
       vertices: []
       indices: 
       edges: []
@@ -4510,9 +4429,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 240
-        y: 144
-        width: 16
-        height: 16
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4522,27 +4441,6 @@ TextureImporter:
       bones: []
       spriteID: 4a43fb0c7f9ffbf30800000000000000
       internalID: 4593664987427189924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_160
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 144
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4a7353711771a960800000000000000
-      internalID: 7611495762065848910
       vertices: []
       indices: 
       edges: []
@@ -4921,48 +4819,6 @@ TextureImporter:
       bones: []
       spriteID: 0ba304be6369e5550800000000000000
       internalID: 6151519303653931696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_179
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06dbddfe6cc9f0d30800000000000000
-      internalID: 4399907739206008160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_180
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e4e55db67ffbd4a0800000000000000
-      internalID: -6567374746141989656
       vertices: []
       indices: 
       edges: []
@@ -6190,9 +6046,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 208
-        y: 80
-        width: 16
-        height: 16
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6202,27 +6058,6 @@ TextureImporter:
       bones: []
       spriteID: 83d8bf61b1c4274d0800000000000000
       internalID: -3138362311090401992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_240
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 80
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9bad4c8edef8cce0800000000000000
-      internalID: -1384576653626332257
       vertices: []
       indices: 
       edges: []
@@ -6547,9 +6382,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 176
-        y: 64
-        width: 16
-        height: 16
+        y: 48
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -6559,69 +6394,6 @@ TextureImporter:
       bones: []
       spriteID: d5db32e3fcb43ca20800000000000000
       internalID: 3081389923524394333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_257
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a2b90584d0701300800000000000000
-      internalID: 220800439808537252
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_258
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 767ecd03f1121a450800000000000000
-      internalID: 6098191788283848551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_259
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 64
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 198f7e6286f50b9a0800000000000000
-      internalID: -6219366184464680815
       vertices: []
       indices: 
       edges: []
@@ -6979,90 +6751,6 @@ TextureImporter:
       bones: []
       spriteID: 94f610074de6201c0800000000000000
       internalID: -4538943615744774327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_277
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d52872b2b835ad50800000000000000
-      internalID: 6747861956834108880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_278
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9e7f57cb80faed80800000000000000
-      internalID: -8220493686675374436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_279
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a28723bcee748d90800000000000000
-      internalID: -7096407557745966427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CasaDungeon3_280
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 350ea0ca6b5d4f410800000000000000
-      internalID: 1510066755623116883
       vertices: []
       indices: 
       edges: []
@@ -8652,9 +8340,365 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      CasaDungeon3_10: 68731862024831123
+      CasaDungeon3_100: 348359897506635316
+      CasaDungeon3_101: -8015627096119804661
+      CasaDungeon3_102: -457406853311300134
+      CasaDungeon3_103: 1142898161411535852
+      CasaDungeon3_104: -1027834610031408432
+      CasaDungeon3_105: 2036526703493026833
+      CasaDungeon3_106: -2272365559603919147
+      CasaDungeon3_107: 9006668340448660550
+      CasaDungeon3_108: -1182702353766551389
+      CasaDungeon3_109: 8986174078837546625
+      CasaDungeon3_11: -4326975197696169727
+      CasaDungeon3_110: -4206052223036495178
+      CasaDungeon3_111: -2053771903002006120
+      CasaDungeon3_112: 6165509010642975938
+      CasaDungeon3_113: -6615840253810434973
+      CasaDungeon3_114: 8663673105916574302
+      CasaDungeon3_115: -6086024632523647274
+      CasaDungeon3_116: -6115329643754079266
+      CasaDungeon3_117: -8125341538412220990
+      CasaDungeon3_118: 4598915517083822582
+      CasaDungeon3_119: 6203996189919887180
+      CasaDungeon3_12: 306954754190429029
+      CasaDungeon3_120: -6238640137671125239
+      CasaDungeon3_121: -1389009187755988651
+      CasaDungeon3_122: 4841000127432728323
+      CasaDungeon3_123: -6567158456191868385
+      CasaDungeon3_124: 7439469499595093567
+      CasaDungeon3_125: -2008244624851095038
+      CasaDungeon3_126: -6795865727401894179
+      CasaDungeon3_127: 9143923154660138341
+      CasaDungeon3_128: -8294582471005923130
+      CasaDungeon3_129: -6984306738900771435
+      CasaDungeon3_13: 3429720524031866613
+      CasaDungeon3_130: 3554864121842822509
+      CasaDungeon3_131: 8348869958018000907
+      CasaDungeon3_132: 2959605583290745997
+      CasaDungeon3_133: 4920375525255901038
+      CasaDungeon3_134: 729563375430004833
+      CasaDungeon3_135: 1198785432081699875
+      CasaDungeon3_136: 6654158471715470205
+      CasaDungeon3_137: -6355583168499984276
+      CasaDungeon3_138: 9009892697476917645
+      CasaDungeon3_139: 1205907411025721071
+      CasaDungeon3_14: 8794604071625112019
+      CasaDungeon3_140: -3472313020901020819
+      CasaDungeon3_141: 4701765914043430409
+      CasaDungeon3_142: 7623634072182092851
+      CasaDungeon3_143: -4344951752774094422
+      CasaDungeon3_144: -5880187280084380871
+      CasaDungeon3_145: -6889819846635426680
+      CasaDungeon3_146: -7473346197260185075
+      CasaDungeon3_147: 6693156110179892610
+      CasaDungeon3_148: -5004701736548589810
+      CasaDungeon3_149: -664182287104596101
+      CasaDungeon3_15: -4994252287598820420
+      CasaDungeon3_150: -2482852854859766981
+      CasaDungeon3_151: 8607238896693989656
+      CasaDungeon3_152: -8454943651188343362
+      CasaDungeon3_153: -4599262404701950390
+      CasaDungeon3_154: -9091162181879695393
+      CasaDungeon3_155: 4287256739318290849
+      CasaDungeon3_156: 7847440773754534700
+      CasaDungeon3_157: -1301645568261837537
+      CasaDungeon3_158: -3541325595000875493
+      CasaDungeon3_159: 4593664987427189924
+      CasaDungeon3_16: -179089723568700155
+      CasaDungeon3_160: 7611495762065848910
+      CasaDungeon3_161: -3685098992645654477
+      CasaDungeon3_162: 2768299779329235698
+      CasaDungeon3_163: 6027996431505428795
+      CasaDungeon3_164: -2014579243949560633
+      CasaDungeon3_165: -8585953397029248942
+      CasaDungeon3_166: 581091779550804596
+      CasaDungeon3_167: 9000908338737627592
+      CasaDungeon3_168: 3158976515537373739
+      CasaDungeon3_169: -544031574913419779
+      CasaDungeon3_17: 963225778321985662
+      CasaDungeon3_170: 4351185269073378302
+      CasaDungeon3_171: -5041466620625581284
+      CasaDungeon3_172: -5606089853329595577
+      CasaDungeon3_173: 3290448181939030517
+      CasaDungeon3_174: -5515840384324381710
+      CasaDungeon3_175: -1327308005292916560
+      CasaDungeon3_176: 8237855984215292505
+      CasaDungeon3_177: -6771297304265674567
+      CasaDungeon3_178: 6151519303653931696
+      CasaDungeon3_179: 4399907739206008160
+      CasaDungeon3_18: 2775077369332507514
+      CasaDungeon3_180: -6567374746141989656
+      CasaDungeon3_181: 777655933507468883
+      CasaDungeon3_182: -5539962560220706813
+      CasaDungeon3_183: -408996012462755635
+      CasaDungeon3_184: -8296427731589696268
+      CasaDungeon3_185: 778081244437551637
+      CasaDungeon3_186: -329262599255761276
+      CasaDungeon3_187: 1960083459405408075
+      CasaDungeon3_188: 2057867503074931669
+      CasaDungeon3_189: 7559708471318842900
+      CasaDungeon3_19: -4114944001705443894
+      CasaDungeon3_190: -4112462270710019713
+      CasaDungeon3_191: 3467244357671560479
+      CasaDungeon3_192: -3918791940092304834
+      CasaDungeon3_193: 1689277249826030528
+      CasaDungeon3_194: -4322580827143327877
+      CasaDungeon3_195: -3964025065418565766
+      CasaDungeon3_196: -8608839741134538647
+      CasaDungeon3_197: -8906056720252635533
+      CasaDungeon3_198: -7024479538305467653
+      CasaDungeon3_199: 4233185584645024547
+      CasaDungeon3_2: -7393677780109923721
+      CasaDungeon3_20: 914179198403216598
+      CasaDungeon3_200: 9071688626296472982
+      CasaDungeon3_201: 5820561675117506839
+      CasaDungeon3_202: 7308564465766039089
+      CasaDungeon3_203: -2700511157455922207
+      CasaDungeon3_204: -3606984108180335236
+      CasaDungeon3_205: 8501342053943085863
+      CasaDungeon3_206: -7051190412802221869
+      CasaDungeon3_207: -5607589451195477180
+      CasaDungeon3_208: -2246418242742308560
+      CasaDungeon3_209: -4125386079772626211
+      CasaDungeon3_21: 1989632290267657317
+      CasaDungeon3_210: 3421372890737870562
+      CasaDungeon3_211: -3549300075859957817
+      CasaDungeon3_212: -8950399900940765013
+      CasaDungeon3_213: 3968184048179005256
+      CasaDungeon3_214: -4770091718434714965
+      CasaDungeon3_215: -5534715303409631148
+      CasaDungeon3_216: 5846708170083853554
+      CasaDungeon3_217: 5395557969952555288
+      CasaDungeon3_218: -5962558970798269221
+      CasaDungeon3_219: -5269455509741883157
+      CasaDungeon3_22: -7915573696660107907
+      CasaDungeon3_220: -44061061685825204
+      CasaDungeon3_221: 3338714317564874912
+      CasaDungeon3_222: -2735855388046682598
+      CasaDungeon3_223: -5968093764590351699
+      CasaDungeon3_224: 9022710632283244700
+      CasaDungeon3_225: 1129630818416758971
+      CasaDungeon3_226: -3453395813011409955
+      CasaDungeon3_227: 4968144044693048955
+      CasaDungeon3_228: 36899081406878580
+      CasaDungeon3_229: 2358044341303305174
+      CasaDungeon3_23: -8110957762392106088
+      CasaDungeon3_230: -7109437933566237154
+      CasaDungeon3_231: -966514874273808307
+      CasaDungeon3_232: -176984167805689013
+      CasaDungeon3_233: 4227694231784751884
+      CasaDungeon3_234: 8294172033647954588
+      CasaDungeon3_235: -7059999753108832620
+      CasaDungeon3_236: 1663760641540224537
+      CasaDungeon3_237: -2304099576275875105
+      CasaDungeon3_238: 1930210977606497478
+      CasaDungeon3_239: -3138362311090401992
+      CasaDungeon3_24: 7696828541628292885
+      CasaDungeon3_240: -1384576653626332257
+      CasaDungeon3_241: -1429025982977804659
+      CasaDungeon3_242: -4349430069235404134
+      CasaDungeon3_243: -636397163418712206
+      CasaDungeon3_244: -6412223317586103020
+      CasaDungeon3_245: 2064925537169013340
+      CasaDungeon3_246: -246068301053771941
+      CasaDungeon3_247: -8375044731970836142
+      CasaDungeon3_248: -4959711001467927529
+      CasaDungeon3_249: 8696269159375275611
+      CasaDungeon3_25: 7016541473387107642
+      CasaDungeon3_250: 8835472594415850036
+      CasaDungeon3_251: -3289350826361840963
+      CasaDungeon3_252: -4393044097406644161
+      CasaDungeon3_253: 5447941476854618207
+      CasaDungeon3_254: 566673388588866271
+      CasaDungeon3_255: 137352519639737188
+      CasaDungeon3_256: 3081389923524394333
+      CasaDungeon3_257: 220800439808537252
+      CasaDungeon3_258: 6098191788283848551
+      CasaDungeon3_259: -6219366184464680815
+      CasaDungeon3_26: 6411106414014136629
+      CasaDungeon3_260: -6712088579192621877
+      CasaDungeon3_261: 4563572472496483522
+      CasaDungeon3_262: 625249729110039006
+      CasaDungeon3_263: 9209691566047942415
+      CasaDungeon3_264: 4745853964893956211
+      CasaDungeon3_265: 7436667666287777573
+      CasaDungeon3_266: 3364249636879940293
+      CasaDungeon3_267: 6840276829042914613
+      CasaDungeon3_268: -755709217316121797
+      CasaDungeon3_269: 928402543415131026
+      CasaDungeon3_27: -5795837834526524194
+      CasaDungeon3_270: 4715501131445266911
+      CasaDungeon3_271: -343750116037161039
+      CasaDungeon3_272: 2108986253238077819
+      CasaDungeon3_273: 3184794875297530714
+      CasaDungeon3_274: 3917506431117676537
+      CasaDungeon3_275: -5487426648277579775
+      CasaDungeon3_276: -4538943615744774327
+      CasaDungeon3_277: 6747861956834108880
+      CasaDungeon3_278: -8220493686675374436
+      CasaDungeon3_279: -7096407557745966427
+      CasaDungeon3_28: 1501718899726143137
+      CasaDungeon3_280: 1510066755623116883
+      CasaDungeon3_281: 701404519430814440
+      CasaDungeon3_282: 7107491987772632663
+      CasaDungeon3_283: -4732592667458192813
+      CasaDungeon3_284: -1909115334677797633
+      CasaDungeon3_285: 2354506917693343337
+      CasaDungeon3_286: 333692452354710820
+      CasaDungeon3_287: -8286385101901639602
+      CasaDungeon3_288: 1312872392205893577
+      CasaDungeon3_289: 8657692042624684859
+      CasaDungeon3_29: 4568832845689062557
+      CasaDungeon3_290: 2479078468769885566
+      CasaDungeon3_291: -9109856661208631846
+      CasaDungeon3_292: -7035430741444304321
+      CasaDungeon3_293: -2664197372430836490
+      CasaDungeon3_294: -7050214865529637111
+      CasaDungeon3_295: -3222088462663334314
+      CasaDungeon3_296: 4602752878841764843
+      CasaDungeon3_297: 6536680090890774653
+      CasaDungeon3_298: -7391461524429014348
+      CasaDungeon3_299: -4484177892614467629
+      CasaDungeon3_3: 2757097769422644972
+      CasaDungeon3_30: -2354760590473961884
+      CasaDungeon3_300: 4497032855687960941
+      CasaDungeon3_301: 3257392050856679669
+      CasaDungeon3_302: -7664204535290053215
+      CasaDungeon3_303: -1604822036500288647
+      CasaDungeon3_304: -900756450199402905
+      CasaDungeon3_305: -7713127388863428001
+      CasaDungeon3_306: 5458810562678030577
+      CasaDungeon3_307: 5372472102976337420
+      CasaDungeon3_308: 5536628687845522521
+      CasaDungeon3_309: 7563316971956778138
+      CasaDungeon3_31: 6301915838729218724
+      CasaDungeon3_310: -3631519033952607482
+      CasaDungeon3_311: 8394430197644842721
+      CasaDungeon3_312: -6424294729879798070
+      CasaDungeon3_313: -9003378987673011521
+      CasaDungeon3_314: -1730917491967532710
+      CasaDungeon3_315: -4437397579867713586
+      CasaDungeon3_316: 5176592914016780277
+      CasaDungeon3_317: -8322155057718227499
+      CasaDungeon3_318: -8468730710732530377
+      CasaDungeon3_319: 5342607820217559858
+      CasaDungeon3_32: 3764364198885460054
+      CasaDungeon3_320: -2433296403224273005
+      CasaDungeon3_321: 3244639483928953004
+      CasaDungeon3_322: -1109535193206748282
+      CasaDungeon3_323: 3547661489319081965
+      CasaDungeon3_324: 7979126708987654601
+      CasaDungeon3_325: -5718544616431524220
+      CasaDungeon3_326: 1086408209508425754
+      CasaDungeon3_327: -8454625760080160474
+      CasaDungeon3_328: 6809582218016187333
+      CasaDungeon3_329: -947805903904966084
+      CasaDungeon3_33: 43973962395637474
+      CasaDungeon3_330: 4284965607715712070
+      CasaDungeon3_331: -9193641374239242397
+      CasaDungeon3_332: 6103764499920806765
+      CasaDungeon3_333: 7460507737645802917
+      CasaDungeon3_334: 996634923826223057
+      CasaDungeon3_335: -1538754928262920842
+      CasaDungeon3_336: -6279194364677360636
+      CasaDungeon3_337: 8972832734336548870
+      CasaDungeon3_338: -2839356317138645053
+      CasaDungeon3_339: -7415753105493164972
+      CasaDungeon3_34: 1599669163473169629
+      CasaDungeon3_340: 6894658352363136345
+      CasaDungeon3_341: -7084955725471989003
+      CasaDungeon3_342: 542525715954477943
+      CasaDungeon3_343: -3184870957797963232
+      CasaDungeon3_344: -8838189145973507870
+      CasaDungeon3_345: -8547121114001176425
+      CasaDungeon3_346: -2340458270533037639
+      CasaDungeon3_347: -7721229816586482207
+      CasaDungeon3_35: 409968019381731511
+      CasaDungeon3_36: 5381004870545417785
+      CasaDungeon3_37: 3738578725844775667
+      CasaDungeon3_38: -3536944738053116040
+      CasaDungeon3_39: 3261920386699876207
+      CasaDungeon3_4: -8566492602558749828
+      CasaDungeon3_40: -6563558519049518346
+      CasaDungeon3_41: 6484407261272946025
+      CasaDungeon3_42: -6754050989484128144
+      CasaDungeon3_43: -3109097771742051365
+      CasaDungeon3_44: -6692764637747926492
+      CasaDungeon3_45: 635583364094724832
+      CasaDungeon3_46: -8399139995190068724
+      CasaDungeon3_47: -909117254261578837
+      CasaDungeon3_48: 1230083774912013229
+      CasaDungeon3_49: 5847524249651612231
+      CasaDungeon3_5: -3961264873508307822
+      CasaDungeon3_50: -2668791213448373370
+      CasaDungeon3_51: 2560052998827580249
+      CasaDungeon3_52: 7293600943995772358
+      CasaDungeon3_53: -4029747102352564830
+      CasaDungeon3_54: 2358570721776029433
+      CasaDungeon3_55: 4428786494470584573
+      CasaDungeon3_56: -6170202464355795774
+      CasaDungeon3_57: -8157353022925252229
+      CasaDungeon3_58: -1074333064325134473
+      CasaDungeon3_59: 3808748794196838512
+      CasaDungeon3_6: -3286191211691138873
+      CasaDungeon3_60: -3216461234740484360
+      CasaDungeon3_61: -3896949288284996784
+      CasaDungeon3_62: 5774591389529834036
+      CasaDungeon3_63: 7381787050832128949
+      CasaDungeon3_64: -1873639500090210284
+      CasaDungeon3_65: 7502917771085223956
+      CasaDungeon3_66: -7747509243493278954
+      CasaDungeon3_67: -482832529765897519
+      CasaDungeon3_68: 6336205272949364657
+      CasaDungeon3_69: -7750063943687938181
+      CasaDungeon3_7: 7087711087464120329
+      CasaDungeon3_70: -3276590085322886076
+      CasaDungeon3_71: 3150448560934459810
+      CasaDungeon3_72: 8291645363175604269
+      CasaDungeon3_73: 6305786304028867789
+      CasaDungeon3_74: -5215242431757881848
+      CasaDungeon3_75: -8081864072347696964
+      CasaDungeon3_76: 3359425794025737934
+      CasaDungeon3_77: 7594689249234314559
+      CasaDungeon3_78: 8312495801748583496
+      CasaDungeon3_79: -4301327016416543629
+      CasaDungeon3_8: 5706719657072055220
+      CasaDungeon3_80: -4729139439793965891
+      CasaDungeon3_81: -3318551760035429134
+      CasaDungeon3_82: -6181413930436076600
+      CasaDungeon3_83: -3557306961080473177
+      CasaDungeon3_84: 3121284560800943280
+      CasaDungeon3_85: 4737361513293742659
+      CasaDungeon3_86: -6047640571849128201
+      CasaDungeon3_87: 7437623681132947107
+      CasaDungeon3_88: 1907037613246545708
+      CasaDungeon3_89: -6272718822731427402
+      CasaDungeon3_9: -7663697108627904905
+      CasaDungeon3_90: 8107740523524277200
+      CasaDungeon3_91: 2986368806712780801
+      CasaDungeon3_92: 3830427850860192572
+      CasaDungeon3_93: 3865050303371008761
+      CasaDungeon3_94: -8611621107565841158
+      CasaDungeon3_95: 6666941185559855362
+      CasaDungeon3_96: -3826046598365638280
+      CasaDungeon3_97: 7152519719645741539
+      CasaDungeon3_98: -1760740680892267074
+      CasaDungeon3_99: -2937977062567593437
+      CasaPuertaDownLocked: -2972329094664654466
+      CasaPuertaDownOpen: -8417502480574747448
+      CasaPuertaLeftLocked: -780829905594204223
+      CasaPuertaLeftOpen: -5248464417147029047
+      CasaPuertaRightLocked: 3815727119825032778
+      CasaPuertaRightOpen: 216318136067162902
+      CasaPuertaUpLocked: 5866377918213946890
+      CasaPuertaUpOpen: 5297419848552696871
+      Switch Down: 1685734522183567747
+      Switch Up: 7510121302899872817
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
