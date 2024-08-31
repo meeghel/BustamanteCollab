@@ -14,7 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bate
   description: Little League bat
-  icon: {fileID: 21300000, guid: 091f080dff8a94467af30cc391ba94c1, type: 3}
+  icon: {fileID: -1791729445, guid: dcca247747efe564b9991bbcfcaae3c9, type: 3}
+  animatorController: {fileID: 9100000, guid: 832dd96315df77641b09c78d128a1e3c, type: 2}
+  price: 0
+  canSell: 0
   thisEvent:
     m_PersistentCalls:
       m_Calls: []
+  weaponType: 0
+  damage: 1
+  range: 0
+  gasCost: 0
+  arrow: {fileID: 0}
+  modelPrefab: {fileID: 5428098945035171020, guid: dec2de34004a57841b7591b3b20f9cce,
+    type: 3}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnRotation: {x: 0, y: 0, z: 0}
+  fireRate: 0

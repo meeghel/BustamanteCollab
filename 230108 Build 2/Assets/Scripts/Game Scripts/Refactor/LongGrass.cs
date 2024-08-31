@@ -13,6 +13,7 @@ public class LongGrass : MonoBehaviour, IPlayerTriggerable
             //GameController.Instance.StartBattle();
             // TODO video #45 25:00
             //player.Character.Animator.IsMoving = false;
+            player.Animator.SetBool("isMoving", false);
             Debug.Log("Encontraste un pokemon");
         }
     }

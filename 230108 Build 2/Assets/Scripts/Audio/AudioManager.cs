@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
     }
 }
 
-public enum AudioId { UISelect, Hit, Death, HitEnemy, ItemObtained, Coin }
+public enum AudioId { UISelect, Hit, Death, HitEnemy, ItemObtained, Coin, DoorOpen, PushCrate }
 
 [System.Serializable]
 public class AudioData

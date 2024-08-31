@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878c4397c1ab8425790cfc8b6f9ecf61, type: 3}
+  m_Name: Gas
+  m_EditorClassIdentifier: 
+  loots:
+  - thisLoot: {fileID: 2961049301650052769, guid: ba726ad12c638df499678faf8fa6cd11,
+      type: 3}
+    lootChance: 50
+  - thisLoot: {fileID: 8752454742883119316, guid: f767cbc60ecdbbb479c0a83f5c0a9fe7,
+      type: 3}
+    lootChance: 20
+  - thisLoot: {fileID: 7936692856937991608, guid: fb9e5f58ac9de5f4b8f7e5a120aa9ad8,
+      type: 3}
+    lootChance: 5

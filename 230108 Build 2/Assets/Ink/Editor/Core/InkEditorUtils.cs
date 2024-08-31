@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
@@ -11,60 +10,40 @@ using UnityEditor.Callbacks;
 using Path = System.IO.Path;
 
 namespace Ink.UnityIntegration {
-
-	class CreateInkAssetAction : EndNameEditAction {
-		public override void Action(int instanceId, string pathName, string resourceFile) {
-			var text = "";
-			if(File.Exists(resourceFile)) {
-				StreamReader streamReader = new StreamReader(resourceFile);
-				text = streamReader.ReadToEnd();
-				streamReader.Close();
-			}
-			UnityEngine.Object asset = CreateScriptAsset(pathName, text);
-			ProjectWindowUtil.ShowCreatedAsset(asset);
-		}
-		
-		internal static UnityEngine.Object CreateScriptAsset(string pathName, string text) {
-			string fullPath = Path.GetFullPath(pathName);
-			UTF8Encoding encoding = new UTF8Encoding(true, false);
-			bool append = false;
-			StreamWriter streamWriter = new StreamWriter(fullPath, append, encoding);
-			streamWriter.Write(text);
-			streamWriter.Close();
-			AssetDatabase.ImportAsset(pathName);
-			return AssetDatabase.LoadAssetAtPath(pathName, typeof(DefaultAsset));
-		}
-	}
-    
 	[InitializeOnLoad]
 	public static class InkEditorUtils {
+		class CreateInkAssetAction : EndNameEditAction {
+			public override void Action(int instanceId, string pathName, string resourceFile) {
+				var text = "";
+				if(File.Exists(resourceFile)) {
+					StreamReader streamReader = new StreamReader(resourceFile);
+					text = streamReader.ReadToEnd();
+					streamReader.Close();
+				}
+				var assetPath = CreateScriptAsset(pathName, text);
+				var asset = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(assetPath);
+				ProjectWindowUtil.ShowCreatedAsset(asset);
+			}
+		}
 		public const string inkFileExtension = ".ink";
 		const string lastCompileTimeKey = "InkIntegrationLastCompileTime";
 
-		static InkEditorUtils () {
-			float lastCompileTime = LoadAndSaveLastCompileTime();
-			if(EditorApplication.timeSinceStartup < lastCompileTime)
-				OnOpenUnityEditor();
+		private static Texture2D _inkLogoIcon;
+		public static Texture2D inkLogoIcon {
+			get {
+				if(_inkLogoIcon == null) {
+					_inkLogoIcon = Resources.Load<Texture2D>("InkLogoIcon");
+				}
+				return _inkLogoIcon;
+			}
 		}
 
-		static float LoadAndSaveLastCompileTime () {
-			float lastCompileTime = 0;
-			if(EditorPrefs.HasKey(lastCompileTimeKey))
-				lastCompileTime = EditorPrefs.GetFloat(lastCompileTimeKey);
-			EditorPrefs.SetFloat(lastCompileTimeKey, (float)EditorApplication.timeSinceStartup);
-			return lastCompileTime;
-		}
-
-		static void OnOpenUnityEditor () {
-			InkLibrary.Rebuild();
-		}
-
-		[MenuItem("Assets/Rebuild Ink Library", false, 60)]
+		[MenuItem("Assets/Rebuild Ink Library", false, 200)]
 		public static void RebuildLibrary() {
 			InkLibrary.Rebuild();
 		}
 
-		[MenuItem("Assets/Recompile Ink", false, 61)]
+		[MenuItem("Assets/Recompile Ink", false, 201)]
 		public static void RecompileAll() {
 			var filesToRecompile = InkLibrary.FilesCompiledByRecompileAll().ToArray();
 			string logString = filesToRecompile.Any() ? 
@@ -74,17 +53,55 @@ namespace Ink.UnityIntegration {
 			InkCompiler.CompileInk(filesToRecompile);
 		}
 
+        public static void RecompileAllImmediately() {
+            var filesToRecompile = InkLibrary.FilesCompiledByRecompileAll().ToArray();
+            string logString = filesToRecompile.Any() ? 
+                                   "Recompile All Immediately will compile "+string.Join(", ", filesToRecompile.Select(x => Path.GetFileName(x.filePath)).ToArray()) :
+                                   "No valid ink found. Note that only files with 'Compile Automatic' checked are compiled if not set to compile all files automatically in InkSettings file.";
+            Debug.Log(logString);
+            InkCompiler.CompileInk(filesToRecompile, true, null);
+        }
+
+
 
 		[MenuItem("Assets/Create/Ink", false, 120)]
-		public static void CreateNewInkFile () {
+		public static void CreateNewInkFileAtSelectedPathWithTemplateAndStartNameEditing () {
 			string fileName = "New Ink.ink";
 			string filePath = AssetDatabase.GenerateUniqueAssetPath(Path.Combine(GetSelectedPathOrFallback(), fileName));
-			CreateNewInkFile(filePath, InkSettings.Instance.templateFilePath);
+			CreateNewInkFileAtPathWithTemplateAndStartNameEditing(filePath, InkSettings.instance.templateFilePath);
 		}
-
-		public static void CreateNewInkFile (string filePath, string templateFileLocation) {
+		
+		public static void CreateNewInkFileAtPathWithTemplateAndStartNameEditing (string filePath, string templateFileLocation) {
+			if(Path.GetExtension(filePath) != inkFileExtension) filePath += inkFileExtension;
 			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<CreateInkAssetAction>(), filePath, InkBrowserIcons.inkFileIcon, templateFileLocation);
 		}
+
+		public static DefaultAsset CreateNewInkFileAtPath (string filePath, string text) {
+			if(Path.GetExtension(filePath) != inkFileExtension) filePath += inkFileExtension;
+			var assetPath = CreateScriptAsset(filePath, text);
+			return AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
+		}
+		
+		static string CreateScriptAsset(string pathName, string text) {
+			string fullPath = Path.GetFullPath(pathName);
+			fullPath = fullPath.Replace('\\', '/');
+			var assetRelativePath = fullPath;
+			if(fullPath.StartsWith(Application.dataPath)) {
+				assetRelativePath = fullPath.Substring(Application.dataPath.Length-6); 
+			}
+			var directoryPath = Path.GetDirectoryName(fullPath);
+			if(!Directory.Exists(directoryPath))
+				Directory.CreateDirectory(directoryPath);
+			UTF8Encoding encoding = new UTF8Encoding(true, false);
+			StreamWriter streamWriter = null;
+			streamWriter = new StreamWriter(fullPath, false, encoding);
+			streamWriter.Write(text);
+			streamWriter.Close();
+			AssetDatabase.ImportAsset(assetRelativePath);
+			return assetRelativePath;
+		}
+
+
 
 		private static string GetSelectedPathOrFallback() {
 			string path = "Assets";
@@ -115,6 +132,11 @@ namespace Ink.UnityIntegration {
 			Application.OpenURL("https://github.com/inkle/ink/blob/master/Documentation/RunningYourInk.md");
 		}
 
+		[MenuItem("Help/Ink/Discord (Community + Support...")]
+		public static void OpenDiscord() {
+			Application.OpenURL("https://discord.gg/inkle");
+		}
+
 		[MenuItem("Help/Ink/Donate...")]
 		public static void Donate() {
 			Application.OpenURL("https://www.patreon.com/inkle");
@@ -129,17 +151,22 @@ namespace Ink.UnityIntegration {
 		}
 
 		public static TextAsset CreateStoryStateTextFile (string jsonStoryState, string defaultPath = "Assets/Ink", string defaultName = "storyState") {
-			string name = AssetDatabase.GenerateUniqueAssetPath(Path.Combine(defaultPath, defaultName+".json")).Substring(defaultPath.Length+1);
+			string name = AssetDatabase.GenerateUniqueAssetPath(Path.Combine(defaultPath, defaultName+".json"));
+			if(!string.IsNullOrEmpty(defaultPath)) name = name.Substring(defaultPath.Length+1);
 			string fullPathName = EditorUtility.SaveFilePanel("Save Story State", defaultPath, name, "json");
 			if(fullPathName == "") 
 				return null;
 			using (StreamWriter outfile = new StreamWriter(fullPathName)) {
 				outfile.Write(jsonStoryState);
 			}
-			string relativePath = AbsoluteToUnityRelativePath(fullPathName);
-			AssetDatabase.ImportAsset(relativePath);
-			TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(relativePath);
-			return textAsset;
+			
+			if(fullPathName.StartsWith(Application.dataPath)) {
+				string relativePath = AbsoluteToUnityRelativePath(fullPathName);
+				AssetDatabase.ImportAsset(relativePath);
+				TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(relativePath);
+				return textAsset;
+			}
+			else return null;
 		}
 
 		public static bool StoryContainsVariables (Story story) {
@@ -190,40 +217,9 @@ namespace Ink.UnityIntegration {
 			}
 			return true;
 		}
-
-		public static string GetInklecateFilePath () {
-			if(InkSettings.Instance.customInklecateOptions.inklecate != null) {
-				return Path.GetFullPath(AssetDatabase.GetAssetPath(InkSettings.Instance.customInklecateOptions.inklecate));
-			} else {
-				#if UNITY_EDITOR
-				#if UNITY_EDITOR_WIN
-				string inklecateName = "inklecate_win.exe";
-				#endif
-				// Unfortunately inklecate's implementation uses newer features of C# that aren't
-				// available in the version of mono that ships with Unity, so we can't make use of
-				// it. This means that we need to compile the mono runtime directly into it, inflating
-				// the size of the executable quite dramatically :-( Hopefully we can improve that
-				// when Unity ships with a newer version.
-				#if UNITY_EDITOR_OSX
-				string inklecateName = "inklecate_mac";
-				#endif
-				// Experimental linux build
-				#if UNITY_EDITOR_LINUX
-				string inklecateName = "inklecate_win.exe";
-				#endif
-				#endif
-				
-				string[] inklecateDirectories = Directory.GetFiles(Application.dataPath, inklecateName, SearchOption.AllDirectories);
-				if(inklecateDirectories.Length == 0)
-					return null;
-
-				return Path.GetFullPath(inklecateDirectories[0]);
-			}
-		}
 		
 		// Returns a sanitized version of the supplied string by:
 		//    - swapping MS Windows-style file separators with Unix/Mac style file separators.
-		//
 		// If null is provided, null is returned.
 		public static string SanitizePathString(string path) {
 			if (path == null) {
@@ -238,7 +234,7 @@ namespace Ink.UnityIntegration {
 		public static string CombinePaths(string firstPath, string secondPath) {
             Debug.Assert(firstPath != null);
             Debug.Assert(secondPath != null);
-			return SanitizePathString(Path.Combine(firstPath, secondPath));
+			return SanitizePathString(firstPath+"/"+secondPath);
 		}
 
 		public static string AbsoluteToUnityRelativePath(string fullPath) {
@@ -267,63 +263,110 @@ namespace Ink.UnityIntegration {
 		public static void DrawStoryPropertyField (Rect position, Story story, GUIContent label) {
 			Debug.LogWarning("DrawStoryPropertyField has been moved from InkEditorUtils to InkPlayerWindow");
 		}
+		
+		/// <summary>
+		/// Checks to see if the given path is an ink file or not, regardless of extension.
+		/// </summary>
+		/// <param name="path">The path to check.</param>
+		/// <returns>True if it's an ink file, otherwise false.</returns>
+		public static bool IsInkFile(string path) {
+			string extension = Path.GetExtension(path);
+			if (extension == InkEditorUtils.inkFileExtension) {
+				return true;
+			}
 
-		public static bool FindOrCreateSingletonScriptableObjectOfType<T>(string defaultPath, out T obj) where T : ScriptableObject {
-			obj = FastFindAndEnforceSingletonScriptableObjectOfType<T>();
-			if (obj != null) return false;
-			// If we couldn't find the asset in the project, create a new one.
-			obj = CreateScriptableObject<T>(defaultPath);
-			Debug.Log("Created a new " + typeof(T).Name + " file at " + defaultPath + " because one was not found.");
-			return true;
+			return String.IsNullOrEmpty(extension) && InkLibrary.instance.inkLibrary.Exists(f => f.filePath == path);
 		}
 
-		static T CreateScriptableObject<T> (string defaultPath) where T : ScriptableObject {
-			var asset = ScriptableObject.CreateInstance<T>();
-			AssetDatabase.CreateAsset (asset, defaultPath);
-			AssetDatabase.SaveAssets ();
-			AssetDatabase.Refresh ();
-			return asset;
+
+
+		/// <summary>
+		/// Opens an ink file in the associated editor at the correct line number.
+		/// TODO - If the editor is inky, this code should load the master file, but immediately show the correct child file at the correct line.
+		/// </summary>
+		public static void OpenInEditor (InkFile inkFile, InkCompilerLog log) {
+			var targetFilePath = log.GetAbsoluteFilePath(inkFile);
+			// EditorUtility.OpenWithDefaultApp(targetFilePath);
+			AssetDatabase.OpenAsset(inkFile.inkAsset, log.lineNumber);
+			// Unity.CodeEditor.CodeEditor.OSOpenFile();
+#if UNITY_2019_1_OR_NEWER
+
+			// This function replaces OpenFileAtLineExternal, but I guess it's totally internal and can't be accessed.
+			// CodeEditorUtility.Editor.Current.OpenProject(targetFilePath, lineNumber);
+			// #pragma warning disable
+			// UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(targetFilePath, log.lineNumber);
+			// #pragma warning restore
+#else
+			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(targetFilePath, log.lineNumber);
+#endif
+		}
+		/// <summary>
+		/// Opens an ink file in the associated editor at the correct line number.
+		/// TODO - If the editor is inky, this code should load the master file, but immediately show the correct child file at the correct line.
+		/// </summary>
+		public static void OpenInEditor (string masterFilePath, string subFilePath, int lineNumber) {
+			if(!string.IsNullOrEmpty(subFilePath) && Path.GetFileName(masterFilePath) != subFilePath) {
+				Debug.LogWarning("Tried to open an ink file ("+subFilePath+") at line "+lineNumber+" but the file is an include file. This is not currently implemented. The master ink file will be opened at line 0 instead.");
+				lineNumber = 0;
+			}
+			#if UNITY_2019_1_OR_NEWER
+			// This function replaces OpenFileAtLineExternal, but I guess it's totally internal and can't be accessed.
+			// CodeEditorUtility.Editor.Current.OpenProject(masterFilePath, lineNumber);
+			#pragma warning disable
+			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(masterFilePath, lineNumber);
+			#pragma warning restore
+			#else
+			UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(masterFilePath, lineNumber);
+			#endif
 		}
 
-		public static T FastFindAndEnforceSingletonScriptableObjectOfType<T> () where T : ScriptableObject {
-			return FindAndEnforceSingletonScriptableObjectOfType<T>();
+
+
+
+		public static string FormatJson(string json) {
+			const string INDENT_STRING = "	";
+
+			int indentation = 0;
+			int quoteCount = 0;
+			var result = 
+				from ch in json
+				let quotes = ch == '"' ? quoteCount++ : quoteCount
+				let lineBreak = ch == ',' && quotes % 2 == 0 ? ch + Environment.NewLine +  String.Concat(Enumerable.Repeat(INDENT_STRING, indentation)) : null
+				let openChar = ch == '{' || ch == '[' ? ch + Environment.NewLine + String.Concat(Enumerable.Repeat(INDENT_STRING, ++indentation)) : ch.ToString()
+				let closeChar = ch == '}' || ch == ']' ? Environment.NewLine + String.Concat(Enumerable.Repeat(INDENT_STRING, --indentation)) + ch : ch.ToString()
+				select lineBreak == null    
+							? openChar.Length > 1 
+								? openChar 
+								: closeChar
+							: lineBreak;
+
+			return String.Concat(result);
 		}
 
-		static T FindAndEnforceSingletonScriptableObjectOfType<T> () where T : ScriptableObject {
-			string typeName = typeof(T).Name;
-			string[] GUIDs = AssetDatabase.FindAssets("t:"+typeName);
-			if(GUIDs.Length > 0) {
-				string path = AssetDatabase.GUIDToAssetPath(GUIDs[0]);
-				if(GUIDs.Length > 1) {
-					var remainingGUID = DeleteAllButOldestScriptableObjects(GUIDs, typeName);
-					path = AssetDatabase.GUIDToAssetPath(remainingGUID);
-				}
-				return AssetDatabase.LoadAssetAtPath<T>(path);
-			} 
-			return null;
-		}
 
-		public static string DeleteAllButOldestScriptableObjects (string[] GUIDs, string typeName) {
-			if(GUIDs.Length == 0) return null;
-			if(GUIDs.Length == 1) return GUIDs[0];
-			int oldestIndex = -1;
-			DateTime oldestTime = DateTime.Now;
-			for(int i = 0; i < GUIDs.Length; i++) {
-				var path = AssetDatabase.GUIDToAssetPath(GUIDs[i]);
-				var absolutePath = UnityRelativeToAbsolutePath(path);
-				var lastWriteTime = File.GetLastWriteTime(absolutePath);
-				if(oldestIndex == -1 || lastWriteTime < oldestTime) {
-					oldestTime = lastWriteTime;
-					oldestIndex = i;
+		// If this plugin is installed as a package, returns info about it.
+		public static UnityEditor.PackageManager.PackageInfo GetPackageInfo() {
+			var packageAssetPath = "Packages/com.inkle.ink-unity-integration";
+			if (AssetDatabase.IsValidFolder(packageAssetPath)) return UnityEditor.PackageManager.PackageInfo.FindForAssetPath(packageAssetPath);
+			else return null;
+		}
+		
+		// Gets the root directory of this plugin, enabling us to find assets within it.
+		// Less efficent if not installed as a package because the location/folder name is not known.
+		public static string FindAbsolutePluginDirectory() {
+			var packageInfo = GetPackageInfo();
+			if (packageInfo != null) {
+				return packageInfo.resolvedPath;
+			} else {
+				// Find the InkLibs folder. We assume that it exists in the top level of the plugin folder. We use this folder because it has a fairly unique name and is essential for the plugin to function.
+				string[] guids = AssetDatabase.FindAssets("t:DefaultAsset", new[] {"Assets"}).Where(g => AssetDatabase.GUIDToAssetPath(g).EndsWith("/InkLibs")).ToArray();
+				if (guids.Length > 0) {
+					var assetPathOfInkLibsFolder = AssetDatabase.GUIDToAssetPath(guids[0]);
+					var rootPluginFolder = assetPathOfInkLibsFolder.Substring(0, assetPathOfInkLibsFolder.Length - "/InkLibs".Length);
+					return Path.GetFullPath(Path.Combine(Application.dataPath, "..", rootPluginFolder));
 				}
 			}
-			for(int i = 0; i < GUIDs.Length; i++) {
-				if(i == oldestIndex) continue;
-				var path = AssetDatabase.GUIDToAssetPath(GUIDs[i]);
-				AssetDatabase.DeleteAsset(path);
-			}
-			Debug.LogWarning("More than one "+typeName+" was found. Deleted newer excess asset instances.");
-			return GUIDs[oldestIndex];
+			return null; // If no folder is found
 		}
 	}
 }

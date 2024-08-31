@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
-{
-    walk,
-    attack,
-    interact,
-    stagger,
-    idle
-}
+//public enum PlayerState { walk, attack, interact, stagger, idle }
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] string name;
+    [SerializeField] Sprite sprite;
+
+    public float OffsetY { get; private set; } = 0.3f;
 
     public PlayerState currentState;
     public float speed;
@@ -24,16 +21,17 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask interactableLayer;
 
     public bool canMove;
+    public bool IsMoving { get; set; }
 
     // TODO HEALTH
     /*
     public FloatValue currentHealth;
     public Signal playerHealthSignal;
-    */   
+    */
 
     public VectorValue startingPosition;
 
-    // TODO INVENTORY Break off the player inventory into its own component
+    // TODO INVENTORY Referencia al arco
     public Inventory playerInventory;
     public SpriteRenderer receivedItemSprite;
 
@@ -61,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState = PlayerState.walk;
+        currentState = PlayerState.Walk;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
@@ -70,8 +68,15 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetPositionAndSnapToTile(Vector2 pos)
+    {
+        pos.x = Mathf.Floor(pos.x) + 0.5f;
+        pos.y = Mathf.Floor(pos.y) + 0.5f + OffsetY;
+
+        transform.position = pos;
+    }
+
+    private void Update()
     {
         if (!canMove)
         {
@@ -80,18 +85,19 @@ public class PlayerMovement : MonoBehaviour
             //Revisar agregar anim.speed = zero
         }
         // Is the player in an interaction
-        if (currentState == PlayerState.interact)
+        if (currentState == PlayerState.Interact)
         {
             return;
         }
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
+
+        if (Input.GetKeyDown(KeyCode.X) && currentState != PlayerState.Attack && currentState != PlayerState.Stagger)
         {
             StartCoroutine(AttackCo());
         }
         // TODO ABILITY
-        else if (Input.GetButtonDown("Second Weapon") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
+        else if (Input.GetButtonDown("Second Weapon") && currentState != PlayerState.Attack && currentState != PlayerState.Stagger)
         {
             if (playerInventory.CheckForItem(bow))
             {
@@ -101,17 +107,17 @@ public class PlayerMovement : MonoBehaviour
         //Agregue esto para refactor Interactuable (#26 6:30)
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            Interact();
+            StartCoroutine(Interact());
         }
         //Hasta aqui
-        else if (currentState == PlayerState.walk || currentState == PlayerState.idle)
+        else if (currentState == PlayerState.Walk || currentState == PlayerState.Idle)
         {
             UpdateAnimationAndMove();
         }
     }
 
     //Agregue esto para refactor Interactuable (#26 6:30)
-    void Interact()
+    IEnumerator Interact()
     {
         var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
         var interactPos = transform.position + facingDir;
@@ -121,20 +127,20 @@ public class PlayerMovement : MonoBehaviour
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
         if (collider != null)
         {
-            collider.GetComponent<Interactuable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactuable>()?.Interact(transform);
         }
     }
 
     private IEnumerator AttackCo()
     {
         animator.SetBool("attacking", true);
-        currentState = PlayerState.attack;
+        currentState = PlayerState.Attack;
         yield return null;
         animator.SetBool("attacking", false);
         yield return new WaitForSeconds(.3f);
-        if(currentState != PlayerState.interact)
+        if(currentState != PlayerState.Interact)
         {
-            currentState = PlayerState.walk;
+            currentState = PlayerState.Walk;
         }
     }
 
@@ -142,14 +148,14 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator SecondAttackCo()
     {
         //animator.SetBool("attacking", true);
-        currentState = PlayerState.attack;
+        currentState = PlayerState.Attack;
         yield return null;
         MakeArrow();
         //animator.SetBool("attacking", false);
         yield return new WaitForSeconds(.3f);
-        if (currentState != PlayerState.interact)
+        if (currentState != PlayerState.Interact)
         {
-            currentState = PlayerState.walk;
+            currentState = PlayerState.Walk;
         }
     }
 
@@ -161,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
             Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
             arrow.Setup(temp, ChooseArrowDirection());
-            playerInventory.ReduceMagic(arrow.magicCost);
+            playerInventory.ReduceMagic(arrow.arrowCost);
             reduceMagic.Raise();
         }
     }
@@ -177,16 +183,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if(playerInventory.currentItem != null)
         {
-            if (currentState != PlayerState.interact)
+            if (currentState != PlayerState.Interact)
             {
                 animator.SetBool("receive item", true);
-                currentState = PlayerState.interact;
+                currentState = PlayerState.Interact;
                 receivedItemSprite.sprite = playerInventory.currentItem.itemSprite;
             }
             else
             {
                 animator.SetBool("receive item", false);
-                currentState = PlayerState.idle;
+                currentState = PlayerState.Idle;
                 receivedItemSprite.sprite = null;
                 playerInventory.currentItem = null;
             }
@@ -202,11 +208,11 @@ public class PlayerMovement : MonoBehaviour
             change.y = Mathf.Round(change.y);
             animator.SetFloat("moveX", change.x);
             animator.SetFloat("moveY", change.y);
-            animator.SetBool("moving", true);
+            animator.SetBool("isMoving", true);
         }
         else
         {
-            animator.SetBool("moving", false);
+            animator.SetBool("isMoving", false);
         }
     }
 
@@ -244,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(FlashCo());
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            currentState = PlayerState.idle;
+            currentState = PlayerState.Idle;
             myRigidbody.velocity = Vector2.zero;
         }
     }
@@ -264,4 +270,16 @@ public class PlayerMovement : MonoBehaviour
         }
         triggerCollider.enabled = true;
     }
+
+    public string Name
+    {
+        get => name;
+    }
+
+    public Sprite Sprite
+    {
+        get => sprite;
+    }
+
+    public Animator Animator => animator;
 }

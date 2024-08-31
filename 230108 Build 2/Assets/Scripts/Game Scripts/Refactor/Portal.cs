@@ -17,6 +17,7 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
         // TODO video #45 25:00
         //player.Character.Animator.IsMoving = false;
         player = _player;
+        player.Animator.SetBool("isMoving", false);
         StartCoroutine(SwitchScene());
     }
 
@@ -39,7 +40,7 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
         var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destinationPortal == this.destinationPortal);
-        player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
+        player.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
 
         yield return fader.FadeOut(0.5f);
         GameController.Instance.PauseGame(false);

@@ -7,7 +7,8 @@ public class TrainerFov : MonoBehaviour, IPlayerTriggerable
     public void OnPlayerTriggered(PlayerController player)
     {
         // TODO video #45 25:00
-        player.Character.Animator.IsMoving = false;
+        //player.Character.Animator.IsMoving = false;
+        player.Animator.SetBool("isMoving", false);
         GameController.Instance.OnEnterTrainersView(GetComponentInParent<TrainerController>());
     }
 

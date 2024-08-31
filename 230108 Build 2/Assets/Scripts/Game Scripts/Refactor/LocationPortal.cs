@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Cinemachine;
 
-// Teleports the player to a different location without switching scences
+// Video45: Teleports the player to a different location without switching scenes
 
 public class LocationPortal : MonoBehaviour, IPlayerTriggerable
 {
@@ -14,8 +15,6 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
 
     public void OnPlayerTriggered(PlayerController _player)
     {
-        // TODO video #45 25:00
-        //player.Character.Animator.IsMoving = false;
         player = _player;
         StartCoroutine(Teleport());
     }
@@ -31,14 +30,19 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
 
     IEnumerator Teleport()
     {
+        CinemachineBrain brain = FindObjectOfType<CinemachineBrain>();
+        var blendTime = brain.m_DefaultBlend.m_Time;
+
         GameController.Instance.PauseGame(true);
         yield return fader.FadeIn(0.5f);
 
         var destPortal = FindObjectsOfType<LocationPortal>().First(x => x != this && x.destinationPortal == this.destinationPortal);
-        player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
+        player.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
+        brain.m_DefaultBlend.m_Time = 0;
 
         yield return fader.FadeOut(0.5f);
         GameController.Instance.PauseGame(false);
+        brain.m_DefaultBlend.m_Time = blendTime;
     }
 
     public Transform SpawnPoint => spawnPoint;

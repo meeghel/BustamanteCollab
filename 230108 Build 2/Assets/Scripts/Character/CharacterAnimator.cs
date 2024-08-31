@@ -40,7 +40,7 @@ public class CharacterAnimator : MonoBehaviour
     SpriteAnimator walkLeftAnim;
 
     public SpriteAnimator currentAnim;
-    public FacingDirection currentDir;
+    public FacingDirection currentDirection;
     bool wasPreviouslyMoving;
 
     // References
@@ -66,7 +66,7 @@ public class CharacterAnimator : MonoBehaviour
     private void Update()
     {
         var prevAnim = currentAnim;
-        var prevDir = currentDir;
+        var prevDir = currentDirection;
         
         if (IsMoving)
         {
@@ -84,26 +84,26 @@ public class CharacterAnimator : MonoBehaviour
             if (MoveX == 1)
             {
                 currentAnim = idleRightAnim;
-                currentDir = FacingDirection.Right;
+                currentDirection = FacingDirection.Right;
             }
             else if (MoveX == -1)
             {
                 currentAnim = idleLeftAnim;
-                currentDir = FacingDirection.Left;
+                currentDirection = FacingDirection.Left;
             }
             else if (MoveY == 1)
             {
                 currentAnim = idleUpAnim;
-                currentDir = FacingDirection.Up;
+                currentDirection = FacingDirection.Up;
             }
             else if (MoveY == -1)
             {
                 currentAnim = idleDownAnim;
-                currentDir = FacingDirection.Down;
+                currentDirection = FacingDirection.Down;
             }
         }
 
-        if (currentAnim != prevAnim || currentDir != prevDir || IsMoving != wasPreviouslyMoving)
+        if (currentAnim != prevAnim || currentDirection != prevDir || IsMoving != wasPreviouslyMoving)
             currentAnim.Start();
 
         currentAnim.HandleUpdate();
@@ -113,7 +113,6 @@ public class CharacterAnimator : MonoBehaviour
             spriteRenderer.sprite = currentAnim.frames[0];*/
 
         wasPreviouslyMoving = IsMoving;
-
     }
 
     public void SetFacingDirection(FacingDirection dir)

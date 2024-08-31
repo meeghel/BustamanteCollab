@@ -16,6 +16,6 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: df83bc43d84aa422997a420f3939c470, type: 2}
   numberOfKeys: 0
-  coins: 1000
+  coins: 500
   maxMagic: 10
   currentMagic: 10

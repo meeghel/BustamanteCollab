@@ -1,54 +1,41 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
-public class Sign : Interactable
+public class Sign : MonoBehaviour, Interactuable
 {
-    public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
+    [SerializeField] Dialog dialog;
+    public Signal context;
+    public bool playerInRange;
+    public float areaDetection = 1.5f;
 
-    // Start is called before the first frame update
-    void Start()
+    public IEnumerator Interact(Transform initiator)
     {
-        dialogBox.SetActive(false);
-        dialogText.text = dialog;
+        yield return DialogManagerRef.instance.ShowDialog(dialog);
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isInteracting)//Input.GetButtonDown("Check") && playerInRange)
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
-            dialogBox.SetActive(true);
+            context.Raise();
+            playerInRange = true;
         }
-        else
-        {
-            //dialogBox.SetActive(false);
-        }
-
-        //Revisar si esto es necesario, solo sería necesario si Player 
-        //se puede mover durante diálogo
-        if (!playerInRange)
-        {
-            isInteracting = false;
-        }
-        /*if (dialogBox.activeInHierarchy)
-        {
-            dialogBox.SetActive(false);
-        }else{
-            dialogBox.SetActive(true);
-            dialogText.text = dialog;
-        }*/
     }
-    /*private void OnTriggerExit2D(Collider2D other)
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             context.Raise();
             playerInRange = false;
-            dialogBox.SetActive(false);
         }
+    }
+
+    /*void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, areaDetection);
     }*/
 }

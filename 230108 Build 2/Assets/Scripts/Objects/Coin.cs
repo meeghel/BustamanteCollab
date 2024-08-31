@@ -10,7 +10,7 @@ public class Coin : PowerUp
     // Start is called before the first frame update
     void Start()
     {
-        powerupSignal.Raise();
+        //powerupSignal.Raise();
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class Coin : PowerUp
         {
             Wallet.i.AddMoney((float)amount);
             //playerInventory.coins += amount;
-            powerupSignal.Raise();
+            //powerupSignal.Raise();
             AudioManager.i.PlaySfx(AudioId.Coin);
             Destroy(this.gameObject);
         }

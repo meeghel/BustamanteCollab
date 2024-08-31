@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Ink.Parsed;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,10 @@ public class Healer : MonoBehaviour
             // Si
             yield return Fader.i.FadeIn(0.5f);
 
-            player.GetComponentInChildren<GenericHealth>().FullHeal();
+            //player.GetComponentInChildren<GenericHealth>().FullHeal();
+            PlayerController playerC = player.GetComponentInParent<PlayerController>();
+            playerC.Player.FullHeal();
+            playerC.UpdateHP();
             healthSignal.Raise();
 
             yield return Fader.i.FadeOut(0.5f);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Animations;
 
 [System.Serializable]
 public class ItemBase : ScriptableObject
@@ -11,8 +12,15 @@ public class ItemBase : ScriptableObject
     [SerializeField] string name;
     [SerializeField] string description;
     [SerializeField] Sprite icon;
+    [SerializeField] RuntimeAnimatorController animatorController;
     [SerializeField] float price;
     [SerializeField] bool canSell;
+    public bool isKey;
+    public bool isHeartContainer;
+
+    public RuntimeAnimatorController AnimatorController => animatorController;
+
+
     public UnityEvent thisEvent;
 
     public virtual string Name => name;
@@ -22,7 +30,8 @@ public class ItemBase : ScriptableObject
     public float Price => price;
     public bool CanSell => canSell;
 
-    public virtual bool Use(GenericHealth player)
+    // 231012 cambie a que no tome un GenericHealth, sino PlayerAttributes
+    public virtual bool Use(PlayerAttributes player)
     {
         return false;
     }

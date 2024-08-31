@@ -8,7 +8,8 @@ public class StoryItem : MonoBehaviour, IPlayerTriggerable
 
     public void OnPlayerTriggered(PlayerController player)
     {
-        player.Character.Animator.IsMoving = false;
+        //player.Character.Animator.IsMoving = false;
+        player.Animator.SetBool("isMoving", false);
         StartCoroutine(DialogManagerRef.instance.ShowDialog(dialog));
     }
 

@@ -14,17 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Semita
   description: Recupera 3 corazones.
-  icon: {fileID: 7027316152575803653, guid: 0cb15810f98b047269ffa7f6adf69257, type: 3}
-  price: 150
+  icon: {fileID: -1892846185, guid: 3ecca9b3c51f0a447a4bb2a18c53e54f, type: 3}
+  animatorController: {fileID: 0}
+  price: 50
   canSell: 1
   thisEvent:
     m_PersistentCalls:
       m_Calls: []
   maxHealth: {fileID: 11400000, guid: 86dccde284ffe43f086210166a0fca11, type: 2}
   healthSignal: {fileID: 11400000, guid: 65d9df2a6599245ef8c15c8fa648659b, type: 2}
-  healthAmount: 3
-  restoreMaxHealth: 0
+  hpAmount: 6
+  restoreMaxHP: 0
+  arrowAmount: 0
+  restoreMaxArrows: 0
   magicAmount: 0
   restoreMaxMagic: 0
-  arrowAmount: 0
-  restoreMaxArrow: 0
+  revive: 0
+  maxRevive: 0

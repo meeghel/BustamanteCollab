@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoundedNPC : Sign
+public class BoundedNPC : Interactuable
 {
     //Revisar por qué hereda de Sign y no de Interactable
-
     private Vector3 directionVector;
     private Transform myTransform;
     public float speed;
@@ -16,6 +15,9 @@ public class BoundedNPC : Sign
     private bool isMoving;
     //230522 agregué canMove para revisar implementar Dialog Manager
     public bool canMove;
+    public bool playerInRange = false;
+    private Signal context; 
+
     private DialogManager theDM;
 
     public float minMoveTime;
@@ -29,13 +31,13 @@ public class BoundedNPC : Sign
     void Start()
     {
         canMove = true;
-        theDM = FindObjectOfType<DialogManager>();
+        //theDM = FindObjectOfType<DialogManager>();
         moveTimeSeconds = Random.Range(minMoveTime, maxMoveTime);
         waitTimeSeconds = Random.Range(minWaitTime, maxWaitTime);
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         playerPosition = GameObject.FindWithTag("Player").transform;
-        myTransform = GetComponent<Transform>();
-        myRigidbody = GetComponent<Rigidbody2D>();
+        //myTransform = GetComponent<Transform>();
+        //myRigidbody = GetComponent<Rigidbody2D>();
         ChangeDirection();
     }
 
@@ -152,5 +154,10 @@ public class BoundedNPC : Sign
     private void OnCollisionEnter2D(Collision2D other)
     {
         ChooseDifferentDirection();
+    }
+
+    public IEnumerator Interact(Transform initiator)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 [System.Serializable]
 public class Quest
@@ -55,8 +56,15 @@ public class Quest
         {
             inventario.AddItem(Base.RewardItem);
 
-            string playerName = player.GetComponent<PlayerController>().Name;
+            string playerName = player.GetComponent<PlayerCharacter>().Name;
+
+            AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
+
+            yield return player.GetComponent<PlayerCharacter>().RaiseItem(Base.RewardItem);
+
             yield return DialogManagerRef.instance.ShowDialogText($"¡{playerName} encontro {Base.RewardItem.Name}!");
+
+            yield return player.GetComponent<PlayerCharacter>().LowerItem();
         }
 
         var questList = QuestList.GetQuestList();

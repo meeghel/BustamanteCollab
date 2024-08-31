@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactuable
 {
+    [SerializeField] string characterName;
     [SerializeField] Dialog dialog;
 
     [Header("Quests")]
@@ -53,7 +54,9 @@ public class NPCController : MonoBehaviour, Interactuable
 
             if (itemGiver != null && itemGiver.CanBeGiven())
             {
-                yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+                initiator.GetComponentInParent<ContextClue>().ChangeContext();
+                yield return itemGiver.GiveItem(initiator.GetComponent<PlayerCharacter>());
+                initiator.GetComponentInParent<ContextClue>().ChangeContext();
             }
             else if (questToStart != null)
             {

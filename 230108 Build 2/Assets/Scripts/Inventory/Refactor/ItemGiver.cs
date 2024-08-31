@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class ItemGiver : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ItemGiver : MonoBehaviour
 
     [SerializeField] bool used = false;
 
-    public IEnumerator GiveItem(PlayerController player)
+    public IEnumerator GiveItem(PlayerCharacter player)
     {
         yield return DialogManagerRef.instance.ShowDialog(dialog);
 
@@ -20,12 +21,16 @@ public class ItemGiver : MonoBehaviour
 
         AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);
 
+        yield return player.RaiseItem(item);
+
         string dialogText = $"{player.Name} recibio {item.Name}.";
         if(count > 1)
             dialogText = $"{player.Name} recibio {count} {item.Name}.";
         // TODO no funciona para plural en español!
 
         yield return DialogManagerRef.instance.ShowDialogText(dialogText);
+
+        yield return player.LowerItem();
     }
 
     public bool CanBeGiven()

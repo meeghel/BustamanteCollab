@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CasaInterior.unity
     guid: 42e421c2a349d4556822395ed344828c
   - enabled: 1
-    path: Assets/Scenes/CasaDungeon3.unity
-    guid: e426ea68da3bd4b1b8eeb1ea8b1e91af
-  - enabled: 1
     path: Assets/Scenes/TestArea2.unity
     guid: 51534dc22b76244efb344f0fd576ad4f
   - enabled: 1
@@ -32,4 +29,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestArea3.unity
     guid: 9c057cd9f18c9418e89eb99a5fba6392
+  - enabled: 1
+    path: Assets/Scenes/Tienda.unity
+    guid: 1bb106c45c6bdea4d882707f311c00ea
+  - enabled: 1
+    path: Assets/Scenes/Area1.unity
+    guid: 661daa63ca0d82c47914b7f33d84721b
+  - enabled: 1
+    path: Assets/Scenes/Area2.unity
+    guid: 9f8fae8b267f09948b46dbbe29fe8761
+  - enabled: 1
+    path: Assets/Scenes/Area3.unity
+    guid: 7713029dcaa4a42449c4c64fd8b152cd
+  - enabled: 1
+    path: Assets/Scenes/Area4.unity
+    guid: 0067d39c2b4c6a840bbeca79a9f06bb3
+  - enabled: 1
+    path: Assets/Scenes/Area5.unity
+    guid: 4378f2e7194b3d44faae9493be4fcf1a
+  - enabled: 1
+    path: Assets/Scenes/CasaDungeon3 1.unity
+    guid: 3c0161036f2df75469b2580714858089
+  - enabled: 1
+    path: Assets/Scenes/Exterior.unity
+    guid: 1dff7db3839fd2f4c85eb23bb08892e8
   m_configObjects: {}

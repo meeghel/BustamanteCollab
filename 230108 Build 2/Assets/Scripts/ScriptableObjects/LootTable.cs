@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Loot
 {
-    public PowerUp thisLoot;
+    //public PowerUp thisLoot;
+    public ItemDrop thisLoot;
     public int lootChance;
 }
 
@@ -15,7 +16,7 @@ public class LootTable : ScriptableObject
 {
     public Loot[] loots;
 
-    public PowerUp LootPowerup()
+    public ItemDrop LootItemdrop()
     {
         int cumProb = 0;
         int currentProb = Random.Range(0, 100);
@@ -29,4 +30,19 @@ public class LootTable : ScriptableObject
         }
         return null;
     }
+
+    /*public PowerUp LootPowerup()
+    {
+        int cumProb = 0;
+        int currentProb = Random.Range(0, 100);
+        for (int i = 0; i < loots.Length; i++)
+        {
+            cumProb += loots[i].lootChance;
+            if (currentProb <= cumProb)
+            {
+                return loots[i].thisLoot;
+            }
+        }
+        return null;
+    }*/
 }

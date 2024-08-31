@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949fdd2a6f2742f47a92b2bacedc4904, type: 3}
+  m_Name: Mike
+  m_EditorClassIdentifier: 
+  name: Mike
+  description: El que hizo este juego! Buena defensa, pero no es tan rapido.
+  mainSprite: {fileID: -383070132, guid: c412faa4206aa994e90a9903a34dc281, type: 3}
+  iconSprite: {fileID: -1608109559, guid: 44cc28d62c8308c41ba7804662071209, type: 3}
+  animatorController: {fileID: 22100000, guid: dc0ca47cf8c61c449a2cbf048bdf5d6e, type: 2}
+  maxHP: 2
+  attack: 3
+  defense: 1
+  speed: 2
+  mainWeapon: {fileID: 0}
+  secondWeapon: {fileID: 0}
+  maxArrows: 10
+  maxGas: 0
